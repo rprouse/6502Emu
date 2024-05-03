@@ -1,0 +1,16 @@
+a 3
+(a,x) 3
+a,x 3
+a,y 3
+(a) 3
+A 1
+# 2 
+i 1
+r 1
+s 1
+zp 2
+(zp,x) 2
+zp,x 2
+zp,y 2
+(zp) 2
+(zp),y 2
