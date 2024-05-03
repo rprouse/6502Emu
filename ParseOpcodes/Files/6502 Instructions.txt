@@ -78,10 +78,10 @@
 5F BBR5 r
 60 RTS
 61 ADC (zp,x)
-64 STzp zp
+64 STZ zp
 65 ADC zp
 66 ROR zp
-67 RMB6 zp`
+67 RMB6 zp
 68 PLA
 69 ADC #
 6A ROR A
@@ -122,21 +122,21 @@
 94 STY zp,x
 95 STA zp,x
 96 STX zp,y
-97 STMB1 zp
+97 SMB1 zp
 98 TYA
 99 STA a,y
 9A TXS
-9C STzp a
+9C STZ a
 9D STA a,x
-9E STZ z,x
+9E STZ a,x
 9F BBS1 r
 A0 LDY #
 A1 LDA (zp,x)
 A2 LDX #
 A4 LDY zp
 A5 LDA zp
-A6 LDX zp10
-A7 STMB2 zp
+A6 LDX zp
+A7 SMB2 zp
 A8 TAY
 A9 LDA #
 AA TAX
@@ -150,7 +150,7 @@ B2 LDA (zp)
 B4 LDY zp,x
 B5 LDA zp,y
 B6 LDX zp,y
-B7 STMB3 zp
+B7 SMB3 zp
 B8 CLV
 B9 LDA a,y
 BA TSX
@@ -163,7 +163,7 @@ C1 CMP (zp,x)
 C4 CPY zp
 C5 CMP zp
 C6 DEC zp
-C7 STMB4 zp
+C7 SMB4 zp
 C8 INY
 C9 CMP #
 CA DEX
@@ -177,7 +177,7 @@ D1 CMP (zp),y
 D2 CMP (zp)
 D5 CMP zp,x
 D6 DEC zp,x
-D7 STMB5 zp
+D7 SMB5 zp
 D8 CLD
 D9 CMP a,y
 DA PHX
@@ -190,7 +190,7 @@ E1 SBC (zp,x)
 E4 CPX zp
 E5 SBC zp
 E6 INC zp
-E7 STMB6 zp
+E7 SMB6 zp
 E8 INX
 E9 SBC #
 EA NOP
@@ -203,7 +203,7 @@ F1 SBC (zp),y
 F2 SBC (zp)
 F5 SBC zp,x
 F6 INC zp,x
-F7 STMB7 zp
+F7 SMB7 zp
 F8 SED
 F9 SBC a,y
 FA PLX
