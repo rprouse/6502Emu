@@ -10,7 +10,7 @@ public class Opcode
     public byte Bytes { get; set; }
     public string Description { get; set; }
 
-    public override string ToString()
+    public string ToTableRowString()
     {
         return $"| 0x{Byte:X2} | {Mnemonic} {Operand} | {Bytes} | {Description} |";
     }

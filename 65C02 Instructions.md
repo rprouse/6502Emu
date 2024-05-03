@@ -3,81 +3,81 @@
 | Byte | Mnemonic | Bytes | Description |
 |------|----------|-------|-------------|
 | 0x00 | BRK  | 0 | BReaK instruction |
-| 0x01 | ORA (zp,x) | 2 | "OR" memory with Accumulator |
+| 0x01 | ORA (zp,x) | 2 | OR memory with Accumulator |
 | 0x04 | TSB zp | 2 | Test and Set memory Bit |
-| 0x05 | ORA zp | 2 | "OR" memory with Accumulator |
+| 0x05 | ORA zp | 2 | OR memory with Accumulator |
 | 0x06 | ASL zp | 2 | Arithmetic Shift one bit Left, memory or accumulator |
 | 0x07 | RMB0 zp | 2 | Reset Memory Bit |
 | 0x08 | PHP  | 0 | PusH Processor status on stack |
-| 0x09 | ORA # | 2 | "OR" memory with Accumulator |
+| 0x09 | ORA # | 2 | OR memory with Accumulator |
 | 0x0A | ASL A | 1 | Arithmetic Shift one bit Left, memory or accumulator |
 | 0x0C | TSB a | 3 | Test and Set memory Bit |
-| 0x0D | ORA a | 3 | "OR" memory with Accumulator |
+| 0x0D | ORA a | 3 | OR memory with Accumulator |
 | 0x0E | ASL a | 3 | Arithmetic Shift one bit Left, memory or accumulator |
 | 0x0F | BBR0 r | 1 | Branch on Bit Reset |
 | 0x10 | BPL r | 1 | Branch if result PLus (Pn=0) |
-| 0x11 | ORA (zp),y | 2 | "OR" memory with Accumulator |
-| 0x12 | ORA (zp) | 2 | "OR" memory with Accumulator |
+| 0x11 | ORA (zp),y | 2 | OR memory with Accumulator |
+| 0x12 | ORA (zp) | 2 | OR memory with Accumulator |
 | 0x14 | TRB zp | 2 | Test and Reset memory Bit |
-| 0x15 | ORA zp,x | 2 | "OR" memory with Accumulator |
+| 0x15 | ORA zp,x | 2 | OR memory with Accumulator |
 | 0x16 | ASL zp,x | 2 | Arithmetic Shift one bit Left, memory or accumulator |
 | 0x17 | RMB1 zp | 2 | Reset Memory Bit |
 | 0x18 | CLC  | 0 | CLear Cary flag |
-| 0x19 | ORA a,y | 3 | "OR" memory with Accumulator |
+| 0x19 | ORA a,y | 3 | OR memory with Accumulator |
 | 0x1A | INC A | 1 | INCrement memory or accumulate by one |
 | 0x1C | TRB a | 3 | Test and Reset memory Bit |
-| 0x1D | ORA a,x | 3 | "OR" memory with Accumulator |
+| 0x1D | ORA a,x | 3 | OR memory with Accumulator |
 | 0x1E | ASL a,x | 3 | Arithmetic Shift one bit Left, memory or accumulator |
 | 0x1F | BBR1 r | 1 | Branch on Bit Reset |
 | 0x20 | JSR a | 3 | Jump to new location Saving Return (Jump to SubRoutine) |
-| 0x21 | AND (zp,x) | 2 | "AND" memory with accumulator |
+| 0x21 | AND (zp,x) | 2 | AND memory with accumulator |
 | 0x24 | BIT zp | 2 | BIt Test |
-| 0x25 | AND zp | 2 | "AND" memory with accumulator |
+| 0x25 | AND zp | 2 | AND memory with accumulator |
 | 0x26 | ROL zp | 2 | ROtate one bit Left memory or accumulator |
 | 0x27 | RMB2 zp | 2 | Reset Memory Bit |
 | 0x28 | PLP  | 0 | PuLl Processor status from stack |
-| 0x29 | AND # | 2 | "AND" memory with accumulator |
+| 0x29 | AND # | 2 | AND memory with accumulator |
 | 0x2A | ROL A | 1 | ROtate one bit Left memory or accumulator |
 | 0x2C | BIT a | 3 | BIt Test |
-| 0x2D | AND a | 3 | "AND" memory with accumulator |
+| 0x2D | AND a | 3 | AND memory with accumulator |
 | 0x2E | ROL a | 3 | ROtate one bit Left memory or accumulator |
 | 0x2F | BBR2 r | 1 | Branch on Bit Reset |
 | 0x30 | BMI r | 1 | Branch if result MInus (Pn=1) |
-| 0x31 | AND (zp),y | 2 | "AND" memory with accumulator |
-| 0x32 | AND (zp) | 2 | "AND" memory with accumulator |
+| 0x31 | AND (zp),y | 2 | AND memory with accumulator |
+| 0x32 | AND (zp) | 2 | AND memory with accumulator |
 | 0x34 | BIT zp,x | 2 | BIt Test |
-| 0x35 | AND zp,x | 2 | "AND" memory with accumulator |
+| 0x35 | AND zp,x | 2 | AND memory with accumulator |
 | 0x36 | ROL zp,x | 2 | ROtate one bit Left memory or accumulator |
 | 0x37 | RMB3 zp | 2 | Reset Memory Bit |
 | 0x38 | SEC  | 0 | SEt Carry |
-| 0x39 | AND a,y | 3 | "AND" memory with accumulator |
+| 0x39 | AND a,y | 3 | AND memory with accumulator |
 | 0x3A | DEC A | 1 | DECrement memory or accumulate by one |
 | 0x3C | BIT a,x | 3 | BIt Test |
-| 0x3D | AND a,x | 3 | "AND" memory with accumulator |
+| 0x3D | AND a,x | 3 | AND memory with accumulator |
 | 0x3E | ROL a,x | 3 | ROtate one bit Left memory or accumulator |
 | 0x3F | BBR3 r | 1 | Branch on Bit Reset |
 | 0x40 | RTI  | 0 | ReTurn from Interrupt |
-| 0x41 | EOR (zp,x) | 2 | "Exclusive OR" memory with accumulate |
-| 0x45 | EOR zp | 2 | "Exclusive OR" memory with accumulate |
+| 0x41 | EOR (zp,x) | 2 | Exclusive OR memory with accumulate |
+| 0x45 | EOR zp | 2 | Exclusive OR memory with accumulate |
 | 0x46 | LSR zp | 2 | Logical Shift one bit Right memory or accumulator |
 | 0x47 | RMB4 zp | 2 | Reset Memory Bit |
 | 0x48 | PHA  | 0 | PusH Accumulator on stack |
-| 0x49 | EOR # | 2 | "Exclusive OR" memory with accumulate |
+| 0x49 | EOR # | 2 | Exclusive OR memory with accumulate |
 | 0x4A | LSR A | 1 | Logical Shift one bit Right memory or accumulator |
 | 0x4C | JMP a | 3 | JuMP to new location |
-| 0x4D | EOR a | 3 | "Exclusive OR" memory with accumulate |
+| 0x4D | EOR a | 3 | Exclusive OR memory with accumulate |
 | 0x4E | LSR a | 3 | Logical Shift one bit Right memory or accumulator |
 | 0x4F | BBR4 r | 1 | Branch on Bit Reset |
 | 0x50 | BVC r | 1 | Branch on oVerflow Clear (Pv=0) |
-| 0x51 | EOR (zp),y | 2 | "Exclusive OR" memory with accumulate |
-| 0x52 | EOR (zp) | 2 | "Exclusive OR" memory with accumulate |
-| 0x55 | EOR zp,x | 2 | "Exclusive OR" memory with accumulate |
+| 0x51 | EOR (zp),y | 2 | Exclusive OR memory with accumulate |
+| 0x52 | EOR (zp) | 2 | Exclusive OR memory with accumulate |
+| 0x55 | EOR zp,x | 2 | Exclusive OR memory with accumulate |
 | 0x56 | LSR zp,x | 2 | Logical Shift one bit Right memory or accumulator |
 | 0x57 | RMB5 zp | 2 | Reset Memory Bit |
 | 0x58 | CLI  | 0 | CLear Interrupt disable bit |
-| 0x59 | EOR a,y | 3 | "Exclusive OR" memory with accumulate |
+| 0x59 | EOR a,y | 3 | Exclusive OR memory with accumulate |
 | 0x5A | PHY  | 0 | PusH Y register on stack |
-| 0x5D | EOR a,x | 3 | "Exclusive OR" memory with accumulate |
+| 0x5D | EOR a,x | 3 | Exclusive OR memory with accumulate |
 | 0x5E | LSR a,x | 3 | Logical Shift one bit Right memory or accumulator |
 | 0x5F | BBR5 r | 1 | Branch on Bit Reset |
 | 0x60 | RTS  | 0 | ReTurn from Subroutine |

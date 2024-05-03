@@ -1,5 +1,5 @@
 ADC ADd memory to accumulator with Carry
-AND "AND" memory with accumulator
+AND AND memory with accumulator
 ASL Arithmetic Shift one bit Left, memory or accumulator
 BBR Branch on Bit Reset
 BBS Branch of Bit Set
@@ -24,7 +24,7 @@ CPY ComPare memory and Y register
 DEC DECrement memory or accumulate by one
 DEX DEcrement X by one
 DEY DEcrement Y by one
-EOR "Exclusive OR" memory with accumulate
+EOR Exclusive OR memory with accumulate
 INC INCrement memory or accumulate by one
 INX INcrement X register by one
 INY INcrement Y register by one
@@ -35,7 +35,7 @@ LDX LoaD the X register with memory
 LDY LoaD the Y register with memory
 LSR Logical Shift one bit Right memory or accumulator
 NOP No OPeration
-ORA "OR" memory with Accumulator
+ORA OR memory with Accumulator
 PHA PusH Accumulator on stack
 PHP PusH Processor status on stack
 PHX PusH X register on stack

@@ -42,5 +42,5 @@ writer.WriteLine();
 writer.WriteLine("| Byte | Mnemonic | Bytes | Description |");
 writer.WriteLine("|------|----------|-------|-------------|");
 instructions
-    .ForEach(opcode => writer.WriteLine(opcode));
+    .ForEach(opcode => writer.WriteLine(opcode.ToTableRowString()));
 writer.WriteLine();
