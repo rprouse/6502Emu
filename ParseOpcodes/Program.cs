@@ -36,11 +36,4 @@ var instructions = File.ReadAllLines("Files/6502 Instructions.txt")
     .ToList();
 
 // Print out the opcodes in markdown format
-using var writer = new StreamWriter("65C02 Instructions.md");
-writer.WriteLine("# 65C02 Instructions");
-writer.WriteLine();
-writer.WriteLine("| Byte | Mnemonic | Bytes | Description |");
-writer.WriteLine("|------|----------|-------|-------------|");
-instructions
-    .ForEach(opcode => writer.WriteLine(opcode.ToTableRowString()));
-writer.WriteLine();
+MarkDownOutput.WriteOpcodes(instructions, "65C02 Instructions.md");
