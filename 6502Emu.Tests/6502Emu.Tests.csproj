@@ -27,4 +27,10 @@
     <ProjectReference Include="..\6502Emu\6502Emu.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Update="Test.com">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
 </Project>
