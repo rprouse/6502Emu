@@ -21,6 +21,7 @@ public partial class OpcodeHandler
         _reg = registers;
         _mmu = mmu;
         IntializeOpcodes();
+        InitializeMethods();
     }
 
     public Opcode FetchInstruction()
@@ -63,4 +64,6 @@ public partial class OpcodeHandler
         _msb = NextByte();
         return BitUtilities.ToWord(_msb, _lsb);
     }
+
+    void NOP() { }
 }

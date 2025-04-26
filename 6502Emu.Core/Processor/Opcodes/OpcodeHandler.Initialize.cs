@@ -45,7 +45,7 @@ public partial class OpcodeHandler
         Add(new Opcode("BIT", "Zero Page", 0x24, 2, "Bit Test"));
         Add(new Opcode("BIT", "Absolute", 0x2C, 3, "Bit Test"));
 
-
+        // Break
         Add(new Opcode("BRK", "Implied", 0x00, 1, "Force Interrupt"));
 
         // Clear Flags
