@@ -34,14 +34,14 @@ public partial class OpcodeHandler
         return opcode;
     }
 
-    public Opcode PeekInstruction(word addr)
+    public Opcode GetOpcode(byte hex)
     {
-        byte hex = _mmu[addr];
         if (!_opcodes.TryGetValue(hex, out Opcode? opcode))
-            throw new NotImplementedException($"Opcode 0x{_mmu[addr]:X2} does not exist");
-
+            throw new NotImplementedException($"Opcode 0x{hex:X2} does not exist");
         return opcode;
     }
+
+    public Opcode PeekInstruction(word addr) => GetOpcode(_mmu[addr]);
 
     private void Add(Opcode opcode)
     {
