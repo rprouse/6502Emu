@@ -1,6 +1,10 @@
-# 6502
+# 6502 Test Data
 
-10,000 tests are provided per opcode. All tests assume a full 64kb of RAM is mapped to the processor.
+This directory contains a set of test data for the 6502 processor. The tests are designed to validate the behavior of the processor's opcodes and their interactions with memory.
+
+The tests were originally created by Thomas Harte and are under the MIT license. The full repo is available at https://github.com/SingleStepTests/65x02.
+
+That repository provides 10,000 tests per opcode. I have reduced that to 100 and only included the documented opcodes. All tests assume a full 64kb of RAM is mapped to the processor.
 
 Sample test:
 
