@@ -10,6 +10,7 @@ public class Mmu
 
     public Mmu()
     {
+        // TODO: Add support for Zero Page, ROM, RAM, IO, etc.
         _ram = new MemoryBlock(0x0000, 0xFFFF);
         _memoryBlocks = new[] { _ram };
     }

@@ -15,7 +15,7 @@ namespace Mos6502Emu.Tests.Memory
         [Test]
         public void CanLoadProgramAtDefaultAddress()
         {
-            _mmu.LoadProgram("Test.com");
+            _mmu.LoadProgram("Test.com").Should().BeTrue();
 
             _mmu[0x0100].Should().Be(0x3A);
             _mmu[0x0101].Should().Be(0x0B);
@@ -32,7 +32,7 @@ namespace Mos6502Emu.Tests.Memory
         [Test]
         public void CanLoadProgramAtSpecifiedAddress()
         {
-            _mmu.LoadProgram("Test.com", 0x0200);
+            _mmu.LoadProgram("Test.com", 0x0200).Should().BeTrue();
 
             _mmu[0x0200].Should().Be(0x3A);
             _mmu[0x0201].Should().Be(0x0B);

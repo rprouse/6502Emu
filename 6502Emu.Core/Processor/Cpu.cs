@@ -1,4 +1,5 @@
 using Mos6502Emu.Core.Memory;
+using Mos6502Emu.Core.Processor.Opcodes;
 
 namespace Mos6502Emu.Core.Processor;
 
@@ -8,10 +9,12 @@ public class Cpu
 
     private readonly Mmu _mmu;
     private readonly Registers _reg;
+    private readonly OpcodeHandler _opcodeHandler;
 
     public Cpu(Mmu mmu)
     {
         _mmu = mmu;
+
         _reg = new Registers
         {
             A = 0x00,
@@ -21,6 +24,8 @@ public class Cpu
             S = 0xFF,         // Technically programs should do this
             PC = 0xFFFC     // This should probably be loaded from the ROM at this address       
         };
+
+        _opcodeHandler = new OpcodeHandler(_reg, _mmu);
     }
 
     public override string? ToString() =>
