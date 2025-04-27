@@ -31,7 +31,8 @@ public class OpcodeHandlerTests
 
         try
         {
-            opcodeHandler.GetOpcode((byte)testCase.Initial.RAM[0][1]);
+            var result = opcodeHandler.GetOpcode((byte)testCase.Initial.RAM[0][1]);
+            result.Execute.Should().NotBeNull(because: $"Opcode {testCase.Name} is not hooked up in the OpcodeHandler");
         }
         catch (NotImplementedException)
         {
