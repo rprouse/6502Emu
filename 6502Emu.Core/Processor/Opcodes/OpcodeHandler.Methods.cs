@@ -15,34 +15,34 @@ public partial class OpcodeHandler
         _opcodes[0x71].Execute = () => NOP();  // ADC (Indirect),Y
 
         // Logical AND
-        _opcodes[0x29].Execute = () => NOP();  // AND Immediate
-        _opcodes[0x25].Execute = () => NOP();  // AND Zero Page
-        _opcodes[0x35].Execute = () => NOP();  // AND Zero Page,X
-        _opcodes[0x2D].Execute = () => NOP();  // AND Absolute
-        _opcodes[0x3D].Execute = () => NOP();  // AND Absolute,X
-        _opcodes[0x39].Execute = () => NOP();  // AND Absolute,Y
-        _opcodes[0x21].Execute = () => NOP();  // AND (Indirect,X)
-        _opcodes[0x31].Execute = () => NOP();  // AND (Indirect),Y
+        _opcodes[0x29].Execute = () => AND(Immediate());  // AND Immediate
+        _opcodes[0x25].Execute = () => AND(ZeroPage());  // AND Zero Page
+        _opcodes[0x35].Execute = () => AND(ZeroPageX());  // AND Zero Page,X
+        _opcodes[0x2D].Execute = () => AND(Absolute());  // AND Absolute
+        _opcodes[0x3D].Execute = () => AND(AbsoluteX());  // AND Absolute,X
+        _opcodes[0x39].Execute = () => AND(AbsoluteY());  // AND Absolute,Y
+        _opcodes[0x21].Execute = () => AND(ZeroPageIndirectX());  // AND (Indirect,X)
+        _opcodes[0x31].Execute = () => AND(ZeroPageIndirectY());  // AND (Indirect),Y
 
         // Exclusive OR
-        _opcodes[0x49].Execute = () => NOP();  // EOR Immediate
-        _opcodes[0x45].Execute = () => NOP();  // EOR Zero Page
-        _opcodes[0x55].Execute = () => NOP();  // EOR Zero Page,X
-        _opcodes[0x4D].Execute = () => NOP();  // EOR Absolute
-        _opcodes[0x5D].Execute = () => NOP();  // EOR Absolute,X
-        _opcodes[0x59].Execute = () => NOP();  // EOR Absolute,Y
-        _opcodes[0x41].Execute = () => NOP();  // EOR (Indirect,X)
-        _opcodes[0x51].Execute = () => NOP();  // EOR (Indirect),Y
+        _opcodes[0x49].Execute = () => EOR(Immediate());  // EOR Immediate
+        _opcodes[0x45].Execute = () => EOR(ZeroPage());  // EOR Zero Page
+        _opcodes[0x55].Execute = () => EOR(ZeroPageX());  // EOR Zero Page,X
+        _opcodes[0x4D].Execute = () => EOR(Absolute());  // EOR Absolute
+        _opcodes[0x5D].Execute = () => EOR(AbsoluteX());  // EOR Absolute,X
+        _opcodes[0x59].Execute = () => EOR(AbsoluteY());  // EOR Absolute,Y
+        _opcodes[0x41].Execute = () => EOR(ZeroPageIndirectX());  // EOR (Indirect,X)
+        _opcodes[0x51].Execute = () => EOR(ZeroPageIndirectY());  // EOR (Indirect),Y
 
         // Logical OR (ORA)
-        _opcodes[0x09].Execute = () => NOP();  // ORA Immediate
-        _opcodes[0x05].Execute = () => NOP();  // ORA Zero Page
-        _opcodes[0x15].Execute = () => NOP();  // ORA Zero Page,X
-        _opcodes[0x0D].Execute = () => NOP();  // ORA Absolute
-        _opcodes[0x1D].Execute = () => NOP();  // ORA Absolute,X
-        _opcodes[0x19].Execute = () => NOP();  // ORA Absolute,Y
-        _opcodes[0x01].Execute = () => NOP();  // ORA (Indirect,X)
-        _opcodes[0x11].Execute = () => NOP();  // ORA (Indirect),Y
+        _opcodes[0x09].Execute = () => ORA(Immediate());  // ORA Immediate
+        _opcodes[0x05].Execute = () => ORA(ZeroPage());  // ORA Zero Page
+        _opcodes[0x15].Execute = () => ORA(ZeroPageX());  // ORA Zero Page,X
+        _opcodes[0x0D].Execute = () => ORA(Absolute());  // ORA Absolute
+        _opcodes[0x1D].Execute = () => ORA(AbsoluteX());  // ORA Absolute,X
+        _opcodes[0x19].Execute = () => ORA(AbsoluteY());  // ORA Absolute,Y
+        _opcodes[0x01].Execute = () => ORA(ZeroPageIndirectX());  // ORA (Indirect,X)
+        _opcodes[0x11].Execute = () => ORA(ZeroPageIndirectY());  // ORA (Indirect),Y
 
         // Arithmetic Shift Left
         _opcodes[0x0A].Execute = () => NOP();  // ASL Accumulator

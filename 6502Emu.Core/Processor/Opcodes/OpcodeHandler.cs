@@ -143,4 +143,22 @@ public partial class OpcodeHandler
         _reg.Y--;
         _reg.SetNegativeAndZeroFlags(_reg.Y);
     }
+
+    void AND(byte value)
+    {
+        _reg.A &= value;
+        _reg.SetNegativeAndZeroFlags(_reg.A);
+    }
+
+    void ORA(byte value)
+    {
+        _reg.A |= value;
+        _reg.SetNegativeAndZeroFlags(_reg.A);
+    }
+
+    void EOR(byte value)
+    {
+        _reg.A ^= value;
+        _reg.SetNegativeAndZeroFlags(_reg.A);
+    }
 }
