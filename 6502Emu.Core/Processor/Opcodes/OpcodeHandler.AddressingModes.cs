@@ -6,10 +6,18 @@ public partial class OpcodeHandler
     public byte Immediate() => _mmu[_reg.PC++];
 
     // https://en.wikibooks.org/wiki/6502_Assembly#Absolute:_a
-    public byte Absolute() => _mmu[NextWord()];
+    public byte Absolute()
+    {
+        _address = NextWord();
+        return _mmu[_address];
+    }
 
     // https://en.wikibooks.org/wiki/6502_Assembly#Zero_Page:_zp
-    public byte ZeroPage() => _mmu[NextByte()];
+    public byte ZeroPage()
+    {
+        _address = NextByte();
+        return _mmu[_address];
+    }
 
     // https://en.wikibooks.org/wiki/6502_Assembly#Relative:_r
     public byte Relative()
@@ -21,47 +29,58 @@ public partial class OpcodeHandler
     // https://en.wikibooks.org/wiki/6502_Assembly#Absolute_Indirect:_(a)
     public byte AbsoluteIndirect()
     {
-        _address = NextWord();
-        _lsb = _mmu[_address];
-        _msb = _mmu[(word)(_address + 1)];
-        return _mmu[(_msb << 8) | _lsb];
+        var indirect = NextWord();
+        _lsb = _mmu[indirect];
+        _msb = _mmu[(word)(indirect + 1)];
+        _address = (word)(_msb << 8 | _lsb);
+        return _mmu[_address];
     }
 
     // https://en.wikibooks.org/wiki/6502_Assembly#Absolute_Indexed_with_X:_a,x
     public byte AbsoluteX()
     {
-        _address = NextWord();
-        return _mmu[_address + _reg.X];
+        _address = (word)(NextWord() + _reg.X);
+        return _mmu[_address];
     }
 
     // https://en.wikibooks.org/wiki/6502_Assembly#Absolute_Indexed_with_Y:_a,y
     public byte AbsoluteY()
     {
-        _address = NextWord();
-        return _mmu[_address + _reg.Y];
+        _address = (word)(NextWord() + _reg.Y);
+        return _mmu[_address];
     }
 
     // https://en.wikibooks.org/wiki/6502_Assembly#Zero_Page_Indexed_with_X:_zp,x
-    public byte ZeroPageX() => _mmu[NextByte() + _reg.X];
+    public byte ZeroPageX()
+    {
+        _address = (word)((NextByte() + _reg.X) & 0x00FF);
+        return _mmu[_address];
+    }
 
     // https://en.wikibooks.org/wiki/6502_Assembly#Zero_Page_Indexed_with_Y:_zp,y
-    public byte ZeroPageY() => _mmu[NextByte() + _reg.Y];
+    public byte ZeroPageY()
+    {
+        _address = (word)((NextByte() + _reg.Y) & 0x00FF);
+        return _mmu[_address];
+    }
 
     // https://en.wikibooks.org/wiki/6502_Assembly#Zero_Page_Indexed_Indirect:_(zp,x)
     public byte ZeroPageIndirectX()
     {
-        _address = (word)(NextByte() + _reg.X);
-        _lsb = _mmu[_address];
-        _msb = _mmu[(word)(_address + 1)];
-        return _mmu[(_msb << 8) | _lsb];
+        var indirect = (word)((NextByte() + _reg.X) & 0x00FF);
+        _lsb = _mmu[indirect];
+        _msb = _mmu[(word)(indirect + 1)];
+        _address = (word)(_msb << 8 | _lsb);
+        return _mmu[_address];
     }
 
     // https://en.wikibooks.org/wiki/6502_Assembly#Zero_Page_Indirect_Indexed_with_Y:_(zp),y
     public byte ZeroPageIndirectY()
     {
-        _address = NextByte();
-        _lsb = _mmu[_address];
-        _msb = _mmu[(word)(_address + 1)];
-        return _mmu[(_msb << 8) | _lsb + _reg.Y];
+        var indirect = NextByte();
+        _lsb = _mmu[indirect];
+        _msb = _mmu[(word)(indirect + 1)];
+        _address = (word)(_msb << 8 | _lsb + _reg.Y);
+        return _mmu[_address];
     }
 }

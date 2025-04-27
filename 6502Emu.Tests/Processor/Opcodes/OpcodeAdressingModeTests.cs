@@ -46,6 +46,9 @@ public class OpcodeAdressingModeTests
         byte result = opcodeHandler.Absolute();
         result.Should().Be(0x93, because: "Absolute addressing mode should return the value at absolute address");
         registers.PC.Should().Be(0x0202, because: "PC should be incremented by 2 after fetching the absolute address");
+
+        // Ensure the address is set correctly
+        opcodeHandler.Address.Should().Be(0x4268);
     }
 
     [Test]
@@ -55,6 +58,9 @@ public class OpcodeAdressingModeTests
         byte result = opcodeHandler.ZeroPage();
         result.Should().Be(0x93, because: "Zero page addressing mode should return the value at zero page address");
         registers.PC.Should().Be(0x0201, because: "PC should be incremented by 1 after fetching the zero page address");
+
+        // Ensure the address is set correctly
+        opcodeHandler.Address.Should().Be(0x0068);
     }
 
     [Test]
@@ -64,6 +70,9 @@ public class OpcodeAdressingModeTests
         byte result = opcodeHandler.Relative();
         result.Should().Be(0x93, because: "Relative addressing mode should return the relative address");
         registers.PC.Should().Be(0x0201, because: "PC should be incremented by 1 after fetching the relative address");
+
+        // Ensure the address is set correctly
+        opcodeHandler.Address.Should().Be(0x0268);
     }
 
     [Test]
@@ -75,6 +84,9 @@ public class OpcodeAdressingModeTests
         byte result = opcodeHandler.AbsoluteIndirect();
         result.Should().Be(0x93, because: "Absolute indirect addressing mode should return the value at absolute indirect address");
         registers.PC.Should().Be(0x0202, because: "PC should be incremented by 2 after fetching the absolute indirect address");
+
+        // Ensure the address is set correctly
+        opcodeHandler.Address.Should().Be(0x8000);
     }
 
     [Test]
@@ -85,6 +97,9 @@ public class OpcodeAdressingModeTests
         byte result = opcodeHandler.AbsoluteX();
         result.Should().Be(0x93, because: "Absolute X addressing mode should return the value at absolute address + X");
         registers.PC.Should().Be(0x0202, because: "PC should be incremented by 2 after fetching the absolute address");
+
+        // Ensure the address is set correctly
+        opcodeHandler.Address.Should().Be(0x4278);
     }
 
     [Test]
@@ -95,6 +110,9 @@ public class OpcodeAdressingModeTests
         byte result = opcodeHandler.AbsoluteY();
         result.Should().Be(0x93, because: "Absolute Y addressing mode should return the value at absolute address + Y");
         registers.PC.Should().Be(0x0202, because: "PC should be incremented by 2 after fetching the absolute address");
+
+        // Ensure the address is set correctly
+        opcodeHandler.Address.Should().Be(0x4278);
     }
 
     [Test]
@@ -105,6 +123,22 @@ public class OpcodeAdressingModeTests
         byte result = opcodeHandler.ZeroPageX();
         result.Should().Be(0x93, because: "Zero page X addressing mode should return the value at zero page address + X");
         registers.PC.Should().Be(0x0201, because: "PC should be incremented by 1 after fetching the zero page address");
+
+        // Ensure the address is set correctly
+        opcodeHandler.Address.Should().Be(0x0078);
+    }
+
+    [Test]
+    public void TestZeroPageXAddressingModeWrapped()
+    {
+        mmu[0x18] = 0x93; // Set the value at zero page address plus X
+        registers.X = 0xB0; // Set X register
+        byte result = opcodeHandler.ZeroPageX();
+        result.Should().Be(0x93, because: "Zero page X addressing mode should return the value at zero page address + X");
+        registers.PC.Should().Be(0x0201, because: "PC should be incremented by 1 after fetching the zero page address");
+
+        // Ensure the address is set correctly
+        opcodeHandler.Address.Should().Be(0x0018);
     }
 
     [Test]
@@ -115,6 +149,22 @@ public class OpcodeAdressingModeTests
         byte result = opcodeHandler.ZeroPageY();
         result.Should().Be(0x93, because: "Zero page Y addressing mode should return the value at zero page address + Y");
         registers.PC.Should().Be(0x0201, because: "PC should be incremented by 1 after fetching the zero page address");
+
+        // Ensure the address is set correctly
+        opcodeHandler.Address.Should().Be(0x0078);
+    }
+
+    [Test]
+    public void TestZeroPageYAddressingModeWrapped()
+    {
+        mmu[0x18] = 0x93; // Set the value at zero page address plus Y
+        registers.Y = 0xB0; // Set Y register
+        byte result = opcodeHandler.ZeroPageY();
+        result.Should().Be(0x93, because: "Zero page Y addressing mode should return the value at zero page address + Y");
+        registers.PC.Should().Be(0x0201, because: "PC should be incremented by 1 after fetching the zero page address");
+
+        // Ensure the address is set correctly
+        opcodeHandler.Address.Should().Be(0x0018);
     }
 
     [Test]
@@ -127,6 +177,24 @@ public class OpcodeAdressingModeTests
         byte result = opcodeHandler.ZeroPageIndirectX();
         result.Should().Be(0x93, because: "Indirect X addressing mode should return the value at indirect address + X");
         registers.PC.Should().Be(0x0201, because: "PC should be incremented by 1 after fetching the indirect address");
+
+        // Ensure the address is set correctly
+        opcodeHandler.Address.Should().Be(0x8000);
+    }
+
+    [Test]
+    public void TestIndirectXAddressingModeWrapped()
+    {
+        mmu[0x18] = 0x00; // Set the low byte of the address
+        mmu[0x19] = 0x80; // Set the high byte of the address
+        mmu[0x8000] = 0x93; // Set the value at the indirect address plus X
+        registers.X = 0xB0; // Set X register
+        byte result = opcodeHandler.ZeroPageIndirectX();
+        result.Should().Be(0x93, because: "Indirect X addressing mode should return the value at indirect address + X");
+        registers.PC.Should().Be(0x0201, because: "PC should be incremented by 1 after fetching the indirect address");
+
+        // Ensure the address is set correctly
+        opcodeHandler.Address.Should().Be(0x8000);
     }
 
     [Test]
@@ -139,5 +207,8 @@ public class OpcodeAdressingModeTests
         byte result = opcodeHandler.ZeroPageIndirectY();
         result.Should().Be(0x93, because: "Indirect Y addressing mode should return the value at indirect address + Y");
         registers.PC.Should().Be(0x0201, because: "PC should be incremented by 1 after fetching the indirect address");
+
+        // Ensure the address is set correctly
+        opcodeHandler.Address.Should().Be(0x8010);
     }
 }

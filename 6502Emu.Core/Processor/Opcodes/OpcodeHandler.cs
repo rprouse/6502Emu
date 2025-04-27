@@ -16,6 +16,11 @@ public partial class OpcodeHandler
 
     Dictionary<byte, Opcode> _opcodes = new ();
 
+    /// <summary>
+    /// The absolute address of the last instruction executed
+    /// </summary>
+    public word Address => _address;
+
     public OpcodeHandler(Registers registers, Mmu mmu)
     {
         _reg = registers;
@@ -66,4 +71,37 @@ public partial class OpcodeHandler
     }
 
     void NOP() { }
+
+    void LDA(byte value)
+    {
+        _reg.A = value;
+        _reg.SetNegativeAndZeroFlags(value);
+    }
+
+    void LDX(byte value)
+    {
+        _reg.X = value;
+        _reg.SetNegativeAndZeroFlags(value);
+    }
+
+    void LDY(byte value)
+    {
+        _reg.Y = value;
+        _reg.SetNegativeAndZeroFlags(value);
+    }
+
+    void STA(word _)
+    {
+        _mmu[_address] = _reg.A;
+    }
+
+    void STX(word _)
+    {
+        _mmu[_address] = _reg.X;
+    }
+
+    void STY(word _)
+    {
+        _mmu[_address] = _reg.Y;
+    }
 }

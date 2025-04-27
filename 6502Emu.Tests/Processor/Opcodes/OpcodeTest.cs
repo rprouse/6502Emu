@@ -13,4 +13,6 @@ public class OpcodeTest
 
     // Provides a cycle-by-cycle breakdown of bus activity in the form `[address, value, type]` where `type` is either `read` or `write`
     public required object[][] Cycles { get; set; }
+
+    public override string ToString() => Name;
 }

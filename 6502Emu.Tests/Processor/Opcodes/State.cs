@@ -1,3 +1,5 @@
+using System.Text;
+
 namespace Mos6502Emu.Tests.Processor.Opcodes;
 
 // Represents the state of the CPU registers, flags and memory
@@ -23,4 +25,17 @@ public class State
 
     // Contains a list of values to store in memory prior to execution, each one in the form `[address, value]`
     public word[][] RAM { get; set; }
+
+    public override string ToString()
+    {
+        StringBuilder sb = new ();
+
+        sb.AppendLine($"PC: 0x{PC:X4} S: 0x{S:X2} A: 0x{A:X2} X: 0x{X:X2} Y: 0x{Y:X2} P: 0x{P:X2}");
+        sb.AppendLine("RAM:");
+        foreach (var ram in RAM)
+        {
+            sb.AppendLine($"  0x{ram[0]:X4}: 0x{ram[1]:X2}");
+        }
+        return sb.ToString();
+    }
 }

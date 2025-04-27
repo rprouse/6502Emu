@@ -1,3 +1,5 @@
+using Mos6502Emu.Core.Utilities;
+
 namespace Mos6502Emu.Core.Processor;
 
 public class Registers
@@ -40,4 +42,17 @@ public class Registers
 
     public void ResetFlag(Flag flag) =>
         P = (byte)(P & ~(byte)flag);
+
+    public void SetNegativeAndZeroFlags(byte value)
+    {
+        if (value == 0)
+            SetFlag(Flag.Zero);
+        else
+            ResetFlag(Flag.Zero);
+
+        if (value.IsNegative())
+            SetFlag(Flag.Negative);
+        else
+            ResetFlag(Flag.Negative);
+    }
 }
