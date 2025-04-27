@@ -75,7 +75,7 @@ public class OpcodeHandlerTests
         LoadOpcodeTests("TestOpcode", TEST_PER_OPCODE);
 
     public static IEnumerable<TestCaseData> GetOpcodes() =>
-        LoadOpcodeTests("OpcodeImplimented", 1);
+        LoadOpcodeTests("TestOpcodeIsImplemented", 1);
 
     public static IEnumerable<TestCaseData> LoadOpcodeTests(string testName, int tests_per_opcode)
     {
