@@ -104,4 +104,43 @@ public partial class OpcodeHandler
     {
         _mmu[_address] = _reg.Y;
     }
+
+    void INC(word _)
+    {
+        byte value = _mmu[_address];
+        value++;
+        _mmu[_address] = value;
+        _reg.SetNegativeAndZeroFlags(value);
+    }
+
+    void INX()
+    {
+        _reg.X++;
+        _reg.SetNegativeAndZeroFlags(_reg.X);
+    }
+
+    void INY()
+    {
+        _reg.Y++;
+        _reg.SetNegativeAndZeroFlags(_reg.Y);
+    }
+
+    void DEC(word _)
+    {
+        byte value = _mmu[_address];
+        value--;
+        _mmu[_address] = value;
+        _reg.SetNegativeAndZeroFlags(value);
+    }
+
+    void DEX()
+    {
+        _reg.X--;
+        _reg.SetNegativeAndZeroFlags(_reg.X);
+    }
+    void DEY()
+    {
+        _reg.Y--;
+        _reg.SetNegativeAndZeroFlags(_reg.Y);
+    }
 }

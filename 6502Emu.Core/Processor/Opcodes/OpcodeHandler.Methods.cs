@@ -73,22 +73,22 @@ public partial class OpcodeHandler
         _opcodes[0x7E].Execute = () => NOP();  // ROR Absolute,X
 
         // Decrement Memory
-        _opcodes[0xC6].Execute = () => NOP();  // DEC Zero Page
-        _opcodes[0xD6].Execute = () => NOP();  // DEC Zero Page,X
-        _opcodes[0xCE].Execute = () => NOP();  // DEC Absolute
-        _opcodes[0xDE].Execute = () => NOP();  // DEC Absolute,X
+        _opcodes[0xC6].Execute = () => DEC(ZeroPage());  // DEC Zero Page
+        _opcodes[0xD6].Execute = () => DEC(ZeroPageX());  // DEC Zero Page,X
+        _opcodes[0xCE].Execute = () => DEC(Absolute());  // DEC Absolute
+        _opcodes[0xDE].Execute = () => DEC(AbsoluteX());  // DEC Absolute,X
 
         // Increment Memory
-        _opcodes[0xE6].Execute = () => NOP();  // INC Zero Page
-        _opcodes[0xF6].Execute = () => NOP();  // INC Zero Page,X
-        _opcodes[0xEE].Execute = () => NOP();  // INC Absolute
-        _opcodes[0xFE].Execute = () => NOP();  // INC Absolute,X
+        _opcodes[0xE6].Execute = () => INC(ZeroPage());  // INC Zero Page
+        _opcodes[0xF6].Execute = () => INC(ZeroPageX());  // INC Zero Page,X
+        _opcodes[0xEE].Execute = () => INC(Absolute());  // INC Absolute
+        _opcodes[0xFE].Execute = () => INC(AbsoluteX());  // INC Absolute,X
 
         // Increment/Decrement Register Instructions
-        _opcodes[0xE8].Execute = () => NOP();  // INX Implied
-        _opcodes[0xCA].Execute = () => NOP();  // DEX Implied
-        _opcodes[0xC8].Execute = () => NOP();  // INY Implied
-        _opcodes[0x88].Execute = () => NOP();  // DEY Implied
+        _opcodes[0xE8].Execute = () => INX();  // INX Implied
+        _opcodes[0xCA].Execute = () => DEX();  // DEX Implied
+        _opcodes[0xC8].Execute = () => INY();  // INY Implied
+        _opcodes[0x88].Execute = () => DEY();  // DEY Implied
 
         // No Operation
         _opcodes[0xEA].Execute = () => NOP();  // NOP Implied
