@@ -1,17 +1,17 @@
-﻿namespace Mos6502Emu.Core.Processor;
+namespace Mos6502Emu.Core.Processor;
 
 /// <summary>
 /// Status register flags
 /// </summary>
 /// <remarks>
-/// Bit 7: Negative Flag
-/// Bit 6: Overflow Flag
+/// Bit 7: N: Negative Flag
+/// Bit 6: V: Overflow Flag
 /// Bit 5: Not Used
-/// Bit 4: Break Instruction Flag
-/// Bit 3: Decimal Mode Flag
-/// Bit 2: IRQ Disable Flag
-/// Bit 1: Zero Flag
-/// Bit 0: Carry Flag
+/// Bit 4: B: Break Instruction Flag
+/// Bit 3: D: Decimal Mode Flag
+/// Bit 2: I: IRQ Disable Flag
+/// Bit 1: Z: Zero Flag
+/// Bit 0: C: Carry Flag
 /// </remarks>
 public enum Flag : byte
 {

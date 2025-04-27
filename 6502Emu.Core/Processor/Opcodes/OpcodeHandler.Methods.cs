@@ -111,15 +111,15 @@ public partial class OpcodeHandler
         _opcodes[0x00].Execute = () => NOP();  // BRK
 
         // Clear Flags
-        _opcodes[0x18].Execute = () => NOP();  // CLC
-        _opcodes[0xD8].Execute = () => NOP();  // CLD
-        _opcodes[0x58].Execute = () => NOP();  // CLI
-        _opcodes[0xB8].Execute = () => NOP();  // CLV
+        _opcodes[0x18].Execute = () => _reg.ResetFlag(Flag.Carry);  // CLC
+        _opcodes[0xD8].Execute = () => _reg.ResetFlag(Flag.Decimal);  // CLD
+        _opcodes[0x58].Execute = () => _reg.ResetFlag(Flag.IrqDisable);  // CLI
+        _opcodes[0xB8].Execute = () => _reg.ResetFlag(Flag.Overflow);  // CLV
 
         // Set Flags
-        _opcodes[0x38].Execute = () => NOP();  // SEC
-        _opcodes[0xF8].Execute = () => NOP();  // SED
-        _opcodes[0x78].Execute = () => NOP();  // SEI
+        _opcodes[0x38].Execute = () => _reg.SetFlag(Flag.Carry);  // SEC
+        _opcodes[0xF8].Execute = () => _reg.SetFlag(Flag.Decimal);  // SED
+        _opcodes[0x78].Execute = () => _reg.SetFlag(Flag.IrqDisable);  // SEI
 
         // Jump and Call Instructions
         _opcodes[0x20].Execute = () => NOP();  // JSR Absolute
