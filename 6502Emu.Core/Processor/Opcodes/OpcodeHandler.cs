@@ -224,6 +224,14 @@ public partial class OpcodeHandler
 
         if (_reg.GetFlag(Flag.Decimal)) // Decimal mode
         {
+            // Do the binary SBC to set the overflow flag
+            int binaryResult = _reg.A - value - carryIn;
+            byte binaryResultByte = (byte)binaryResult;
+
+            // Set Overflow flag from binary result
+            bool overflow = ((_reg.A ^ value) & 0x80) != 0 && ((_reg.A ^ binaryResultByte) & 0x80) != 0;
+            _reg.SetFlag(Flag.Overflow, overflow);
+
             // In BCD mode, each nibble represents a decimal digit (0-9)
             int lowNibble = (_reg.A & 0x0F) - (value & 0x0F) - carryIn;
             int highNibble = (_reg.A >> 4) - (value >> 4);
