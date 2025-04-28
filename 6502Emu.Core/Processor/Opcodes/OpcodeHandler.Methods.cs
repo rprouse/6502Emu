@@ -96,8 +96,8 @@ public partial class OpcodeHandler
         // Branch Instructions
         _opcodes[0x90].Execute = () => Branch(!_reg.GetFlag(Flag.Carry));  // BCC
         _opcodes[0xB0].Execute = () => Branch(_reg.GetFlag(Flag.Carry));  // BCS
-        _opcodes[0xF0].Execute = () => Branch(!_reg.GetFlag(Flag.Zero));  // BEQ
-        _opcodes[0xD0].Execute = () => Branch(_reg.GetFlag(Flag.Zero));  // BNE
+        _opcodes[0xD0].Execute = () => Branch(!_reg.GetFlag(Flag.Zero));  // BNE
+        _opcodes[0xF0].Execute = () => Branch(_reg.GetFlag(Flag.Zero));  // BEQ
         _opcodes[0x10].Execute = () => Branch(!_reg.GetFlag(Flag.Negative));  // BPL
         _opcodes[0x30].Execute = () => Branch(_reg.GetFlag(Flag.Negative));  // BMI
         _opcodes[0x50].Execute = () => Branch(!_reg.GetFlag(Flag.Overflow));  // BVC

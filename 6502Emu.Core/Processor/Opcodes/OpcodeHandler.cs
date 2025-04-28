@@ -254,24 +254,33 @@ public partial class OpcodeHandler
             // Set the negative flag if Carry is clear
             _reg.SetFlag(Flag.Negative, !_reg.GetFlag(Flag.Carry));
             // Overflow flag is undefined in decimal mode
-            _reg.ResetFlag(Flag.Overflow);
         }
         else
         {
             // Binary mode: normal SBC logic
-            int valueToSubtract = value ^ 0xFF;
-            int result = _reg.A + valueToSubtract + (1 - carryIn);
+            // Perform subtraction with borrow
+            int result = _reg.A - value - carryIn;
 
-            _reg.SetFlag(Flag.Carry, (result & 0x100) != 0);
-            byte resultByte = (byte)result;
-            _reg.SetNegativeAndZeroFlags(resultByte);
+            // Set Carry flag (inverted logic):
+            // Carry is set if NO borrow occurred (i.e., result >= 0)
+            _reg.SetFlag(Flag.Carry, result >= 0);
 
-            if (((_reg.A ^ resultByte) & (~value ^ resultByte) & 0x80) != 0)
-                _reg.SetFlag(Flag.Overflow);
-            else
-                _reg.ResetFlag(Flag.Overflow);
+            // Truncate result to 8 bits
+            result &= 0xFF;
 
-            _reg.A = resultByte;
+            // Set Zero flag
+            _reg.SetFlag(Flag.Zero, result == 0);
+
+            // Set Negative flag (based on bit 7)
+            _reg.SetFlag(Flag.Negative, (result & 0x80) != 0);
+
+            // Set Overflow flag
+            // Overflow happens if the sign of A and value differ,
+            // and the sign of result differs from A
+            _reg.SetFlag(Flag.Overflow, ((_reg.A ^ result) & (_reg.A ^ value) & 0x80) != 0);
+
+            // Store result in A
+            _reg.A = (byte)result;
         }
     }
 
@@ -316,11 +325,18 @@ public partial class OpcodeHandler
     void Branch(bool condition)
     {
         // Get the signed offset
-        sbyte offset = (sbyte)NextByte();
+        byte offset = NextByte();
         if (condition)
         {
-            // Add the offset to the current PC
-            _reg.PC += (byte)offset;
+            if (offset.IsNegative())
+            {
+                _reg.PC -= (byte)(~offset + 1); // Two's complement to get the positive offset
+            }
+            else
+            {
+                // Add the offset to the current PC
+                _reg.PC += (byte)offset;
+            }
         }
     }
 
@@ -446,7 +462,6 @@ public partial class OpcodeHandler
     void TXS()
     {
         _reg.S = _reg.X;
-        _reg.SetNegativeAndZeroFlags(_reg.S);
     }
 
     void TSX()
