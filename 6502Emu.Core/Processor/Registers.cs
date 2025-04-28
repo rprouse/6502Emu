@@ -53,14 +53,7 @@ public class Registers
 
     public void SetNegativeAndZeroFlags(byte value)
     {
-        if (value == 0)
-            SetFlag(Flag.Zero);
-        else
-            ResetFlag(Flag.Zero);
-
-        if (value.IsNegative())
-            SetFlag(Flag.Negative);
-        else
-            ResetFlag(Flag.Negative);
+        SetFlag(Flag.Zero, value == 0);
+        SetFlag(Flag.Negative, value.IsNegative());
     }
 }
