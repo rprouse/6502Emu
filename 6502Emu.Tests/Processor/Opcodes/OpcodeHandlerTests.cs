@@ -7,7 +7,7 @@ namespace Mos6502Emu.Tests.Processor.Opcodes;
 
 public class OpcodeHandlerTests
 {
-    const int TEST_PER_OPCODE = 1; // Number of test cases to run per opcode, max of 100
+    const int TEST_PER_OPCODE = 10; // Number of test cases to run per opcode, max of 100
 
     Mmu mmu;
     Cpu cpu;
@@ -92,7 +92,7 @@ public class OpcodeHandlerTests
 
             foreach (var testCase in testCases.Take(tests_per_opcode))
             {
-                yield return new TestCaseData(testCase).SetName($"{testName}(0x{testCase.Name.Substring(0, 2):2h})");
+                yield return new TestCaseData(testCase).SetName($"{testName}(0x{testCase.Name.Substring(0, 2):2h}, {testCase.Name.Substring(3)})");
             }
         }
     }
