@@ -431,9 +431,9 @@ public partial class OpcodeHandler
     {
         // Pull the return address from the stack
         _reg.S++;
-        _msb = _mmu[0x0100 + _reg.S]; // Pull high byte of PC
+        _lsb = _mmu[0x0100 + _reg.S]; // Pull high byte of PC
         _reg.S++;
-        _lsb = _mmu[0x0100 + _reg.S]; // Pull low byte of PC
+        _msb = _mmu[0x0100 + _reg.S]; // Pull low byte of PC
         // Set the program counter to the return address
         _reg.PC = BitUtilities.ToWord(_msb, _lsb);
         // Increment PC to point to the next instruction
