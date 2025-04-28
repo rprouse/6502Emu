@@ -39,7 +39,7 @@ public class RegistersTests
             new object[] { Flag.Overflow, (byte)0b1011_1111 },
             new object[] { Flag.Break, (byte)0b1110_1111 },
             new object[] { Flag.Decimal, (byte)0b1111_0111 },
-            new object[] { Flag.IrqDisable, (byte)0b1111_1011 },
+            new object[] { Flag.Interupt, (byte)0b1111_1011 },
             new object[] { Flag.Zero, (byte)0b1111_1101 },
             new object[] { Flag.Carry, (byte)0b1111_1110 }
         };

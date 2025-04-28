@@ -19,7 +19,7 @@ public enum Flag : byte
     Overflow = 0b0100_0000,
     Break = 0b0001_0000,
     Decimal = 0b0000_1000,
-    IrqDisable = 0b0000_0100,
+    Interupt = 0b0000_0100,
     Zero = 0b0000_0010,
     Carry = 0b0000_0001
 }

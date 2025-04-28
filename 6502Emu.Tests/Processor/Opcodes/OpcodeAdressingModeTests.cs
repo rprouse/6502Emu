@@ -81,7 +81,7 @@ public class OpcodeAdressingModeTests
         mmu[0x4268] = 0x00; // Set the low byte of the address
         mmu[0x4269] = 0x80; // Set the high byte of the address
         mmu[0x8000] = 0x93; // Set the value at the absolute indirect address
-        byte result = opcodeHandler.AbsoluteIndirect();
+        byte result = opcodeHandler.Indirect();
         result.Should().Be(0x93, because: "Absolute indirect addressing mode should return the value at absolute indirect address");
         registers.PC.Should().Be(0x0202, because: "PC should be incremented by 2 after fetching the absolute indirect address");
 

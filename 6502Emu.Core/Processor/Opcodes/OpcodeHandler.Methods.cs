@@ -5,14 +5,14 @@ public partial class OpcodeHandler
     private void InitializeMethods()
     {
         // Add with Carry
-        _opcodes[0x69].Execute = () => NOP();  // ADC Immediate
-        _opcodes[0x65].Execute = () => NOP();  // ADC Zero Page
-        _opcodes[0x75].Execute = () => NOP();  // ADC Zero Page,X
-        _opcodes[0x6D].Execute = () => NOP();  // ADC Absolute
-        _opcodes[0x7D].Execute = () => NOP();  // ADC Absolute,X
-        _opcodes[0x79].Execute = () => NOP();  // ADC Absolute,Y
-        _opcodes[0x61].Execute = () => NOP();  // ADC (Indirect,X)
-        _opcodes[0x71].Execute = () => NOP();  // ADC (Indirect),Y
+        _opcodes[0x69].Execute = () => ADC(Immediate());  // ADC Immediate
+        _opcodes[0x65].Execute = () => ADC(ZeroPage());  // ADC Zero Page
+        _opcodes[0x75].Execute = () => ADC(ZeroPageX());  // ADC Zero Page,X
+        _opcodes[0x6D].Execute = () => ADC(Absolute());  // ADC Absolute
+        _opcodes[0x7D].Execute = () => ADC(AbsoluteX());  // ADC Absolute,X
+        _opcodes[0x79].Execute = () => ADC(AbsoluteY());  // ADC Absolute,Y
+        _opcodes[0x61].Execute = () => ADC(ZeroPageIndirectX());  // ADC (Indirect,X)
+        _opcodes[0x71].Execute = () => ADC(ZeroPageIndirectY());  // ADC (Indirect),Y
 
         // Logical AND
         _opcodes[0x29].Execute = () => AND(Immediate());  // AND Immediate
@@ -45,32 +45,32 @@ public partial class OpcodeHandler
         _opcodes[0x11].Execute = () => ORA(ZeroPageIndirectY());  // ORA (Indirect),Y
 
         // Arithmetic Shift Left
-        _opcodes[0x0A].Execute = () => NOP();  // ASL Accumulator
-        _opcodes[0x06].Execute = () => NOP();  // ASL Zero Page
-        _opcodes[0x16].Execute = () => NOP();  // ASL Zero Page,X
-        _opcodes[0x0E].Execute = () => NOP();  // ASL Absolute
-        _opcodes[0x1E].Execute = () => NOP();  // ASL Absolute,X
+        _opcodes[0x0A].Execute = () => ASL();  // ASL Accumulator
+        _opcodes[0x06].Execute = () => ASL(ZeroPage());  // ASL Zero Page
+        _opcodes[0x16].Execute = () => ASL(ZeroPageX());  // ASL Zero Page,X
+        _opcodes[0x0E].Execute = () => ASL(Absolute());  // ASL Absolute
+        _opcodes[0x1E].Execute = () => ASL(AbsoluteX());  // ASL Absolute,X
 
         // Logical Shift Right
-        _opcodes[0x4A].Execute = () => NOP();  // LSR Accumulator
-        _opcodes[0x46].Execute = () => NOP();  // LSR Zero Page
-        _opcodes[0x56].Execute = () => NOP();  // LSR Zero Page,X
-        _opcodes[0x4E].Execute = () => NOP();  // LSR Absolute
-        _opcodes[0x5E].Execute = () => NOP();  // LSR Absolute,X
+        _opcodes[0x4A].Execute = () => LSR();  // LSR Accumulator
+        _opcodes[0x46].Execute = () => LSR(ZeroPage());  // LSR Zero Page
+        _opcodes[0x56].Execute = () => LSR(ZeroPageX());  // LSR Zero Page,X
+        _opcodes[0x4E].Execute = () => LSR(Absolute());  // LSR Absolute
+        _opcodes[0x5E].Execute = () => LSR(AbsoluteX());  // LSR Absolute,X
 
         // Rotate Left
-        _opcodes[0x2A].Execute = () => NOP();  // ROL Accumulator
-        _opcodes[0x26].Execute = () => NOP();  // ROL Zero Page
-        _opcodes[0x36].Execute = () => NOP();  // ROL Zero Page,X
-        _opcodes[0x2E].Execute = () => NOP();  // ROL Absolute
-        _opcodes[0x3E].Execute = () => NOP();  // ROL Absolute,X
+        _opcodes[0x2A].Execute = () => ROL();  // ROL Accumulator
+        _opcodes[0x26].Execute = () => ROL(ZeroPage());  // ROL Zero Page
+        _opcodes[0x36].Execute = () => ROL(ZeroPageX());  // ROL Zero Page,X
+        _opcodes[0x2E].Execute = () => ROL(Absolute());  // ROL Absolute
+        _opcodes[0x3E].Execute = () => ROL(AbsoluteX());  // ROL Absolute,X
 
         // Rotate Right
-        _opcodes[0x6A].Execute = () => NOP();  // ROR Accumulator
-        _opcodes[0x66].Execute = () => NOP();  // ROR Zero Page
-        _opcodes[0x76].Execute = () => NOP();  // ROR Zero Page,X
-        _opcodes[0x6E].Execute = () => NOP();  // ROR Absolute
-        _opcodes[0x7E].Execute = () => NOP();  // ROR Absolute,X
+        _opcodes[0x6A].Execute = () => ROR();  // ROR Accumulator
+        _opcodes[0x66].Execute = () => ROR(ZeroPage());  // ROR Zero Page
+        _opcodes[0x76].Execute = () => ROR(ZeroPageX());  // ROR Zero Page,X
+        _opcodes[0x6E].Execute = () => ROR(Absolute());  // ROR Absolute
+        _opcodes[0x7E].Execute = () => ROR(AbsoluteX());  // ROR Absolute,X
 
         // Decrement Memory
         _opcodes[0xC6].Execute = () => DEC(ZeroPage());  // DEC Zero Page
@@ -94,59 +94,59 @@ public partial class OpcodeHandler
         _opcodes[0xEA].Execute = () => NOP();  // NOP Implied
 
         // Branch Instructions
-        _opcodes[0x90].Execute = () => NOP();  // BCC
-        _opcodes[0xB0].Execute = () => NOP();  // BCS
-        _opcodes[0xF0].Execute = () => NOP();  // BEQ
-        _opcodes[0x30].Execute = () => NOP();  // BMI
-        _opcodes[0xD0].Execute = () => NOP();  // BNE
-        _opcodes[0x10].Execute = () => NOP();  // BPL
-        _opcodes[0x50].Execute = () => NOP();  // BVC
-        _opcodes[0x70].Execute = () => NOP();  // BVS
+        _opcodes[0x90].Execute = () => Branch(!_reg.GetFlag(Flag.Carry));  // BCC
+        _opcodes[0xB0].Execute = () => Branch(_reg.GetFlag(Flag.Carry));  // BCS
+        _opcodes[0xF0].Execute = () => Branch(!_reg.GetFlag(Flag.Zero));  // BEQ
+        _opcodes[0xD0].Execute = () => Branch(_reg.GetFlag(Flag.Zero));  // BNE
+        _opcodes[0x10].Execute = () => Branch(!_reg.GetFlag(Flag.Negative));  // BPL
+        _opcodes[0x30].Execute = () => Branch(_reg.GetFlag(Flag.Negative));  // BMI
+        _opcodes[0x50].Execute = () => Branch(!_reg.GetFlag(Flag.Overflow));  // BVC
+        _opcodes[0x70].Execute = () => Branch(_reg.GetFlag(Flag.Overflow));  // BVS
 
         // Bit Test
-        _opcodes[0x24].Execute = () => NOP();  // BIT Zero Page
-        _opcodes[0x2C].Execute = () => NOP();  // BIT Absolute
+        _opcodes[0x24].Execute = () => BIT(ZeroPage());  // BIT Zero Page
+        _opcodes[0x2C].Execute = () => BIT(Absolute());  // BIT Absolute
 
         // Break
-        _opcodes[0x00].Execute = () => NOP();  // BRK
+        _opcodes[0x00].Execute = () => BRK();  // BRK
 
         // Clear Flags
         _opcodes[0x18].Execute = () => _reg.ResetFlag(Flag.Carry);  // CLC
         _opcodes[0xD8].Execute = () => _reg.ResetFlag(Flag.Decimal);  // CLD
-        _opcodes[0x58].Execute = () => _reg.ResetFlag(Flag.IrqDisable);  // CLI
+        _opcodes[0x58].Execute = () => _reg.ResetFlag(Flag.Interupt);  // CLI
         _opcodes[0xB8].Execute = () => _reg.ResetFlag(Flag.Overflow);  // CLV
 
         // Set Flags
         _opcodes[0x38].Execute = () => _reg.SetFlag(Flag.Carry);  // SEC
         _opcodes[0xF8].Execute = () => _reg.SetFlag(Flag.Decimal);  // SED
-        _opcodes[0x78].Execute = () => _reg.SetFlag(Flag.IrqDisable);  // SEI
+        _opcodes[0x78].Execute = () => _reg.SetFlag(Flag.Interupt);  // SEI
 
         // Jump and Call Instructions
-        _opcodes[0x20].Execute = () => NOP();  // JSR Absolute
-        _opcodes[0x60].Execute = () => NOP();  // RTS Implied
-        _opcodes[0x40].Execute = () => NOP();  // RTI Implied
-        _opcodes[0x4C].Execute = () => NOP();  // JMP Absolute
-        _opcodes[0x6C].Execute = () => NOP();  // JMP Indirect
+        _opcodes[0x20].Execute = () => JSR(Absolute());  // JSR Absolute
+        _opcodes[0x60].Execute = () => RTS();  // RTS Implied
+        _opcodes[0x40].Execute = () => RTI();  // RTI Implied
+        _opcodes[0x4C].Execute = () => JMP(Absolute());  // JMP Absolute
+        _opcodes[0x6C].Execute = () => JMP(Indirect());  // JMP Indirect
 
         // Compare
-        _opcodes[0xC9].Execute = () => NOP();  // CMP Immediate
-        _opcodes[0xC5].Execute = () => NOP();  // CMP Zero Page
-        _opcodes[0xD5].Execute = () => NOP();  // CMP Zero Page,X
-        _opcodes[0xCD].Execute = () => NOP();  // CMP Absolute
-        _opcodes[0xDD].Execute = () => NOP();  // CMP Absolute,X
-        _opcodes[0xD9].Execute = () => NOP();  // CMP Absolute,Y
-        _opcodes[0xC1].Execute = () => NOP();  // CMP (Indirect,X)
-        _opcodes[0xD1].Execute = () => NOP();  // CMP (Indirect),Y
+        _opcodes[0xC9].Execute = () => CMP(Immediate());  // CMP Immediate
+        _opcodes[0xC5].Execute = () => CMP(ZeroPage());  // CMP Zero Page
+        _opcodes[0xD5].Execute = () => CMP(ZeroPageX());  // CMP Zero Page,X
+        _opcodes[0xCD].Execute = () => CMP(Absolute());  // CMP Absolute
+        _opcodes[0xDD].Execute = () => CMP(AbsoluteX());  // CMP Absolute,X
+        _opcodes[0xD9].Execute = () => CMP(AbsoluteY());  // CMP Absolute,Y
+        _opcodes[0xC1].Execute = () => CMP(ZeroPageIndirectX());  // CMP (Indirect,X)
+        _opcodes[0xD1].Execute = () => CMP(ZeroPageIndirectY());  // CMP (Indirect),Y
 
         // Compare X Register
-        _opcodes[0xE0].Execute = () => NOP();  // CPX Immediate
-        _opcodes[0xE4].Execute = () => NOP();  // CPX Zero Page
-        _opcodes[0xEC].Execute = () => NOP();  // CPX Absolute
+        _opcodes[0xE0].Execute = () => CPX(Immediate());  // CPX Immediate
+        _opcodes[0xE4].Execute = () => CPX(ZeroPage());  // CPX Zero Page
+        _opcodes[0xEC].Execute = () => CPX(Absolute());  // CPX Absolute
 
         // Compare Y Register
-        _opcodes[0xC0].Execute = () => NOP();  // CPY Immediate
-        _opcodes[0xC4].Execute = () => NOP();  // CPY Zero Page
-        _opcodes[0xCC].Execute = () => NOP();  // CPY Absolute
+        _opcodes[0xC0].Execute = () => CPY(Immediate());  // CPY Immediate
+        _opcodes[0xC4].Execute = () => CPY(ZeroPage());  // CPY Zero Page
+        _opcodes[0xCC].Execute = () => CPY(Absolute());  // CPY Absolute
 
         // Load Accumulator
         _opcodes[0xA9].Execute = () => LDA(Immediate());  // LDA Immediate
@@ -173,28 +173,28 @@ public partial class OpcodeHandler
         _opcodes[0xBC].Execute = () => LDY(AbsoluteX());  // LDY Absolute,X
 
         // Transfer Instructions
-        _opcodes[0xBA].Execute = () => NOP();  // TSX Implied
-        _opcodes[0x8A].Execute = () => NOP();  // TXA Implied
-        _opcodes[0x98].Execute = () => NOP();  // TYA Implied
-        _opcodes[0xAA].Execute = () => NOP();  // TAX Implied
-        _opcodes[0xA8].Execute = () => NOP();  // TAY Implied
-        _opcodes[0x9A].Execute = () => NOP();  // TXS Implied
+        _opcodes[0xBA].Execute = () => TSX();  // TSX Implied
+        _opcodes[0x8A].Execute = () => TXA();  // TXA Implied
+        _opcodes[0x98].Execute = () => TYA();  // TYA Implied
+        _opcodes[0xAA].Execute = () => TAX();  // TAX Implied
+        _opcodes[0xA8].Execute = () => TAY();  // TAY Implied
+        _opcodes[0x9A].Execute = () => TXS();  // TXS Implied
 
         // Stack Operations
-        _opcodes[0x68].Execute = () => NOP();  // PLA Implied
-        _opcodes[0x48].Execute = () => NOP();  // PHA Implied
-        _opcodes[0x28].Execute = () => NOP();  // PLP Implied
-        _opcodes[0x08].Execute = () => NOP();  // PHP Implied
+        _opcodes[0x68].Execute = () => PLA();  // PLA Implied
+        _opcodes[0x48].Execute = () => PHA();  // PHA Implied
+        _opcodes[0x28].Execute = () => PLP();  // PLP Implied
+        _opcodes[0x08].Execute = () => PHP();  // PHP Implied
 
         // Subtract with Carry
-        _opcodes[0xE9].Execute = () => NOP();  // SBC Immediate
-        _opcodes[0xE5].Execute = () => NOP();  // SBC Zero Page
-        _opcodes[0xF5].Execute = () => NOP();  // SBC Zero Page,X
-        _opcodes[0xED].Execute = () => NOP();  // SBC Absolute
-        _opcodes[0xFD].Execute = () => NOP();  // SBC Absolute,X
-        _opcodes[0xF9].Execute = () => NOP();  // SBC Absolute,Y
-        _opcodes[0xE1].Execute = () => NOP();  // SBC (Indirect,X)
-        _opcodes[0xF1].Execute = () => NOP();  // SBC (Indirect),Y
+        _opcodes[0xE9].Execute = () => SBC(Immediate());  // SBC Immediate
+        _opcodes[0xE5].Execute = () => SBC(ZeroPage());  // SBC Zero Page
+        _opcodes[0xF5].Execute = () => SBC(ZeroPageX());  // SBC Zero Page,X
+        _opcodes[0xED].Execute = () => SBC(Absolute());  // SBC Absolute
+        _opcodes[0xFD].Execute = () => SBC(AbsoluteX());  // SBC Absolute,X
+        _opcodes[0xF9].Execute = () => SBC(AbsoluteY());  // SBC Absolute,Y
+        _opcodes[0xE1].Execute = () => SBC(ZeroPageIndirectX());  // SBC (Indirect,X)
+        _opcodes[0xF1].Execute = () => SBC(ZeroPageIndirectY());  // SBC (Indirect),Y
 
         // Store Accumulator
         _opcodes[0x85].Execute = () => STA(ZeroPage());  // STA Zero Page

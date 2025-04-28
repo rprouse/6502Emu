@@ -37,6 +37,14 @@ public class Registers
     public bool GetFlag(Flag flag) =>
         (P & (byte)flag) != 0;
 
+    public void SetFlag(Flag flag, bool set)
+    {
+        if (set)
+            SetFlag(flag);
+        else
+            ResetFlag(flag);
+    }
+
     public void SetFlag(Flag flag) =>
         P = (byte)(P | (byte)flag);
 

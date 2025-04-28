@@ -27,7 +27,7 @@ public partial class OpcodeHandler
     }
 
     // https://en.wikibooks.org/wiki/6502_Assembly#Absolute_Indirect:_(a)
-    public byte AbsoluteIndirect()
+    public byte Indirect()
     {
         var indirect = NextWord();
         _lsb = _mmu[indirect];
