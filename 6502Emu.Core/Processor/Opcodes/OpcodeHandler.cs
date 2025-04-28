@@ -497,7 +497,7 @@ public partial class OpcodeHandler
     void PLA()
     {
         _reg.S++;
-        _reg.A = _mmu[_reg.S];
+        _reg.A = _mmu[0x0100 + _reg.S];
         _reg.SetNegativeAndZeroFlags(_reg.A);
     }
 
@@ -510,7 +510,7 @@ public partial class OpcodeHandler
     void PLP()
     {
         _reg.S++;
-        _reg.P = _mmu[0x0100 + _reg.S];
+        _reg.P = (byte)(_mmu[0x0100 + _reg.S] & 0b1110_1111 | 0b0010_0000);
     }
 
     void PHP()
