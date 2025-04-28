@@ -53,14 +53,14 @@ public partial class OpcodeHandler
     // https://en.wikibooks.org/wiki/6502_Assembly#Zero_Page_Indexed_with_X:_zp,x
     public byte ZeroPageX()
     {
-        _address = (word)((NextByte() + _reg.X) & 0x00FF);
+        _address = (word)((NextByte() + (sbyte)_reg.X) & 0x00FF);
         return _mmu[_address];
     }
 
     // https://en.wikibooks.org/wiki/6502_Assembly#Zero_Page_Indexed_with_Y:_zp,y
     public byte ZeroPageY()
     {
-        _address = (word)((NextByte() + _reg.Y) & 0x00FF);
+        _address = (word)((NextByte() + (sbyte)_reg.Y) & 0x00FF);
         return _mmu[_address];
     }
 
@@ -80,7 +80,7 @@ public partial class OpcodeHandler
         var indirect = NextByte();
         _lsb = _mmu[indirect];
         _msb = _mmu[(word)(indirect + 1)];
-        _address = (word)(_msb << 8 | _lsb + _reg.Y);
+        _address = (word)((word)(_msb << 8 | _lsb) + _reg.Y);
         return _mmu[_address];
     }
 }
