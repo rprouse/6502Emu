@@ -74,8 +74,19 @@ public partial class OpcodeHandler
 
     void BRK()
     {
-        _reg.SetFlag(Flag.Break);
+        // Push the return address onto the stack
+        _mmu[0x0100 + _reg.S] = (byte)(((_reg.PC + 1) >> 8) & 0xFF); // Push high byte of PC
+        _reg.S--;
+        _mmu[0x0100 + _reg.S] = (byte)((_reg.PC + 1) & 0xFF); // Push low byte of PC
+        _reg.S--;
+
+        // Push the processor status onto the stack
+        PHP();
+
         _reg.SetFlag(Flag.Interupt);
+
+        // Set the program counter to the interrupt vector
+        _reg.PC = BitUtilities.ToWord(_mmu[0xFFFF], _mmu[0xFFFE]);
     }
 
     void LDA(byte value)
