@@ -207,12 +207,12 @@ public partial class OpcodeHandler
 
         // Store X Register
         _opcodes[0x86].Execute = () => STX(ZeroPage());  // STX Zero Page
-        _opcodes[0x96].Execute = () => STX(ZeroPageIndirectY());  // STX Zero Page,Y
+        _opcodes[0x96].Execute = () => STX(ZeroPageY());  // STX Zero Page,Y
         _opcodes[0x8E].Execute = () => STX(Absolute());  // STX Absolute
 
         // Store Y Register
         _opcodes[0x84].Execute = () => STY(ZeroPage());  // STY Zero Page
-        _opcodes[0x94].Execute = () => STY(ZeroPageIndirectX());  // STY Zero Page,X
+        _opcodes[0x94].Execute = () => STY(ZeroPageX());  // STY Zero Page,X
         _opcodes[0x8C].Execute = () => STY(Absolute());  // STY Absolute
     }
 }
