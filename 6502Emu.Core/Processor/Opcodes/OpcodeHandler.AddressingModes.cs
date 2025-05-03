@@ -69,7 +69,7 @@ public partial class OpcodeHandler
     {
         var indirect = (word)((NextByte() + _reg.X) & 0x00FF);
         _lsb = _mmu[indirect];
-        _msb = _mmu[(word)(indirect + 1)];
+        _msb = _mmu[(byte)(indirect + 1)];
         _address = (word)(_msb << 8 | _lsb);
         return _mmu[_address];
     }
@@ -77,9 +77,9 @@ public partial class OpcodeHandler
     // https://en.wikibooks.org/wiki/6502_Assembly#Zero_Page_Indirect_Indexed_with_Y:_(zp),y
     public byte ZeroPageIndirectY()
     {
-        var indirect = NextByte();
+        byte indirect = NextByte();
         _lsb = _mmu[indirect];
-        _msb = _mmu[(word)(indirect + 1)];
+        _msb = _mmu[(byte)(indirect + 1)];
         _address = (word)((word)(_msb << 8 | _lsb) + _reg.Y);
         return _mmu[_address];
     }
