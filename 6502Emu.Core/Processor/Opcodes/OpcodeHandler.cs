@@ -253,6 +253,9 @@ public partial class OpcodeHandler
             bool overflow = ((_reg.A ^ value) & 0x80) != 0 && ((_reg.A ^ binaryResultByte) & 0x80) != 0;
             _reg.SetFlag(Flag.Overflow, overflow);
 
+            // Set Negative flag from binary result
+            _reg.SetFlag(Flag.Negative, (binaryResultByte & 0x80) != 0);
+
             // In BCD mode, each nibble represents a decimal digit (0-9)
             int lowNibble = (_reg.A & 0x0F) - (value & 0x0F) - carryIn;
             int highNibble = (_reg.A >> 4) - (value >> 4);
@@ -280,9 +283,6 @@ public partial class OpcodeHandler
 
             // Set the zero flag if the result is zero
             _reg.SetFlag(Flag.Zero, _reg.A == 0);
-            // Set the negative flag if Carry is clear
-            _reg.SetFlag(Flag.Negative, !_reg.GetFlag(Flag.Carry));
-            // Overflow flag is undefined in decimal mode
         }
         else
         {
