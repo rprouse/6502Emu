@@ -16,11 +16,11 @@ public class Mmu
     }
 
     /// <summary>
-    /// Loads a program from a file to 0x0100
+    /// Loads a program from a file to 0x8000
     /// </summary>
     /// <param name="filename"></param>
     /// <returns></returns>
-    public bool LoadProgram(string filename, word baseAddress = 0x0100)
+    public bool LoadProgram(string filename, word baseAddress = 0x8000)
     {
         if (!File.Exists(filename)) return false;
         byte[] data = File.ReadAllBytes(filename);

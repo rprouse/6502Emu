@@ -1,6 +1,7 @@
 using System.Diagnostics.CodeAnalysis;
 using Mos6502Emu.Core.Memory;
 using Mos6502Emu.Core.Processor;
+using Mos6502Emu.Core.Processor.Opcodes;
 
 namespace Mos6502Emu.Core;
 public class Emulator
@@ -12,12 +13,14 @@ public class Emulator
 
     public Cpu CPU { get; private set; }
 
+    public bool WarmBoot { get; set; }
+
     public Emulator()
     {
         Reset();
     }
 
-    public bool LoadProgram(string filename, word baseAddress = 0x0100)
+    public bool LoadProgram(string filename, word baseAddress = 0x8000)
     {
         _filename = filename;
         _baseAddress = baseAddress;
@@ -29,6 +32,7 @@ public class Emulator
     [MemberNotNull(nameof(Memory), nameof(CPU))]
     public void Reset()
     {
+        WarmBoot = false;
         Memory = new Mmu();
 
         CPU = new Cpu(Memory);
@@ -36,4 +40,10 @@ public class Emulator
             Memory.LoadProgram(_filename, _baseAddress.Value);
 
     }
+
+    public Opcode Tick() => CPU.Tick();
+
+    public Opcode PeekInstruction() => CPU.PeekInstruction(CPU.Registers.PC);
+
+    public Opcode Disassemble(word addr) => CPU.PeekInstruction(addr);
 }

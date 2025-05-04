@@ -17,16 +17,15 @@ namespace Mos6502Emu.Tests.Memory
         {
             _mmu.LoadProgram("Test.com").Should().BeTrue();
 
-            _mmu[0x0100].Should().Be(0x3A);
-            _mmu[0x0101].Should().Be(0x0B);
-            _mmu[0x0102].Should().Be(0x01);
-            _mmu[0x0103].Should().Be(0x21);
-            _mmu[0x0104].Should().Be(0x0C);
-            _mmu[0x0105].Should().Be(0x01);
-            // ...
-            _mmu[0x010B].Should().Be(0x38);
-            _mmu[0x010C].Should().Be(0x2B);
-            _mmu[0x010D].Should().Be(0x00);
+            _mmu[0x8000].Should().Be(0xA9);
+            _mmu[0x8001].Should().Be(0xDE);
+            _mmu[0x8002].Should().Be(0x69);
+            _mmu[0x8003].Should().Be(0x2A);
+            _mmu[0x8004].Should().Be(0x85);
+            _mmu[0x8005].Should().Be(0x00);
+            _mmu[0x8006].Should().Be(0xC6);
+            _mmu[0x8007].Should().Be(0x00);
+            _mmu[0x8008].Should().Be(0x60);
         }
 
         [Test]
@@ -34,24 +33,23 @@ namespace Mos6502Emu.Tests.Memory
         {
             _mmu.LoadProgram("Test.com", 0x0200).Should().BeTrue();
 
-            _mmu[0x0200].Should().Be(0x3A);
-            _mmu[0x0201].Should().Be(0x0B);
-            _mmu[0x0202].Should().Be(0x01);
-            _mmu[0x0203].Should().Be(0x21);
-            _mmu[0x0204].Should().Be(0x0C);
-            _mmu[0x0205].Should().Be(0x01);
-            // ...
-            _mmu[0x020B].Should().Be(0x38);
-            _mmu[0x020C].Should().Be(0x2B);
-            _mmu[0x020D].Should().Be(0x00);
+            _mmu[0x0200].Should().Be(0xA9);
+            _mmu[0x0201].Should().Be(0xDE);
+            _mmu[0x0202].Should().Be(0x69);
+            _mmu[0x0203].Should().Be(0x2A);
+            _mmu[0x0204].Should().Be(0x85);
+            _mmu[0x0205].Should().Be(0x00);
+            _mmu[0x0206].Should().Be(0xC6);
+            _mmu[0x0207].Should().Be(0x00);
+            _mmu[0x0208].Should().Be(0x60);
         }
 
         [Test]
         public void CanReadAndWriteByte()
         {
-            _mmu[0x0100] = 0x3A;
+            _mmu[0x0200] = 0x3A;
 
-            _mmu[0x0100].Should().Be(0x3A);
+            _mmu[0x0200].Should().Be(0x3A);
         }
 
         [TestCase(-1)]

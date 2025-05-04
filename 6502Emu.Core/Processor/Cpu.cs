@@ -28,6 +28,16 @@ public class Cpu
         _opcodeHandler = new OpcodeHandler(_reg, _mmu);
     }
 
+    public Opcode Tick()
+    {
+        var opcode = _opcodeHandler.FetchInstruction();
+        opcode!.Execute!();
+        return opcode;
+    }
+
+    public Opcode PeekInstruction(word addr) =>
+        _opcodeHandler.PeekInstruction(addr);
+
     public override string? ToString() =>
         _reg.ToString();
 }
