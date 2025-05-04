@@ -113,7 +113,7 @@ public class EmulatorTests
         var op = _emulator.PeekInstruction();
 
         op.Should().NotBeNull();
-        op.Mnemonic.Should().Be("LDA");
+        op.Mnemonic.Should().Be("LDA #$DE");
     }
 
     [Test]
@@ -124,7 +124,7 @@ public class EmulatorTests
         var op = _emulator.Disassemble(0x8006);
 
         op.Should().NotBeNull();
-        op.Mnemonic.Should().Be("DEC");
+        op.Mnemonic.Should().Be("DEC $00");
     }
 
     [Test]
@@ -135,7 +135,7 @@ public class EmulatorTests
         var op = _emulator.Tick();
 
         op.Should().NotBeNull();
-        op.Mnemonic.Should().Be("LDA");
+        op.Mnemonic.Should().Be("LDA #$DE");
 
         _emulator.CPU.Registers.A.Should().Be(0xDE);
         _emulator.CPU.Registers.PC.Should().Be(0x8002);

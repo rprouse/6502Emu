@@ -8,7 +8,6 @@ public partial class OpcodeHandler
     // Some variables to carry values between ticks
     byte _lsb;
     byte _msb;
-    byte _operand;
     word _address;
 
     readonly Registers _reg;
@@ -46,7 +45,16 @@ public partial class OpcodeHandler
         return opcode;
     }
 
-    public Opcode PeekInstruction(word addr) => GetOpcode(_mmu[addr]);
+    public Opcode PeekInstruction(word addr)
+    {        
+        Opcode? opcode = GetOpcode(_mmu[addr]);
+
+        if (opcode == null)
+            throw new NotImplementedException($"Opcode 0x{_mmu[addr]:X2} does not exist");
+
+        opcode.SetSubstitutions(_mmu, addr);
+        return opcode;
+    }
 
     private void Add(Opcode opcode)
     {

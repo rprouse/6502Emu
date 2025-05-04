@@ -132,7 +132,7 @@ public class Monitor
 
         for (int i = 0; i < 4; i++)
         {
-            if (i < opcode.OpcodeLength)
+            if (i < opcode.Length)
                 AnsiConsole.Markup($"[aqua]{_emulator.Memory[addr + i]:X2}[/] ");
             else
                 AnsiConsole.Markup($"   ");
@@ -253,7 +253,7 @@ public class Monitor
             {
                 Opcode opcode = _emulator.Disassemble(addr);
                 ViewOpcode(addr, opcode);
-                addr += opcode.OpcodeLength;
+                addr += opcode.Length;
 
             }
             catch (Exception)
@@ -271,7 +271,7 @@ public class Monitor
     bool IsBreakpointSet(ushort addr, Opcode opcode)
     {
         bool breakpoint = false;
-        for (int i = 0; i < opcode.OpcodeLength; i++)
+        for (int i = 0; i < opcode.Length; i++)
         {
             if (_breakpoints.Contains((word)(addr + i)))
             {
