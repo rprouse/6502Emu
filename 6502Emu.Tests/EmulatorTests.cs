@@ -57,7 +57,7 @@ public class EmulatorTests
     [Test]
     public void CanLoadProgramToDefaultAddress()
     {
-        _emulator.LoadProgram("Test.com");
+        _emulator.LoadProgram("Test.prg");
 
         _emulator.Memory[0x8000].Should().Be(0xA9);
         _emulator.Memory[0x8001].Should().Be(0xDE);
@@ -73,7 +73,7 @@ public class EmulatorTests
     [Test]
     public void CanLoadProgramAtSpecifiedAddress()
     {
-        _emulator.LoadProgram("Test.com", 0x0200);
+        _emulator.LoadProgram("Test.prg", 0x0200);
 
         _emulator.Memory[0x0200].Should().Be(0xA9);
         _emulator.Memory[0x0201].Should().Be(0xDE);
@@ -89,7 +89,7 @@ public class EmulatorTests
     [Test]
     public void LoadingProgramToSpecifiedAddressSetsPC()
     {
-        _emulator.LoadProgram("Test.com", 0x0200);
+        _emulator.LoadProgram("Test.prg", 0x0200);
 
         _emulator.CPU.Registers.PC.Should().Be(0x0200);
     }
@@ -97,7 +97,7 @@ public class EmulatorTests
     [Test]
     public void ResetReloadsProgram()
     {
-        _emulator.LoadProgram("Test.com", 0x0200);
+        _emulator.LoadProgram("Test.prg", 0x0200);
         _emulator.Memory[0x0200] = 0x00;
 
         _emulator.Reset();
@@ -108,7 +108,7 @@ public class EmulatorTests
     [Test]
     public void CanPeekInstruction()
     {
-        _emulator.LoadProgram("Test.com");
+        _emulator.LoadProgram("Test.prg");
 
         var op = _emulator.PeekInstruction();
 
@@ -119,7 +119,7 @@ public class EmulatorTests
     [Test]
     public void CanDisassembleInstruction()
     {
-        _emulator.LoadProgram("Test.com");
+        _emulator.LoadProgram("Test.prg");
 
         var op = _emulator.Disassemble(0x8006);
 
@@ -130,7 +130,7 @@ public class EmulatorTests
     [Test]
     public void CanExecuteInstruction()
     {
-        _emulator.LoadProgram("Test.com");
+        _emulator.LoadProgram("Test.prg");
 
         var op = _emulator.Tick();
 
