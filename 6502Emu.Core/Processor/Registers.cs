@@ -56,4 +56,6 @@ public class Registers
         SetFlag(Flag.Zero, value == 0);
         SetFlag(Flag.Negative, value.IsNegative());
     }
+
+    public char ViewFlag(Flag flag) => GetFlag(flag) ? '1' : '0';
 }

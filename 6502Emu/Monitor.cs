@@ -197,19 +197,13 @@ public class Monitor
         AnsiConsole.WriteLine();
     }
 
-    public void ViewPort(byte port, byte value)
-    {
-        AnsiConsole.MarkupLine($"[blue]Port[[[/][cyan]0x{port:X2}[/][blue]]] = [/][cyan]0x{value:X2}[/]");
-    }
-
     void ViewRegisters()
     {
         _lastMemAddr = null;
         _lastDisAddr = null;
         var r = _emulator.CPU.Registers;
-        AnsiConsole.Markup($"[blue]A [/][aqua]{r.A:X2}[/] [blue]X [/][aqua]{r.X:X2}[/] [blue]Y [/][aqua]{r.Y:X2}[/]");
-        AnsiConsole.MarkupLine($"   [maroon]N:[/][aqua]{(r.GetFlag(Flag.Negative) ? '1' : '0')}[/] [maroon]V:[/][aqua]{(r.GetFlag(Flag.Overflow) ? '1' : '0')}[/] [maroon]B:[/][aqua]{(r.GetFlag(Flag.Break) ? '1' : '0')}[/] [maroon]D:[/][aqua]{(r.GetFlag(Flag.Decimal) ? '1' : '0')}[/] [maroon]I:[/][aqua]{(r.GetFlag(Flag.Interupt) ? '1' : '0')}[/] [maroon]Z:[/][aqua]{(r.GetFlag(Flag.Zero) ? '1' : '0')}[/] [maroon]C:[/][aqua]{(r.GetFlag(Flag.Carry) ? '1' : '0')}[/]");
-        AnsiConsole.MarkupLine($"[blue]PC [/][aqua]{r.PC:X4}[/] [blue]S [/][aqua]{r.S:X2}[/] [blue]=> [/][green]{_emulator.Memory[0x100+ r.S]:X2}[/]");
+        AnsiConsole.Markup($"[blue]A:[/][aqua]{r.A:X2}[/] [blue]X:[/][aqua]{r.X:X2}[/] [blue]Y:[/][aqua]{r.Y:X2}[/] [blue]PC:[/][aqua]{r.PC:X4}[/] [blue]S:[/][aqua]{r.S:X2}[/] [blue]=> [/][green]{_emulator.Memory[0x100 + r.S]:X2}[/]");
+        AnsiConsole.MarkupLine($"        [maroon]N:[/][aqua]{r.ViewFlag(Flag.Negative)}[/] [maroon]V:[/][aqua]{r.ViewFlag(Flag.Overflow)}[/] [maroon]B:[/][aqua]{r.ViewFlag(Flag.Break)}[/] [maroon]D:[/][aqua]{r.ViewFlag(Flag.Decimal)}[/] [maroon]I:[/][aqua]{r.ViewFlag(Flag.Interupt)}[/] [maroon]Z:[/][aqua]{r.ViewFlag(Flag.Zero)}[/] [maroon]C:[/][aqua]{r.ViewFlag(Flag.Carry)}[/]");
         AnsiConsole.WriteLine();
     }
 

@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "6502Emu": {
+      "commandName": "Project",
+      "commandLineArgs": "\"D:\\src\\Retro\\6502\\6502Emu\\6502Emu.Tests\\bin\\Debug\\net8.0\\Test.prg\""
+    }
+  }
+}
