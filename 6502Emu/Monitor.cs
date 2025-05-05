@@ -202,8 +202,8 @@ public class Monitor
         _lastMemAddr = null;
         _lastDisAddr = null;
         var r = _emulator.CPU.Registers;
-        AnsiConsole.Markup($"[blue]A:[/][aqua]{r.A:X2}[/] [blue]X:[/][aqua]{r.X:X2}[/] [blue]Y:[/][aqua]{r.Y:X2}[/] [blue]PC:[/][aqua]{r.PC:X4}[/] [blue]S:[/][aqua]{r.S:X2}[/] [blue]=> [/][green]{_emulator.Memory[0x100 + r.S]:X2}[/]");
-        AnsiConsole.MarkupLine($"        [maroon]N:[/][aqua]{r.ViewFlag(Flag.Negative)}[/] [maroon]V:[/][aqua]{r.ViewFlag(Flag.Overflow)}[/] [maroon]B:[/][aqua]{r.ViewFlag(Flag.Break)}[/] [maroon]D:[/][aqua]{r.ViewFlag(Flag.Decimal)}[/] [maroon]I:[/][aqua]{r.ViewFlag(Flag.Interupt)}[/] [maroon]Z:[/][aqua]{r.ViewFlag(Flag.Zero)}[/] [maroon]C:[/][aqua]{r.ViewFlag(Flag.Carry)}[/]");
+        AnsiConsole.MarkupLine("[blue] PC   AC XR YR SR    SP | NV-BDIZC[/]");
+        AnsiConsole.MarkupLine($"[aqua]{r.PC:X4}  {r.A:X2} {r.X:X2} {r.Y:X2} {r.S:X2}[/] [blue]=>[/] [green]{_emulator.Memory[0x100 + r.S]:X2}[/] [blue]|[/] [aqua]{r.P:B8}[/]");
         AnsiConsole.WriteLine();
     }
 
