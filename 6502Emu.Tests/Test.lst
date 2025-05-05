@@ -1,0 +1,13 @@
+ca65 V2.19 - Git a861d84
+Main file   : Test.asm
+Current file: Test.asm
+
+000000r 1               ; Simple test program for my 6502 emulator
+000000r 1               
+000000r 1               .ORG $8000
+008000  1  A9 DE          LDA #$DE  ; Load immediate value DE into A
+008002  1  69 2A          ADC #$2A  ; Add immediate value 2A to A
+008004  1  85 00          STA $00   ; Store A into memory address 00
+008006  1  C6 00          DEC $00   ; Decrement the value at memory address 00
+008008  1  60             RTS       ; Return from subroutine
+008008  1               
