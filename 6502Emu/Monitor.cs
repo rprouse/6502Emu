@@ -1,6 +1,5 @@
 // See https://aka.ms/new-console-template for more information
 using System.Reflection;
-using Mos6502Emu.Core.Processor;
 using Mos6502Emu.Core.Processor.Opcodes;
 using Mos6502Emu.Core.Utilities;
 
