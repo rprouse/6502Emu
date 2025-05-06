@@ -6,3 +6,16 @@ be good enough for most purposes.
 ## Instruction Set
 
 The emulator supports the following instructions, [65C02 Instruction Set](65C02 Instructions.md).
+
+## To-Do
+
+- [x] Support documented 6502 instructions
+- [x] Ability to step through a program
+- [x] Disassemble a program
+- [x] Set breakpoints
+- [x] View registers
+- [x] View memory
+- [ ] Support 65C02 extended instructions
+- [ ] Interupt support
+- [ ] Support for the 65C816 procesor
+- [ ] Support multiple memory maps/hardware
