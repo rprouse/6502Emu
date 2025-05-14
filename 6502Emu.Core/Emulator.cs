@@ -14,10 +14,13 @@ public class Emulator
 
     public ICpu CPU { get; private set; }
 
+    public CpuType CpuType { get; }
+
     public bool WarmBoot { get; set; }
 
-    public Emulator()
+    public Emulator(CpuType cpuType)
     {
+        CpuType = cpuType;
         Reset();
     }
 
@@ -36,7 +39,7 @@ public class Emulator
         WarmBoot = false;
         Memory = new Mmu();
 
-        CPU = new Mos6502Cpu(Memory);
+        CPU = CpuType.CreateCpu(Memory);
         if (_filename != null && _baseAddress.HasValue)
             Memory.LoadProgram(_filename, _baseAddress.Value);
 

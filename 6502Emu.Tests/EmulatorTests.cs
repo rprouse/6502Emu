@@ -10,7 +10,7 @@ public class EmulatorTests
     [SetUp]
     public void Setup()
     {
-        _emulator = new Emulator();
+        _emulator = new Emulator(CpuType.MOS6502);
     }
 
     [Test]

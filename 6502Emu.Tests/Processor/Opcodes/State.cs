@@ -24,7 +24,7 @@ public class State
     public byte P { get; set; }
 
     // Contains a list of values to store in memory prior to execution, each one in the form `[address, value]`
-    public word[][] RAM { get; set; }
+    public word[][] RAM { get; set; } = Array.Empty<word[]>();
 
     public override string ToString()
     {

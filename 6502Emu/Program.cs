@@ -1,7 +1,7 @@
 using Mos6502Emu.Core.Utilities;
 using Monitor = Mos6502Emu.Monitor;
 
-Emulator emulator = new();
+Emulator emulator = new(CpuType.MOS6502);
 Monitor monitor = new(emulator);
 monitor.Banner();
 
