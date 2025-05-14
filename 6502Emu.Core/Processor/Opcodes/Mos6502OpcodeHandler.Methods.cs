@@ -2,7 +2,7 @@ namespace Mos6502Emu.Core.Processor.Opcodes;
 
 public partial class Mos6502OpcodeHandler
 {
-    private void InitializeMethods()
+    protected virtual void InitializeMethods()
     {
         // Add with Carry
         _opcodes[0x69].Execute = () => ADC(Immediate());  // ADC Immediate

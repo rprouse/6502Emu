@@ -40,6 +40,9 @@ public class Opcode(string mnemonic, string addr_mode, byte hex, byte length, st
                 "Indirect" => $"(${_nn:X4})",
                 "Implied" => string.Empty,
                 "Accumulator" => string.Empty,
+                // WD65C02 specific address modes
+                "(Indirect)" => $"(${_n:X2})",
+                "(Absolute,X)" => $"${_nn:X4},X",
                 _ => throw new ArgumentOutOfRangeException($"Unknown addressing mode: {AddressMode} for opcode {_mnemonic}")
             };
             return $"{_mnemonic} {operand}".Trim();
@@ -73,6 +76,7 @@ public class Opcode(string mnemonic, string addr_mode, byte hex, byte length, st
             case "Zero Page,Y":
             case "(Indirect,X)":
             case "(Indirect),Y":
+            case "(Indirect)":
                 _n = mmu[addr + 1];
                 break;
             case "Relative":
@@ -82,6 +86,7 @@ public class Opcode(string mnemonic, string addr_mode, byte hex, byte length, st
             case "Absolute,X":
             case "Absolute,Y":
             case "Indirect":
+            case "(Absolute,X)":
                 _nn = BitUtilities.ToWord(mmu[addr + 2], mmu[addr + 1]);
                 break;
             case "Implied":

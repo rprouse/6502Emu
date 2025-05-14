@@ -30,22 +30,24 @@ public class CpuFactoryTests
     }
 
     [Test]
+    public void CreateCpu_WithWD65C02Type_ReturnsWd65C02CpuInstance()
+    {
+        // Arrange
+        var cpuType = CpuType.WD65C02;
+
+        // Act & Assert
+        var cpu = cpuType.CreateCpu(_mmu);
+
+        // Assert
+        cpu.ShouldNotBeNull();
+        cpu.ShouldBeOfType<Wd65C02Cpu>();
+    }
+
+    [Test]
     public void CreateCpu_WithUnsupportedType_ThrowsNotSupportedException()
     {
         // Arrange
         var cpuType = (CpuType)999; // Invalid CPU type
-
-        // Act & Assert
-        var action = () => cpuType.CreateCpu(_mmu);
-        action.ShouldThrow<NotSupportedException>()
-            .Message.ShouldBe($"CPU type {cpuType} is not supported.");
-    }
-
-    [Test]
-    public void CreateCpu_WithWD65C02Type_ThrowsNotSupportedException()
-    {
-        // Arrange
-        var cpuType = CpuType.WD65C02;
 
         // Act & Assert
         var action = () => cpuType.CreateCpu(_mmu);

@@ -2,7 +2,7 @@ namespace Mos6502Emu.Core.Processor.Opcodes;
 
 public partial class Mos6502OpcodeHandler
 {
-    private void IntializeOpcodes()
+    protected virtual void IntializeOpcodes()
     {
         // Add with Carry
         Add(new Opcode("ADC", "Immediate", 0x69, 2, "Add with Carry"));

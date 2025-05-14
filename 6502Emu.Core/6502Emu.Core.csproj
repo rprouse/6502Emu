@@ -1,4 +1,4 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>net8.0</TargetFramework>
@@ -8,15 +8,26 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Include="Processor/Opcodes/Mos6502OpcodeHandler.cs" />
-    <Compile Include="Processor/Opcodes/Mos6502OpcodeHandler.Initialize.cs">
+    <Compile Update="Processor/Opcodes/Mos6502OpcodeHandler.Initialize.cs">
       <DependentUpon>Processor/Opcodes/Mos6502OpcodeHandler.cs</DependentUpon>
     </Compile>
-    <Compile Include="Processor/Opcodes/Mos6502OpcodeHandler.Methods.cs">
+    <Compile Update="Processor/Opcodes/Mos6502OpcodeHandler.Methods.cs">
       <DependentUpon>Processor/Opcodes/Mos6502OpcodeHandler.cs</DependentUpon>
     </Compile>
-    <Compile Include="Processor/Opcodes/Mos6502OpcodeHandler.AddressingModes.cs">
+    <Compile Update="Processor/Opcodes/Mos6502OpcodeHandler.AddressingModes.cs">
       <DependentUpon>Processor/Opcodes/Mos6502OpcodeHandler.cs</DependentUpon>
+    </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="Processor/Opcodes/Wd65C02OpcodeHandler.Initialize.cs">
+      <DependentUpon>Processor/Opcodes/Wd65C02OpcodeHandler.cs</DependentUpon>
+    </Compile>
+    <Compile Update="Processor/Opcodes/Wd65C02OpcodeHandler.Methods.cs">
+      <DependentUpon>Processor/Opcodes/Wd65C02OpcodeHandler.cs</DependentUpon>
+    </Compile>
+    <Compile Update="Processor/Opcodes/Wd65C02OpcodeHandler.AddressingModes.cs">
+      <DependentUpon>Processor/Opcodes/Wd65C02OpcodeHandler.cs</DependentUpon>
     </Compile>
   </ItemGroup>
 

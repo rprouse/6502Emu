@@ -10,7 +10,7 @@ public static class CpuFactory
         return cpuType switch
         {
             CpuType.MOS6502 => new Mos6502Cpu(mmu),
-            //CpuType.WD65C02 => new WD65C02Cpu(mmu),
+            CpuType.WD65C02 => new Wd65C02Cpu(mmu),
             _ => throw new NotSupportedException($"CPU type {cpuType} is not supported.")
         };
     }
