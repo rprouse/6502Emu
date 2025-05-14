@@ -151,7 +151,7 @@ public class Monitor
         _lastMemAddr = null;
         _lastDisAddr = null;
         word addr = _emulator.CPU.Registers.PC;
-        Opcode? opcode = _emulator.Tick();
+        Opcode? opcode = _emulator.ExecuteInstruction();
 
         ViewOpcode(addr, opcode); // View the opcode we just executed
         opcode = _emulator.PeekInstruction();
@@ -170,7 +170,7 @@ public class Monitor
         do
         {
             addr = _emulator.CPU.Registers.PC;
-            opcode = _emulator.Tick();
+            opcode = _emulator.ExecuteInstruction();
         }
         while (opcode != null && !IsBreakpointSet(_emulator.CPU.Registers.PC, opcode) && !IsTopLevelReturn(_emulator.PeekInstruction()));
 

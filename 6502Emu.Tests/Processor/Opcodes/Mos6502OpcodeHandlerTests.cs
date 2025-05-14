@@ -5,22 +5,22 @@ using Mos6502Emu.Core.Processor.Opcodes;
 
 namespace Mos6502Emu.Tests.Processor.Opcodes;
 
-public class OpcodeHandlerTests
+public class Mos6502OpcodeHandlerTests
 {
     const int TEST_PER_OPCODE = 10; // Number of test cases to run per opcode, max of 100
 
     Mmu mmu;
-    Cpu cpu;
-    OpcodeHandler opcodeHandler;
+    Mos6502Cpu cpu;
+    Mos6502OpcodeHandler opcodeHandler;
 
     [SetUp]
     public void Setup()
     {
         // Initialize the CPU and memory
         mmu = new Mmu();
-        cpu = new Cpu(mmu);
+        cpu = new Mos6502Cpu(mmu);
 
-        opcodeHandler = new OpcodeHandler(cpu.Registers, mmu);
+        opcodeHandler = new Mos6502OpcodeHandler(cpu.Registers, mmu);
     }
 
     [TestCaseSource(nameof(GetOpcodes))]
@@ -82,7 +82,7 @@ public class OpcodeHandlerTests
         var options = new JsonSerializerOptions { PropertyNameCaseInsensitive = true };
 
         // Load test cases from JSON files for each opcode
-        var files = Directory.GetFiles("OpcodeData", "*.json");
+        var files = Directory.GetFiles(@"OpcodeData/Mos6502/", "*.json");
         foreach (var file in files)
         {
             var json = File.ReadAllText(file);

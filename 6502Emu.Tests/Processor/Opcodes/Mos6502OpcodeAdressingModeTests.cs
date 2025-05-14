@@ -4,11 +4,11 @@ using Mos6502Emu.Core.Processor.Opcodes;
 
 namespace Mos6502Emu.Tests.Processor.Opcodes;
 
-public class OpcodeAdressingModeTests
+public class Mos6502OpcodeAdressingModeTests
 {
     private Mmu mmu;
     private Registers registers;
-    private OpcodeHandler opcodeHandler;
+    private Mos6502OpcodeHandler opcodeHandler;
 
     [SetUp]
     public void Setup()
@@ -28,7 +28,7 @@ public class OpcodeAdressingModeTests
             PC = 0x8000
         };
 
-        opcodeHandler = new OpcodeHandler(registers, mmu);
+        opcodeHandler = new Mos6502OpcodeHandler(registers, mmu);
     }
 
     [Test]

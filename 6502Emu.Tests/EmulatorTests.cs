@@ -132,7 +132,7 @@ public class EmulatorTests
     {
         _emulator.LoadProgram("Test.prg");
 
-        var op = _emulator.Tick();
+        var op = _emulator.ExecuteInstruction();
 
         op.Should().NotBeNull();
         op.Mnemonic.Should().Be("LDA #$DE");

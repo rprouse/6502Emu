@@ -7,7 +7,7 @@ namespace Mos6502Emu.Core.Processor.Opcodes;
 /// 6502 Opcode class.
 /// </summary>
 /// <param name="mnemonic">The mnemonic</param>
-/// <param name="addr_mode">The addess mode</param>
+/// <param name="addr_mode">The address mode</param>
 /// <param name="hex">Hex value of the opcode</param>
 /// <param name="length">Length of the instruction in bytes</param>
 /// <param name="description">A brief description of the opcode</param>

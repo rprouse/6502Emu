@@ -1,6 +1,6 @@
 namespace Mos6502Emu.Core.Processor.Opcodes;
 
-public partial class OpcodeHandler
+public partial class Mos6502OpcodeHandler
 {
     // https://en.wikibooks.org/wiki/6502_Assembly#Immediate:_#
     public byte Immediate() => _mmu[_reg.PC++];

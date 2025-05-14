@@ -3,7 +3,7 @@ using Mos6502Emu.Core.Utilities;
 
 namespace Mos6502Emu.Core.Processor.Opcodes;
 
-public partial class OpcodeHandler
+public partial class Mos6502OpcodeHandler
 {
     // Some variables to carry values between ticks
     byte _lsb;
@@ -20,7 +20,7 @@ public partial class OpcodeHandler
     /// </summary>
     public word Address => _address;
 
-    public OpcodeHandler(Registers registers, Mmu mmu)
+    public Mos6502OpcodeHandler(Registers registers, Mmu mmu)
     {
         _reg = registers;
         _mmu = mmu;

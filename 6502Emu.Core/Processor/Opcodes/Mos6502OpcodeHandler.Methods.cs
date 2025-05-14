@@ -1,6 +1,6 @@
 namespace Mos6502Emu.Core.Processor.Opcodes;
 
-public partial class OpcodeHandler
+public partial class Mos6502OpcodeHandler
 {
     private void InitializeMethods()
     {

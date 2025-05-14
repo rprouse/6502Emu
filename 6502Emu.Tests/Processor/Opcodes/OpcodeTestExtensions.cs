@@ -4,7 +4,7 @@ namespace Mos6502Emu.Tests.Processor.Opcodes;
 
 public static class OpcodeTestExtensions
 {
-    public static Opcode FetchVerifyAndExecuteInstruction(this OpcodeHandler opcodeHandler)
+    public static Opcode FetchVerifyAndExecuteInstruction(this Mos6502OpcodeHandler opcodeHandler)
     {
         var op = opcodeHandler.FetchInstruction();
         op.Should().NotBeNull();

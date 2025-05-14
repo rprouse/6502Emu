@@ -8,15 +8,15 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Include="Processor/Opcodes/OpcodeHandler.cs" />
-    <Compile Include="Processor/Opcodes/OpcodeHandler.Initialize.cs">
-      <DependentUpon>Processor/Opcodes/OpcodeHandler.cs</DependentUpon>
+    <Compile Include="Processor/Opcodes/Mos6502OpcodeHandler.cs" />
+    <Compile Include="Processor/Opcodes/Mos6502OpcodeHandler.Initialize.cs">
+      <DependentUpon>Processor/Opcodes/Mos6502OpcodeHandler.cs</DependentUpon>
     </Compile>
-    <Compile Include="Processor/Opcodes/OpcodeHandler.Methods.cs">
-      <DependentUpon>Processor/Opcodes/OpcodeHandler.cs</DependentUpon>
+    <Compile Include="Processor/Opcodes/Mos6502OpcodeHandler.Methods.cs">
+      <DependentUpon>Processor/Opcodes/Mos6502OpcodeHandler.cs</DependentUpon>
     </Compile>
-    <Compile Include="Processor/Opcodes/OpcodeHandler.AddressingModes.cs">
-      <DependentUpon>Processor/Opcodes/OpcodeHandler.cs</DependentUpon>
+    <Compile Include="Processor/Opcodes/Mos6502OpcodeHandler.AddressingModes.cs">
+      <DependentUpon>Processor/Opcodes/Mos6502OpcodeHandler.cs</DependentUpon>
     </Compile>
   </ItemGroup>
 

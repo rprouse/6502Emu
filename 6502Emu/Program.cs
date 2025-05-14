@@ -10,7 +10,7 @@ if (args.Length < 1 || args.Length > 2)
     AnsiConsole.WriteLine();
     AnsiConsole.MarkupLine("[blue]Usage:[/] [silver]6502Emu <program.prg> [[baseAddress]][/]");
     AnsiConsole.MarkupLine("[blue]Example:[/] [silver]6502Emu hello.prg 0x4000[/]");
-    AnsiConsole.MarkupLine("[blue]Defaul base address is 0x8000. Use HEX.[/]");
+    AnsiConsole.MarkupLine("[blue]Default base address is 0x8000. Use HEX.[/]");
     return -1;
 }
 
