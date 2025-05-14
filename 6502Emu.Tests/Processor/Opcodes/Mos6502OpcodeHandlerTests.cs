@@ -9,18 +9,18 @@ public class Mos6502OpcodeHandlerTests
 {
     const int TEST_PER_OPCODE = 10; // Number of test cases to run per opcode, max of 100
 
-    Mmu mmu;
-    Mos6502Cpu cpu;
-    Mos6502OpcodeHandler opcodeHandler;
+    Mmu _mmu;
+    Mos6502Cpu _cpu;
+    Mos6502OpcodeHandler _opcodeHandler;
 
     [SetUp]
     public void Setup()
     {
         // Initialize the CPU and memory
-        mmu = new Mmu();
-        cpu = new Mos6502Cpu(mmu);
+        _mmu = new Mmu();
+        _cpu = new Mos6502Cpu(_mmu);
 
-        opcodeHandler = new Mos6502OpcodeHandler(cpu.Registers, mmu);
+        _opcodeHandler = new Mos6502OpcodeHandler(_cpu.Registers, _mmu);
     }
 
     [TestCaseSource(nameof(GetOpcodes))]
@@ -31,7 +31,7 @@ public class Mos6502OpcodeHandlerTests
 
         try
         {
-            var result = opcodeHandler.GetOpcode((byte)testCase.Initial.RAM[0][1]);
+            var result = _opcodeHandler.GetOpcode((byte)testCase.Initial.RAM[0][1]);
             result.Execute.Should().NotBeNull(because: $"Opcode {testCase.Name} is not hooked up in the OpcodeHandler");
         }
         catch (NotImplementedException)
@@ -44,31 +44,31 @@ public class Mos6502OpcodeHandlerTests
     public void TestOpcode(OpcodeTest testCase)
     {
         // Set initial state
-        cpu.Registers.PC = testCase.Initial.PC;
-        cpu.Registers.S = testCase.Initial.S;
-        cpu.Registers.A = testCase.Initial.A;
-        cpu.Registers.X = testCase.Initial.X;
-        cpu.Registers.Y = testCase.Initial.Y;
-        cpu.Registers.P = testCase.Initial.P;
+        _cpu.Registers.PC = testCase.Initial.PC;
+        _cpu.Registers.S = testCase.Initial.S;
+        _cpu.Registers.A = testCase.Initial.A;
+        _cpu.Registers.X = testCase.Initial.X;
+        _cpu.Registers.Y = testCase.Initial.Y;
+        _cpu.Registers.P = testCase.Initial.P;
 
         // Load initial RAM state
         foreach (var ram in testCase.Initial.RAM)
-            mmu[ram[0]] = (byte)ram[1];
+            _mmu[ram[0]] = (byte)ram[1];
 
         // Execute the opcode
-        opcodeHandler.FetchVerifyAndExecuteInstruction();
+        _opcodeHandler.FetchVerifyAndExecuteInstruction();
 
         // Validate final state
-        cpu.Registers.PC.Should().Be(testCase.Final.PC);
-        cpu.Registers.S.Should().Be(testCase.Final.S);
-        cpu.Registers.A.Should().Be(testCase.Final.A);
-        cpu.Registers.X.Should().Be(testCase.Final.X);
-        cpu.Registers.Y.Should().Be(testCase.Final.Y);
-        cpu.Registers.P.Should().Be(testCase.Final.P);
+        _cpu.Registers.PC.Should().Be(testCase.Final.PC);
+        _cpu.Registers.S.Should().Be(testCase.Final.S);
+        _cpu.Registers.A.Should().Be(testCase.Final.A);
+        _cpu.Registers.X.Should().Be(testCase.Final.X);
+        _cpu.Registers.Y.Should().Be(testCase.Final.Y);
+        _cpu.Registers.P.Should().Be(testCase.Final.P);
 
         // Validate RAM state
         foreach (var ram in testCase.Final.RAM)
-            mmu[ram[0]].Should().Be((byte)ram[1]);
+            _mmu[ram[0]].Should().Be((byte)ram[1]);
     }
 
     public static IEnumerable<TestCaseData> GetOpcodeTests() =>

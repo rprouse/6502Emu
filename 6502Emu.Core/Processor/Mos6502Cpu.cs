@@ -9,7 +9,7 @@ public class Mos6502Cpu : ICpu
 
     private readonly Mmu _mmu;
     private readonly Registers _reg;
-    private readonly Mos6502OpcodeHandler _opcodeHandler;
+    private readonly IOpcodeHandler _opcodeHandler;
 
     public Mos6502Cpu(Mmu mmu)
     {
@@ -25,8 +25,11 @@ public class Mos6502Cpu : ICpu
             PC = 0xFFFC       // This should probably be loaded from the ROM at this address       
         };
 
-        _opcodeHandler = new Mos6502OpcodeHandler(_reg, _mmu);
+        _opcodeHandler = CreateOpcodeHandler(_reg, _mmu);
     }
+
+    protected virtual IOpcodeHandler CreateOpcodeHandler(Registers reg, Mmu mmu) =>
+        new Mos6502OpcodeHandler(reg, mmu);
 
     public Opcode ExecuteInstruction()
     {

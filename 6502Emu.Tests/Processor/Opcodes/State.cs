@@ -2,7 +2,7 @@ using System.Text;
 
 namespace Mos6502Emu.Tests.Processor.Opcodes;
 
-// Represents the state of the CPU registers, flags and memory
+// Represents the state of the CPU _registers, flags and memory
 public class State
 {
     // Program Counter
