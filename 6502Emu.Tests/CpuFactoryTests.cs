@@ -25,8 +25,8 @@ public class CpuFactoryTests
         var cpu = cpuType.CreateCpu(_mmu);
 
         // Assert
-        cpu.Should().NotBeNull();
-        cpu.Should().BeOfType<Mos6502Cpu>();
+        cpu.ShouldNotBeNull();
+        cpu.ShouldBeOfType<Mos6502Cpu>();
     }
 
     [Test]
@@ -37,8 +37,8 @@ public class CpuFactoryTests
 
         // Act & Assert
         var action = () => cpuType.CreateCpu(_mmu);
-        action.Should().Throw<NotSupportedException>()
-            .WithMessage($"CPU type {cpuType} is not supported.");
+        action.ShouldThrow<NotSupportedException>()
+            .Message.ShouldBe($"CPU type {cpuType} is not supported.");
     }
 
     [Test]
@@ -49,7 +49,7 @@ public class CpuFactoryTests
 
         // Act & Assert
         var action = () => cpuType.CreateCpu(_mmu);
-        action.Should().Throw<NotSupportedException>()
-            .WithMessage($"CPU type {cpuType} is not supported.");
+        action.ShouldThrow<NotSupportedException>()
+            .Message.ShouldBe($"CPU type {cpuType} is not supported.");
     }
 }

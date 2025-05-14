@@ -32,7 +32,7 @@ public class Mos6502OpcodeHandlerTests
         try
         {
             var result = _opcodeHandler.GetOpcode((byte)testCase.Initial.RAM[0][1]);
-            result.Execute.Should().NotBeNull(because: $"Opcode {testCase.Name} is not hooked up in the OpcodeHandler");
+            result.Execute.ShouldNotBeNull($"Opcode {testCase.Name} is not hooked up in the OpcodeHandler");
         }
         catch (NotImplementedException)
         {
@@ -59,16 +59,16 @@ public class Mos6502OpcodeHandlerTests
         _opcodeHandler.FetchVerifyAndExecuteInstruction();
 
         // Validate final state
-        _cpu.Registers.PC.Should().Be(testCase.Final.PC);
-        _cpu.Registers.S.Should().Be(testCase.Final.S);
-        _cpu.Registers.A.Should().Be(testCase.Final.A);
-        _cpu.Registers.X.Should().Be(testCase.Final.X);
-        _cpu.Registers.Y.Should().Be(testCase.Final.Y);
-        _cpu.Registers.P.Should().Be(testCase.Final.P);
+        _cpu.Registers.PC.ShouldBe(testCase.Final.PC);
+        _cpu.Registers.S.ShouldBe(testCase.Final.S);
+        _cpu.Registers.A.ShouldBe(testCase.Final.A);
+        _cpu.Registers.X.ShouldBe(testCase.Final.X);
+        _cpu.Registers.Y.ShouldBe(testCase.Final.Y);
+        _cpu.Registers.P.ShouldBe(testCase.Final.P);
 
         // Validate RAM state
         foreach (var ram in testCase.Final.RAM)
-            _mmu[ram[0]].Should().Be((byte)ram[1]);
+            _mmu[ram[0]].ShouldBe((byte)ram[1]);
     }
 
     public static IEnumerable<TestCaseData> GetOpcodeTests() =>

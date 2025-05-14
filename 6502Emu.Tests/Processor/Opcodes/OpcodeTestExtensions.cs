@@ -7,8 +7,8 @@ public static class OpcodeTestExtensions
     public static Opcode FetchVerifyAndExecuteInstruction(this Mos6502OpcodeHandler opcodeHandler)
     {
         var op = opcodeHandler.FetchInstruction();
-        op.Should().NotBeNull();
-        op.Execute.Should().NotBeNull();
+        op.ShouldNotBeNull();
+        op.Execute.ShouldNotBeNull();
         op.Execute();
         return op;
     }
