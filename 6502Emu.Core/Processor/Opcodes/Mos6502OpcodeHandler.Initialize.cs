@@ -2,7 +2,7 @@ namespace Mos6502Emu.Core.Processor.Opcodes;
 
 public partial class Mos6502OpcodeHandler
 {
-    protected virtual void IntializeOpcodes()
+    protected virtual void InitializeOpcodes()
     {
         // Add with Carry
         Add(new Opcode("ADC", "Immediate", 0x69, 2, "Add with Carry"));
@@ -149,7 +149,7 @@ public partial class Mos6502OpcodeHandler
         Add(new Opcode("CPY", "Absolute", 0xCC, 3, "Compare Y Register"));
 
         // Load Accumulator
-        Add(new Opcode("LDA", "Immediate", 0xA9, 2, "Load Accumulator"));
+        Add(new Opcode("LDA", "Immediate", 0xA9, 2, "   "));
         Add(new Opcode("LDA", "Zero Page", 0xA5, 2, "Load Accumulator"));
         Add(new Opcode("LDA", "Zero Page,X", 0xB5, 2, "Load Accumulator"));
         Add(new Opcode("LDA", "Absolute", 0xAD, 3, "Load Accumulator"));

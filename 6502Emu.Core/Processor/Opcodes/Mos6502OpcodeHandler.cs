@@ -24,7 +24,7 @@ public partial class Mos6502OpcodeHandler : IOpcodeHandler
     {
         _reg = registers;
         _mmu = mmu;
-        IntializeOpcodes();
+        InitializeOpcodes();
         InitializeMethods();
     }
 
@@ -78,7 +78,7 @@ public partial class Mos6502OpcodeHandler : IOpcodeHandler
         return BitUtilities.ToWord(_msb, _lsb);
     }
 
-    void NOP() { }
+    protected void NOP() { }
 
     void BRK()
     {
@@ -97,7 +97,7 @@ public partial class Mos6502OpcodeHandler : IOpcodeHandler
         _reg.PC = BitUtilities.ToWord(_mmu[0xFFFF], _mmu[0xFFFE]);
     }
 
-    void LDA(byte value)
+    protected void LDA(byte value)
     {
         _reg.A = value;
         _reg.SetNegativeAndZeroFlags(value);
@@ -115,22 +115,22 @@ public partial class Mos6502OpcodeHandler : IOpcodeHandler
         _reg.SetNegativeAndZeroFlags(value);
     }
 
-    void STA(word _)
+    protected void STA(word _)
     {
         _mmu[_address] = _reg.A;
     }
 
-    void STX(word _)
+    protected void STX(word _)
     {
         _mmu[_address] = _reg.X;
     }
 
-    void STY(word _)
+    protected void STY(word _)
     {
         _mmu[_address] = _reg.Y;
     }
 
-    void INC(word _)
+    protected void INC(word _)
     {
         byte value = _mmu[_address];
         value++;
@@ -169,25 +169,25 @@ public partial class Mos6502OpcodeHandler : IOpcodeHandler
         _reg.SetNegativeAndZeroFlags(_reg.Y);
     }
 
-    void AND(byte value)
+    protected void AND(byte value)
     {
         _reg.A &= value;
         _reg.SetNegativeAndZeroFlags(_reg.A);
     }
 
-    void ORA(byte value)
+    protected void ORA(byte value)
     {
         _reg.A |= value;
         _reg.SetNegativeAndZeroFlags(_reg.A);
     }
 
-    void EOR(byte value)
+    protected void EOR(byte value)
     {
         _reg.A ^= value;
         _reg.SetNegativeAndZeroFlags(_reg.A);
     }
 
-    void ADC(byte value)
+    protected void ADC(byte value)
     {
         int carryIn = _reg.GetFlag(Flag.Carry) ? 1 : 0;
 
@@ -245,7 +245,7 @@ public partial class Mos6502OpcodeHandler : IOpcodeHandler
         }
     }
 
-    void SBC(byte value)
+    protected void SBC(byte value)
     {
         int carryIn = _reg.GetFlag(Flag.Carry) ? 0 : 1; // Remember: Carry clear = borrow happened
 
@@ -319,7 +319,7 @@ public partial class Mos6502OpcodeHandler : IOpcodeHandler
         }
     }
 
-    void CMP(byte value)
+    protected void CMP(byte value)
     {
         byte result = (byte)(_reg.A - value);
         _reg.SetNegativeAndZeroFlags(result);
@@ -349,7 +349,7 @@ public partial class Mos6502OpcodeHandler : IOpcodeHandler
             _reg.ResetFlag(Flag.Carry);
     }
 
-    void BIT(byte value)
+    protected void BIT(byte value)
     {
         byte result = (byte)(_reg.A & value);
         _reg.SetFlag(Flag.Zero, result == 0);
@@ -357,7 +357,7 @@ public partial class Mos6502OpcodeHandler : IOpcodeHandler
         _reg.SetFlag(Flag.Overflow, value.IsBitSet(6));
     }
 
-    void Branch(bool condition)
+    protected void Branch(bool condition)
     {
         // Get the signed offset
         byte offset = NextByte();
