@@ -32,7 +32,7 @@ public partial class Wd65C02OpcodeHandler
         _opcodes[0x89].Execute = () => BIT(Immediate());   // BIT Immediate
         _opcodes[0x3C].Execute = () => BIT(AbsoluteX());   // BIT Absolute,X
 
-        _opcodes[0x7C].Execute = () => JMP(AbsoluteX());   // JMP (Absolute,X)
+        _opcodes[0x7C].Execute = () => JMP(AbsoluteIndexedIndirect());   // JMP (Absolute,X)
 
         _opcodes[0x07].Execute = () => RMB(0);   // RMB0 Zero Page
         _opcodes[0x17].Execute = () => RMB(1);   // RMB1 Zero Page

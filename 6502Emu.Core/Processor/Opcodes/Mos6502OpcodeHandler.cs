@@ -193,56 +193,66 @@ public partial class Mos6502OpcodeHandler : IOpcodeHandler
 
         if (_reg.GetFlag(Flag.Decimal))
         {
-            // First, raw binary addition for the overflow and negative flags
-            int binaryResult = _reg.A + value + carryIn;
-            byte binaryResultByte = (byte)binaryResult;
-
-            // Set Overflow flag based on binary result
-            bool overflow = (~(_reg.A ^ value) & (_reg.A ^ binaryResultByte) & 0x80) != 0;
-            _reg.SetFlag(Flag.Overflow, overflow);
-
-            // Set Negative flag based on binary result
-            _reg.SetFlag(Flag.Negative, (binaryResultByte & 0x80) != 0);
-
-            // Set the zero flag based on the binary result
-            _reg.SetFlag(Flag.Zero, binaryResultByte == 0);
-
-            // In BCD mode, each nibble represents a decimal digit (0-9)
-            int lowNibble = (_reg.A & 0x0F) + (value & 0x0F) + carryIn;
-            int highNibble = (_reg.A >> 4) + (value >> 4);
-
-            if (lowNibble > 9)
-            {
-                lowNibble -= 10;
-                highNibble++;
-            }
-
-            if (highNibble > 9)
-            {
-                highNibble -= 10;
-                _reg.SetFlag(Flag.Carry);
-            }
-            else
-            {
-                _reg.ResetFlag(Flag.Carry);
-            }
-
-            _reg.A = (byte)((highNibble << 4) | (lowNibble & 0x0F));
+            ADC_Decimal(value, carryIn);
         }
         else
         {
-            // Regular binary mode addition
-            int result = _reg.A + value + carryIn;
-
-            _reg.SetFlag(Flag.Carry, result > 0xFF);
-            byte resultByte = (byte)result;
-            _reg.SetNegativeAndZeroFlags(resultByte);
-
-            // Set overflow correctly for binary
-            _reg.SetFlag(Flag.Overflow, ((_reg.A ^ resultByte) & (value ^ resultByte) & 0x80) != 0);
-
-            _reg.A = resultByte;
+            ADC_Binary(value, carryIn);
         }
+    }
+
+    protected virtual void ADC_Decimal(byte value, int carryIn)
+    {
+        // First, raw binary addition for the overflow and negative flags
+        int binaryResult = _reg.A + value + carryIn;
+        byte binaryResultByte = (byte)binaryResult;
+
+        // Set Overflow flag based on binary result
+        bool overflow = (~(_reg.A ^ value) & (_reg.A ^ binaryResultByte) & 0x80) != 0;
+        _reg.SetFlag(Flag.Overflow, overflow);
+
+        // Set Negative flag based on binary result
+        _reg.SetFlag(Flag.Negative, (binaryResultByte & 0x80) != 0);
+
+        // Set the zero flag based on the binary result
+        _reg.SetFlag(Flag.Zero, binaryResultByte == 0);
+
+        // In BCD mode, each nibble represents a decimal digit (0-9)
+        int lowNibble = (_reg.A & 0x0F) + (value & 0x0F) + carryIn;
+        int highNibble = (_reg.A >> 4) + (value >> 4);
+
+        if (lowNibble > 9)
+        {
+            lowNibble -= 10;
+            highNibble++;
+        }
+
+        if (highNibble > 9)
+        {
+            highNibble -= 10;
+            _reg.SetFlag(Flag.Carry);
+        }
+        else
+        {
+            _reg.ResetFlag(Flag.Carry);
+        }
+
+        _reg.A = (byte)((highNibble << 4) | (lowNibble & 0x0F));
+    }
+
+    private void ADC_Binary(byte value, int carryIn)
+    {
+        // Regular binary mode addition
+        int result = _reg.A + value + carryIn;
+
+        _reg.SetFlag(Flag.Carry, result > 0xFF);
+        byte resultByte = (byte)result;
+        _reg.SetNegativeAndZeroFlags(resultByte);
+
+        // Set overflow correctly for binary
+        _reg.SetFlag(Flag.Overflow, ((_reg.A ^ resultByte) & (value ^ resultByte) & 0x80) != 0);
+
+        _reg.A = resultByte;
     }
 
     protected void SBC(byte value)
@@ -251,72 +261,82 @@ public partial class Mos6502OpcodeHandler : IOpcodeHandler
 
         if (_reg.GetFlag(Flag.Decimal)) // Decimal mode
         {
-            // Do the binary SBC to set the overflow flag
-            int binaryResult = _reg.A - value - carryIn;
-            byte binaryResultByte = (byte)binaryResult;
-
-            // Set Overflow flag from binary result
-            bool overflow = ((_reg.A ^ value) & 0x80) != 0 && ((_reg.A ^ binaryResultByte) & 0x80) != 0;
-            _reg.SetFlag(Flag.Overflow, overflow);
-
-            // Set Negative flag from binary result
-            _reg.SetFlag(Flag.Negative, (binaryResultByte & 0x80) != 0);
-
-            // In BCD mode, each nibble represents a decimal digit (0-9)
-            int lowNibble = (_reg.A & 0x0F) - (value & 0x0F) - carryIn;
-            int highNibble = (_reg.A >> 4) - (value >> 4);
-
-            // Adjust low nibble and borrow from high nibble if needed
-            if (lowNibble < 0)
-            {
-                lowNibble += 10;
-                highNibble--;
-            }
-
-            // Adjust high nibble if needed
-            if (highNibble < 0)
-            {
-                highNibble += 10;
-                _reg.ResetFlag(Flag.Carry); // Borrow happened
-            }
-            else
-            {
-                _reg.SetFlag(Flag.Carry); // No borrow
-            }
-
-            // Combine high and low nibbles into the final BCD result
-            _reg.A = (byte)((highNibble << 4) | (lowNibble & 0x0F));
-
-            // Set the zero flag if the result is zero
-            _reg.SetFlag(Flag.Zero, _reg.A == 0);
+            SBC_Decimal(value, carryIn);
         }
         else
         {
-            // Binary mode: normal SBC logic
-            // Perform subtraction with borrow
-            int result = _reg.A - value - carryIn;
-
-            // Set Carry flag (inverted logic):
-            // Carry is set if NO borrow occurred (i.e., result >= 0)
-            _reg.SetFlag(Flag.Carry, result >= 0);
-
-            // Truncate result to 8 bits
-            result &= 0xFF;
-
-            // Set Zero flag
-            _reg.SetFlag(Flag.Zero, result == 0);
-
-            // Set Negative flag (based on bit 7)
-            _reg.SetFlag(Flag.Negative, (result & 0x80) != 0);
-
-            // Set Overflow flag
-            // Overflow happens if the sign of A and value differ,
-            // and the sign of result differs from A
-            _reg.SetFlag(Flag.Overflow, ((_reg.A ^ result) & (_reg.A ^ value) & 0x80) != 0);
-
-            // Store result in A
-            _reg.A = (byte)result;
+            SBC_Binary(value, carryIn);
         }
+    }
+
+    protected virtual void SBC_Decimal(byte value, int carryIn)
+    {
+        // Do the binary SBC to set the overflow flag
+        int binaryResult = _reg.A - value - carryIn;
+        byte binaryResultByte = (byte)binaryResult;
+
+        // Set Overflow flag from binary result
+        bool overflow = ((_reg.A ^ value) & 0x80) != 0 && ((_reg.A ^ binaryResultByte) & 0x80) != 0;
+        _reg.SetFlag(Flag.Overflow, overflow);
+
+        // Set Negative flag from binary result
+        _reg.SetFlag(Flag.Negative, (binaryResultByte & 0x80) != 0);
+
+        // In BCD mode, each nibble represents a decimal digit (0-9)
+        int lowNibble = (_reg.A & 0x0F) - (value & 0x0F) - carryIn;
+        int highNibble = (_reg.A >> 4) - (value >> 4);
+
+        // Adjust low nibble and borrow from high nibble if needed
+        if (lowNibble < 0)
+        {
+            lowNibble += 10;
+            highNibble--;
+        }
+
+        // Adjust high nibble if needed
+        if (highNibble < 0)
+        {
+            highNibble += 10;
+            _reg.ResetFlag(Flag.Carry); // Borrow happened
+        }
+        else
+        {
+            _reg.SetFlag(Flag.Carry); // No borrow
+        }
+
+        // Combine high and low nibbles into the final BCD result
+        _reg.A = (byte)((highNibble << 4) | (lowNibble & 0x0F));
+
+        // Set the zero flag if the result is zero
+        _reg.SetFlag(Flag.Zero, _reg.A == 0);
+    }
+
+    private void SBC_Binary(byte value, int carryIn)
+    {
+        // Binary mode: normal SBC logic
+        // Perform subtraction with borrow
+        int result = _reg.A - value - carryIn;
+
+        // Set Carry flag (inverted logic):
+        // Carry is set if NO borrow occurred (i.e., result >= 0)
+        _reg.SetFlag(Flag.Carry, result >= 0);
+
+        // Truncate result to 8 bits
+        result &= 0xFF;
+
+        // Set Zero flag
+        _reg.SetFlag(Flag.Zero, result == 0);
+
+        // Set Negative flag (based on bit 7)
+        _reg.SetFlag(Flag.Negative, (result & 0x80) != 0);
+
+        // Set Overflow flag
+        // Overflow happens if the sign of A and value differ,
+        // and the sign of result differs from A
+        _reg.SetFlag(Flag.Overflow, ((_reg.A ^ result) & (_reg.A ^ value) & 0x80) != 0);
+
+        // Store result in A
+        _reg.A = (byte)result;
     }
 
     protected void CMP(byte value)

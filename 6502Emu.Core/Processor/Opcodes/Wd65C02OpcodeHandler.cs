@@ -103,4 +103,73 @@ public partial class Wd65C02OpcodeHandler : Mos6502OpcodeHandler
     {        
         _mmu[_address] = 0;
     }
+
+    protected override void ADC_Decimal(byte value, int carryIn)
+    {
+        // In BCD mode, each nibble represents a decimal digit (0-9)
+        int lowNibble = (_reg.A & 0x0F) + (value & 0x0F) + carryIn;
+        int highNibble = (_reg.A >> 4) + (value >> 4);
+
+        if (lowNibble > 9)
+        {
+            lowNibble -= 10;
+            highNibble++;
+        }
+
+        if (highNibble > 9)
+        {
+            highNibble -= 10;
+            _reg.SetFlag(Flag.Carry);
+        }
+        else
+        {
+            _reg.ResetFlag(Flag.Carry);
+        }
+
+        var result = (byte)((highNibble << 4) | (lowNibble & 0x0F));
+
+        _reg.SetNegativeAndZeroFlags(result);
+
+        // Set Overflow flag based on binary result
+        bool overflow = (~(_reg.A ^ value) & (_reg.A ^ result) & 0x80) != 0;
+        _reg.SetFlag(Flag.Overflow, overflow);
+
+        _reg.A = result;
+    }
+
+    protected override void SBC_Decimal(byte value, int carryIn)
+    {
+        // In BCD mode, each nibble represents a decimal digit (0-9)
+        int lowNibble = (_reg.A & 0x0F) - (value & 0x0F) - carryIn;
+        int highNibble = (_reg.A >> 4) - (value >> 4);
+
+        // Adjust low nibble and borrow from high nibble if needed
+        if (lowNibble < 0)
+        {
+            lowNibble += 10;
+            highNibble--;
+        }
+
+        // Adjust high nibble if needed
+        if (highNibble < 0)
+        {
+            highNibble += 10;
+            _reg.ResetFlag(Flag.Carry); // Borrow happened
+        }
+        else
+        {
+            _reg.SetFlag(Flag.Carry); // No borrow
+        }
+
+        // Combine high and low nibbles into the final BCD result
+        var result = (byte)((highNibble << 4) | (lowNibble & 0x0F));
+
+        _reg.SetNegativeAndZeroFlags(result);
+
+        // Set Overflow flag based on binary result
+        bool overflow = (~(_reg.A ^ value) & (_reg.A ^ result) & 0x80) != 0;
+        _reg.SetFlag(Flag.Overflow, overflow);
+
+        _reg.A = result;
+    }
 }
