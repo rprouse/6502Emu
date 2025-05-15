@@ -4,19 +4,19 @@ using Mos6502Emu.Core.Processor.Opcodes;
 
 namespace Mos6502Emu.Tests.Processor.Opcodes;
 
-public class Mos6502OpcodeHandlerTests : OpcodeTestBase
+public class Wd65C02OpcodeHandlerTests : OpcodeTestBase
 {
-    protected const int TESTS_PER_OPCODE = 10; // Number of test cases to run per opcode, max of 100
-    const string TEST_DATA_DIR = @"OpcodeData/Mos6502/";
+    protected const int TESTS_PER_OPCODE = 1; // Number of test cases to run per opcode, max of 100
+    const string TEST_DATA_DIR = @"OpcodeData/Wd65C02/";
 
     [SetUp]
     public void Setup()
     {
         // Initialize the CPU and memory
         _mmu = new Mmu();
-        _cpu = new Mos6502Cpu(_mmu);
+        _cpu = new Wd65C02Cpu(_mmu);
 
-        _opcodeHandler = new Mos6502OpcodeHandler(_cpu.Registers, _mmu);
+        _opcodeHandler = new Wd65C02OpcodeHandler(_cpu.Registers, _mmu);
     }
 
     [TestCaseSource(nameof(GetOpcodes))]

@@ -26,6 +26,10 @@ public class State
     // Contains a list of values to store in memory prior to execution, each one in the form `[address, value]`
     public word[][] RAM { get; set; } = Array.Empty<word[]>();
 
+    // Get RAM value by address
+    public byte this[word address] =>
+        (byte)(RAM.FirstOrDefault(r => r[0] == address)?[1] ?? 0x00);
+
     public override string ToString()
     {
         StringBuilder sb = new ();
