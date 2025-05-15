@@ -10,5 +10,5 @@ public class Wd65C02Cpu : Mos6502Cpu
     }
 
     protected override IOpcodeHandler CreateOpcodeHandler(Registers reg, Mmu mmu) =>
-        new Mos6502OpcodeHandler(reg, mmu);
+        new Wd65C02OpcodeHandler(reg, mmu);
 }

@@ -4,6 +4,10 @@ using Mos6502Emu.Tests.Processor.Opcodes;
 string inputDir = @"D:\src\Retro\6502\65x02\wdc65c02\v1\";
 string outputDir = @"D:\src\Retro\6502\6502Emu\6502Emu.Tests\OpcodeData\Wd65C02";
 
+// Test discovery is happening here because I reference the test project. Comment out the following
+// if I need to run this again.
+if (true) return;
+
 var illegalOpcodes = new []
 {
     0x02, 0x03, 0x0B,

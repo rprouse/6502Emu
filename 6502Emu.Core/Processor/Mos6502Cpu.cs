@@ -29,7 +29,7 @@ public class Mos6502Cpu : ICpu
     }
 
     protected virtual IOpcodeHandler CreateOpcodeHandler(Registers reg, Mmu mmu) =>
-        new Wd65C02OpcodeHandler(reg, mmu);
+        new Mos6502OpcodeHandler(reg, mmu);
 
     public Opcode ExecuteInstruction()
     {
