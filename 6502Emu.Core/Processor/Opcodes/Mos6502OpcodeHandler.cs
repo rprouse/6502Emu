@@ -6,14 +6,14 @@ namespace Mos6502Emu.Core.Processor.Opcodes;
 public partial class Mos6502OpcodeHandler : IOpcodeHandler
 {
     // Some variables to carry values between ticks
-    byte _lsb;
-    byte _msb;
-    word _address;
+    protected byte _lsb;
+    protected byte _msb;
+    protected word _address;
 
-    readonly Registers _reg;
-    readonly Mmu _mmu;
+    protected readonly Registers _reg;
+    protected readonly Mmu _mmu;
 
-    Dictionary<byte, Opcode> _opcodes = new();
+    protected Dictionary<byte, Opcode> _opcodes = new();
 
     /// <summary>
     /// The absolute address of the last instruction executed
@@ -56,7 +56,7 @@ public partial class Mos6502OpcodeHandler : IOpcodeHandler
         return opcode;
     }
 
-    private void Add(Opcode opcode)
+    protected void Add(Opcode opcode)
     {
         _opcodes.Add(opcode.Hex, opcode);
     }
@@ -65,13 +65,13 @@ public partial class Mos6502OpcodeHandler : IOpcodeHandler
     /// Reads the next byte from memory and increments PC
     /// </summary>
     /// <returns></returns>
-    byte NextByte() => _mmu[_reg.PC++];
+    protected byte NextByte() => _mmu[_reg.PC++];
 
     /// <summary>
     /// Reads the next word from memory and increments PC
     /// </summary>
     /// <returns></returns>
-    word NextWord()
+    protected word NextWord()
     {
         _lsb = NextByte();
         _msb = NextByte();
