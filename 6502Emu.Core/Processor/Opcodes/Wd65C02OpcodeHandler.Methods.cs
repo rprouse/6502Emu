@@ -23,10 +23,10 @@ public partial class Wd65C02OpcodeHandler
         _opcodes[0x0C].Execute = () => TSB(Absolute());   // TSB Absolute
         _opcodes[0x1C].Execute = () => TRB(Absolute());   // TRB Absolute
 
-        _opcodes[0x64].Execute = () => NOP();   // STZ Zero Page
-        _opcodes[0x74].Execute = () => NOP();   // STZ Zero Page,X
-        _opcodes[0x9C].Execute = () => NOP();   // STZ Absolute
-        _opcodes[0x9E].Execute = () => NOP();   // STZ Absolute,X
+        _opcodes[0x64].Execute = () => STZ(ZeroPage());   // STZ Zero Page
+        _opcodes[0x74].Execute = () => STZ(ZeroPageX());   // STZ Zero Page,X
+        _opcodes[0x9C].Execute = () => STZ(Absolute());   // STZ Absolute
+        _opcodes[0x9E].Execute = () => STZ(AbsoluteX());   // STZ Absolute,X
 
         _opcodes[0x34].Execute = () => BIT(ZeroPageX());   // BIT Zero Page,X
         _opcodes[0x89].Execute = () => BIT(Immediate());   // BIT Immediate

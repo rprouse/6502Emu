@@ -98,4 +98,9 @@ public partial class Wd65C02OpcodeHandler : Mos6502OpcodeHandler
         _mmu[_address] = result;
         _reg.SetFlag(Flag.Zero, result == 0);
     }
+
+    void STZ(byte _)
+    {        
+        _mmu[_address] = 0;
+    }
 }
