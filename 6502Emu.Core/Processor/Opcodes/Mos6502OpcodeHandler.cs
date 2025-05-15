@@ -488,7 +488,7 @@ public partial class Mos6502OpcodeHandler : IOpcodeHandler
         _reg.PC = BitUtilities.ToWord(_msb, _lsb);
     }
 
-    void JMP(word _)
+    protected void JMP(word _)
     {
         _reg.PC = _address;
     }

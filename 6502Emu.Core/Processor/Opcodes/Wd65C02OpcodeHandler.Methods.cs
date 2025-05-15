@@ -9,19 +9,19 @@ public partial class Wd65C02OpcodeHandler
 
         _opcodes[0x80].Execute = () => Branch(true);   // BRA Relative
 
-        _opcodes[0x12].Execute = () => ORA(Indirect());   // ORA (Indirect)
-        _opcodes[0x32].Execute = () => AND(Indirect());   // AND (Indirect)
-        _opcodes[0x52].Execute = () => EOR(Indirect());   // EOR (Indirect)
-        _opcodes[0x72].Execute = () => ADC(Indirect());   // ADC (Indirect)
-        _opcodes[0x92].Execute = () => STA(Indirect());   // STA (Indirect)
-        _opcodes[0xB2].Execute = () => LDA(Indirect());   // LDA (Indirect)
-        _opcodes[0xD2].Execute = () => CMP(Indirect());   // CMP (Indirect)
-        _opcodes[0xF2].Execute = () => SBC(Indirect());   // SBC (Indirect)
+        _opcodes[0x12].Execute = () => ORA(ZeroPageIndirect());   // ORA (Zero Page)
+        _opcodes[0x32].Execute = () => AND(ZeroPageIndirect());   // AND (Zero Page)
+        _opcodes[0x52].Execute = () => EOR(ZeroPageIndirect());   // EOR (Zero Page)
+        _opcodes[0x72].Execute = () => ADC(ZeroPageIndirect());   // ADC (Zero Page)
+        _opcodes[0x92].Execute = () => STA(ZeroPageIndirect());   // STA (Zero Page)
+        _opcodes[0xB2].Execute = () => LDA(ZeroPageIndirect());   // LDA (Zero Page)
+        _opcodes[0xD2].Execute = () => CMP(ZeroPageIndirect());   // CMP (Zero Page)
+        _opcodes[0xF2].Execute = () => SBC(ZeroPageIndirect());   // SBC (Zero Page)
 
-        _opcodes[0x04].Execute = () => NOP();   // TSB Zero Page
-        _opcodes[0x14].Execute = () => NOP();   // TRB Zero Page
-        _opcodes[0x0C].Execute = () => NOP();   // TSB Absolute
-        _opcodes[0x1C].Execute = () => NOP();   // TRB Absolute
+        _opcodes[0x04].Execute = () => TSB(ZeroPage());   // TSB Zero Page
+        _opcodes[0x14].Execute = () => TRB(ZeroPage());   // TRB Zero Page
+        _opcodes[0x0C].Execute = () => TSB(Absolute());   // TSB Absolute
+        _opcodes[0x1C].Execute = () => TRB(Absolute());   // TRB Absolute
 
         _opcodes[0x64].Execute = () => NOP();   // STZ Zero Page
         _opcodes[0x74].Execute = () => NOP();   // STZ Zero Page,X
@@ -32,7 +32,7 @@ public partial class Wd65C02OpcodeHandler
         _opcodes[0x89].Execute = () => BIT(Immediate());   // BIT Immediate
         _opcodes[0x3C].Execute = () => BIT(AbsoluteX());   // BIT Absolute,X
 
-        _opcodes[0x7C].Execute = () => NOP();   // JMP (Absolute,X)
+        _opcodes[0x7C].Execute = () => JMP(AbsoluteX());   // JMP (Absolute,X)
 
         _opcodes[0x07].Execute = () => RMB(0);   // RMB0 Zero Page
         _opcodes[0x17].Execute = () => RMB(1);   // RMB1 Zero Page

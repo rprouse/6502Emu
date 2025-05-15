@@ -84,4 +84,18 @@ public partial class Wd65C02OpcodeHandler : Mos6502OpcodeHandler
         var value = ZeroPage();
         Branch(value.IsBitSet(bit));
     }
+
+    void TSB(byte value)
+    {
+        var result = (byte)(_reg.A | value);
+        _mmu[_address] = result;
+        _reg.SetFlag(Flag.Zero, result == 0);
+    }
+
+    void TRB(byte value)
+    {
+        var result = (byte)(~_reg.A & value);
+        _mmu[_address] = result;
+        _reg.SetFlag(Flag.Zero, result == 0);
+    }
 }

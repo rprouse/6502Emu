@@ -9,14 +9,14 @@ public partial class Wd65C02OpcodeHandler
 
         Add(new Opcode("BRA", "Relative", 0x80, 2, "Branch Always"));
 
-        Add(new Opcode("ORA", "(Indirect)", 0x12, 2, "Logical OR"));
-        Add(new Opcode("AND", "(Indirect)", 0x32, 2, "Logical AND"));
-        Add(new Opcode("EOR", "(Indirect)", 0x52, 2, "Exclusive OR"));
-        Add(new Opcode("ADC", "(Indirect)", 0x72, 2, "Add with Carry"));
-        Add(new Opcode("STA", "(Indirect)", 0x92, 2, "Store Accumulator"));
-        Add(new Opcode("LDA", "(Indirect)", 0xB2, 2, "Load Accumulator"));
-        Add(new Opcode("CMP", "(Indirect)", 0xD2, 2, "Compare"));
-        Add(new Opcode("SBC", "(Indirect)", 0xF2, 2, "Subtract with Carry"));
+        Add(new Opcode("ORA", "(Zero Page)", 0x12, 2, "Logical OR"));
+        Add(new Opcode("AND", "(Zero Page)", 0x32, 2, "Logical AND"));
+        Add(new Opcode("EOR", "(Zero Page)", 0x52, 2, "Exclusive OR"));
+        Add(new Opcode("ADC", "(Zero Page)", 0x72, 2, "Add with Carry"));
+        Add(new Opcode("STA", "(Zero Page)", 0x92, 2, "Store Accumulator"));
+        Add(new Opcode("LDA", "(Zero Page)", 0xB2, 2, "Load Accumulator"));
+        Add(new Opcode("CMP", "(Zero Page)", 0xD2, 2, "Compare"));
+        Add(new Opcode("SBC", "(Zero Page)", 0xF2, 2, "Subtract with Carry"));
 
         Add(new Opcode("TSB", "Zero Page", 0x04, 2, "Test and Set Memory Bit"));
         Add(new Opcode("TRB", "Zero Page", 0x14, 2, "Test and Reset Memory Bit"));
