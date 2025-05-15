@@ -18,6 +18,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "6502Emu.Tests", "6502Emu.Te
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "6502Emu.Core", "6502Emu.Core\6502Emu.Core.csproj", "{D80E0883-E064-4628-BE1B-6CE5268DB770}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CreateTestData", "CreateTestData\CreateTestData.csproj", "{EC31ACDB-57A5-417D-AE01-874308FFD6DE}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -36,6 +38,10 @@ Global
 		{D80E0883-E064-4628-BE1B-6CE5268DB770}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D80E0883-E064-4628-BE1B-6CE5268DB770}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D80E0883-E064-4628-BE1B-6CE5268DB770}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EC31ACDB-57A5-417D-AE01-874308FFD6DE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EC31ACDB-57A5-417D-AE01-874308FFD6DE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EC31ACDB-57A5-417D-AE01-874308FFD6DE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EC31ACDB-57A5-417D-AE01-874308FFD6DE}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
