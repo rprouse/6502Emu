@@ -61,22 +61,22 @@ public partial class Wd65C02OpcodeHandler
         Add(new Opcode("WAI", "Implied", 0xCB, 1, "Wait for Interrupt"));
         Add(new Opcode("STP", "Implied", 0xDB, 1, "Stop Execution"));
 
-        Add(new Opcode("BBR0", "Relative", 0x0F, 2, "Branch on Bit Reset"));
-        Add(new Opcode("BBR1", "Relative", 0x1F, 2, "Branch on Bit Reset"));
-        Add(new Opcode("BBR2", "Relative", 0x2F, 2, "Branch on Bit Reset"));
-        Add(new Opcode("BBR3", "Relative", 0x3F, 2, "Branch on Bit Reset"));
-        Add(new Opcode("BBR4", "Relative", 0x4F, 2, "Branch on Bit Reset"));
-        Add(new Opcode("BBR5", "Relative", 0x5F, 2, "Branch on Bit Reset"));
-        Add(new Opcode("BBR6", "Relative", 0x6F, 2, "Branch on Bit Reset"));
-        Add(new Opcode("BBR7", "Relative", 0x7F, 2, "Branch on Bit Reset"));
+        Add(new Opcode("BBR0", "Zero Page, Relative", 0x0F, 3, "Branch on Bit Reset"));
+        Add(new Opcode("BBR1", "Zero Page, Relative", 0x1F, 3, "Branch on Bit Reset"));
+        Add(new Opcode("BBR2", "Zero Page, Relative", 0x2F, 3, "Branch on Bit Reset"));
+        Add(new Opcode("BBR3", "Zero Page, Relative", 0x3F, 3, "Branch on Bit Reset"));
+        Add(new Opcode("BBR4", "Zero Page, Relative", 0x4F, 3, "Branch on Bit Reset"));
+        Add(new Opcode("BBR5", "Zero Page, Relative", 0x5F, 3, "Branch on Bit Reset"));
+        Add(new Opcode("BBR6", "Zero Page, Relative", 0x6F, 3, "Branch on Bit Reset"));
+        Add(new Opcode("BBR7", "Zero Page, Relative", 0x7F, 3, "Branch on Bit Reset"));
 
-        Add(new Opcode("BBS0", "Relative", 0x8F, 2, "Branch on Bit Set"));
-        Add(new Opcode("BBS1", "Relative", 0x9F, 2, "Branch on Bit Set"));
-        Add(new Opcode("BBS2", "Relative", 0xAF, 2, "Branch on Bit Set"));
-        Add(new Opcode("BBS3", "Relative", 0xBF, 2, "Branch on Bit Set"));
-        Add(new Opcode("BBS4", "Relative", 0xCF, 2, "Branch on Bit Set"));
-        Add(new Opcode("BBS5", "Relative", 0xDF, 2, "Branch on Bit Set"));
-        Add(new Opcode("BBS6", "Relative", 0xEF, 2, "Branch on Bit Set"));
-        Add(new Opcode("BBS7", "Relative", 0xFF, 2, "Branch on Bit Set"));
+        Add(new Opcode("BBS0", "Zero Page, Relative", 0x8F, 3, "Branch on Bit Set"));
+        Add(new Opcode("BBS1", "Zero Page, Relative", 0x9F, 3, "Branch on Bit Set"));
+        Add(new Opcode("BBS2", "Zero Page, Relative", 0xAF, 3, "Branch on Bit Set"));
+        Add(new Opcode("BBS3", "Zero Page, Relative", 0xBF, 3, "Branch on Bit Set"));
+        Add(new Opcode("BBS4", "Zero Page, Relative", 0xCF, 3, "Branch on Bit Set"));
+        Add(new Opcode("BBS5", "Zero Page, Relative", 0xDF, 3, "Branch on Bit Set"));
+        Add(new Opcode("BBS6", "Zero Page, Relative", 0xEF, 3, "Branch on Bit Set"));
+        Add(new Opcode("BBS7", "Zero Page, Relative", 0xFF, 3, "Branch on Bit Set"));
     }
 }

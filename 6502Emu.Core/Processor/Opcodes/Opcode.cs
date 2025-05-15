@@ -43,6 +43,7 @@ public class Opcode(string mnemonic, string addr_mode, byte hex, byte length, st
                 // WD65C02 specific address modes
                 "(Indirect)" => $"(${_n:X2})",
                 "(Absolute,X)" => $"${_nn:X4},X",
+                "Zero Page, Relative" => $"${_n:X2},${_d:X2}",
                 _ => throw new ArgumentOutOfRangeException($"Unknown addressing mode: {AddressMode} for opcode {_mnemonic}")
             };
             return $"{_mnemonic} {operand}".Trim();
@@ -91,6 +92,10 @@ public class Opcode(string mnemonic, string addr_mode, byte hex, byte length, st
                 break;
             case "Implied":
             case "Accumulator":
+                break;
+            case "Zero Page, Relative":
+                _n = mmu[addr + 1];
+                _d = (sbyte)mmu[addr + 2];
                 break;
             default:
                 throw new ArgumentOutOfRangeException($"Unknown addressing mode: {AddressMode} for opcode {_mnemonic}");

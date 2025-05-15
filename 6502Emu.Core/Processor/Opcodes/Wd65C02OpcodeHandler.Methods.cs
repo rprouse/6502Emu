@@ -34,23 +34,23 @@ public partial class Wd65C02OpcodeHandler
 
         _opcodes[0x7C].Execute = () => NOP();   // JMP (Absolute,X)
 
-        _opcodes[0x07].Execute = () => NOP();   // RMB0 Zero Page
-        _opcodes[0x17].Execute = () => NOP();   // RMB1 Zero Page
-        _opcodes[0x27].Execute = () => NOP();   // RMB2 Zero Page
-        _opcodes[0x37].Execute = () => NOP();   // RMB3 Zero Page
-        _opcodes[0x47].Execute = () => NOP();   // RMB4 Zero Page
-        _opcodes[0x57].Execute = () => NOP();   // RMB5 Zero Page
-        _opcodes[0x67].Execute = () => NOP();   // RMB6 Zero Page
-        _opcodes[0x77].Execute = () => NOP();   // RMB7 Zero Page
+        _opcodes[0x07].Execute = () => RMB(0);   // RMB0 Zero Page
+        _opcodes[0x17].Execute = () => RMB(1);   // RMB1 Zero Page
+        _opcodes[0x27].Execute = () => RMB(2);   // RMB2 Zero Page
+        _opcodes[0x37].Execute = () => RMB(3);   // RMB3 Zero Page
+        _opcodes[0x47].Execute = () => RMB(4);   // RMB4 Zero Page
+        _opcodes[0x57].Execute = () => RMB(5);   // RMB5 Zero Page
+        _opcodes[0x67].Execute = () => RMB(6);   // RMB6 Zero Page
+        _opcodes[0x77].Execute = () => RMB(7);   // RMB7 Zero Page
 
-        _opcodes[0x87].Execute = () => NOP();   // SMB0 Zero Page
-        _opcodes[0x97].Execute = () => NOP();   // SMB1 Zero Page
-        _opcodes[0xA7].Execute = () => NOP();   // SMB2 Zero Page
-        _opcodes[0xB7].Execute = () => NOP();   // SMB3 Zero Page
-        _opcodes[0xC7].Execute = () => NOP();   // SMB4 Zero Page
-        _opcodes[0xD7].Execute = () => NOP();   // SMB5 Zero Page
-        _opcodes[0xE7].Execute = () => NOP();   // SMB6 Zero Page
-        _opcodes[0xF7].Execute = () => NOP();   // SMB7 Zero Page
+        _opcodes[0x87].Execute = () => SMB(0);   // SMB0 Zero Page
+        _opcodes[0x97].Execute = () => SMB(1);   // SMB1 Zero Page
+        _opcodes[0xA7].Execute = () => SMB(2);   // SMB2 Zero Page
+        _opcodes[0xB7].Execute = () => SMB(3);   // SMB3 Zero Page
+        _opcodes[0xC7].Execute = () => SMB(4);   // SMB4 Zero Page
+        _opcodes[0xD7].Execute = () => SMB(5);   // SMB5 Zero Page
+        _opcodes[0xE7].Execute = () => SMB(6);   // SMB6 Zero Page
+        _opcodes[0xF7].Execute = () => SMB(7);   // SMB7 Zero Page
 
         _opcodes[0x1A].Execute = () => INC();   // INC Implied
         _opcodes[0x3A].Execute = () => DEC();   // DEC Implied
@@ -61,22 +61,22 @@ public partial class Wd65C02OpcodeHandler
         _opcodes[0xCB].Execute = () => WAI();   // WAI Implied
         _opcodes[0xDB].Execute = () => STP();   // STP Implied
 
-        _opcodes[0x0F].Execute = () => NOP();   // BBR0 Relative
-        _opcodes[0x1F].Execute = () => NOP();   // BBR1 Relative
-        _opcodes[0x2F].Execute = () => NOP();   // BBR2 Relative
-        _opcodes[0x3F].Execute = () => NOP();   // BBR3 Relative
-        _opcodes[0x4F].Execute = () => NOP();   // BBR4 Relative
-        _opcodes[0x5F].Execute = () => NOP();   // BBR5 Relative
-        _opcodes[0x6F].Execute = () => NOP();   // BBR6 Relative
-        _opcodes[0x7F].Execute = () => NOP();   // BBR7 Relative
+        _opcodes[0x0F].Execute = () => BBR(0);   // BBR0 Relative
+        _opcodes[0x1F].Execute = () => BBR(1);   // BBR1 Relative
+        _opcodes[0x2F].Execute = () => BBR(2);   // BBR2 Relative
+        _opcodes[0x3F].Execute = () => BBR(3);   // BBR3 Relative
+        _opcodes[0x4F].Execute = () => BBR(4);   // BBR4 Relative
+        _opcodes[0x5F].Execute = () => BBR(5);   // BBR5 Relative
+        _opcodes[0x6F].Execute = () => BBR(6);   // BBR6 Relative
+        _opcodes[0x7F].Execute = () => BBR(7);   // BBR7 Relative
 
-        _opcodes[0x8F].Execute = () => NOP();   // BBS0 Relative
-        _opcodes[0x9F].Execute = () => NOP();   // BBS1 Relative
-        _opcodes[0xAF].Execute = () => NOP();   // BBS2 Relative
-        _opcodes[0xBF].Execute = () => NOP();   // BBS3 Relative
-        _opcodes[0xCF].Execute = () => NOP();   // BBS4 Relative
-        _opcodes[0xDF].Execute = () => NOP();   // BBS5 Relative
-        _opcodes[0xEF].Execute = () => NOP();   // BBS6 Relative
-        _opcodes[0xFF].Execute = () => NOP();   // BBS7 Relative
+        _opcodes[0x8F].Execute = () => BBS(0);   // BBS0 Relative
+        _opcodes[0x9F].Execute = () => BBS(1);   // BBS1 Relative
+        _opcodes[0xAF].Execute = () => BBS(2);   // BBS2 Relative
+        _opcodes[0xBF].Execute = () => BBS(3);   // BBS3 Relative
+        _opcodes[0xCF].Execute = () => BBS(4);   // BBS4 Relative
+        _opcodes[0xDF].Execute = () => BBS(5);   // BBS5 Relative
+        _opcodes[0xEF].Execute = () => BBS(6);   // BBS6 Relative
+        _opcodes[0xFF].Execute = () => BBS(7);   // BBS7 Relative
     }
 }

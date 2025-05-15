@@ -1,4 +1,5 @@
 using Mos6502Emu.Core.Memory;
+using Mos6502Emu.Core.Utilities;
 
 namespace Mos6502Emu.Core.Processor.Opcodes;
 
@@ -54,5 +55,33 @@ public partial class Wd65C02OpcodeHandler : Mos6502OpcodeHandler
     void STP()
     {
         throw new NotImplementedException("STP not implemented");
+    }
+
+    void RMB(byte bit)
+    {
+        var value = ZeroPage();
+        byte mask = (byte)~(1 << bit);
+        value &= mask;
+        _mmu[_address] = value;
+    }
+
+    void SMB(byte bit)
+    {
+        var value = ZeroPage();
+        byte mask = (byte)(1 << bit);
+        value |= mask;
+        _mmu[_address] = value;
+    }
+
+    void BBR(byte bit)
+    {
+        var value = ZeroPage();
+        Branch(!value.IsBitSet(bit));
+    }
+
+    void BBS(byte bit)
+    {
+        var value = ZeroPage();
+        Branch(value.IsBitSet(bit));
     }
 }
