@@ -47,33 +47,17 @@ public class EmulatorTests
     [Test]
     public void ResetClearsMemory()
     {
-        _emulator.Memory[0x8000] = 0xFF;
+        _emulator.Memory[0x0200] = 0xFF;
 
         _emulator.Reset();
 
-        _emulator.Memory[0x8000].ShouldBe(0x00);
+        _emulator.Memory[0x0200].ShouldBe(0x00);
     }
 
     [Test]
     public void CanLoadProgramToDefaultAddress()
     {
         _emulator.LoadProgram("Test.prg");
-
-        _emulator.Memory[0x8000].ShouldBe(0xA9);
-        _emulator.Memory[0x8001].ShouldBe(0xDE);
-        _emulator.Memory[0x8002].ShouldBe(0x69);
-        _emulator.Memory[0x8003].ShouldBe(0x2A);
-        _emulator.Memory[0x8004].ShouldBe(0x85);
-        _emulator.Memory[0x8005].ShouldBe(0x00);
-        _emulator.Memory[0x8006].ShouldBe(0xC6);
-        _emulator.Memory[0x8007].ShouldBe(0x00);
-        _emulator.Memory[0x8008].ShouldBe(0x60);
-    }
-
-    [Test]
-    public void CanLoadProgramAtSpecifiedAddress()
-    {
-        _emulator.LoadProgram("Test.prg", 0x0200);
 
         _emulator.Memory[0x0200].ShouldBe(0xA9);
         _emulator.Memory[0x0201].ShouldBe(0xDE);
@@ -87,22 +71,38 @@ public class EmulatorTests
     }
 
     [Test]
+    public void CanLoadProgramAtSpecifiedAddress()
+    {
+        _emulator.LoadProgram("Test.prg", 0x2000);
+
+        _emulator.Memory[0x2000].ShouldBe(0xA9);
+        _emulator.Memory[0x2001].ShouldBe(0xDE);
+        _emulator.Memory[0x2002].ShouldBe(0x69);
+        _emulator.Memory[0x2003].ShouldBe(0x2A);
+        _emulator.Memory[0x2004].ShouldBe(0x85);
+        _emulator.Memory[0x2005].ShouldBe(0x00);
+        _emulator.Memory[0x2006].ShouldBe(0xC6);
+        _emulator.Memory[0x2007].ShouldBe(0x00);
+        _emulator.Memory[0x2008].ShouldBe(0x60);
+    }
+
+    [Test]
     public void LoadingProgramToSpecifiedAddressSetsPC()
     {
-        _emulator.LoadProgram("Test.prg", 0x0200);
+        _emulator.LoadProgram("Test.prg", 0x2000);
 
-        _emulator.CPU.Registers.PC.ShouldBe(0x0200);
+        _emulator.CPU.Registers.PC.ShouldBe(0x2000);
     }
 
     [Test]
     public void ResetReloadsProgram()
     {
-        _emulator.LoadProgram("Test.prg", 0x0200);
-        _emulator.Memory[0x0200] = 0x00;
+        _emulator.LoadProgram("Test.prg", 0x2000);
+        _emulator.Memory[0x2000] = 0x00;
 
         _emulator.Reset();
 
-        _emulator.Memory[0x0200].ShouldBe(0xA9);
+        _emulator.Memory[0x2000].ShouldBe(0xA9);
     }
 
     [Test]
@@ -121,7 +121,7 @@ public class EmulatorTests
     {
         _emulator.LoadProgram("Test.prg");
 
-        var op = _emulator.Disassemble(0x8006);
+        var op = _emulator.Disassemble(0x0206);
 
         op.ShouldNotBeNull();
         op.Mnemonic.ShouldBe("DEC $00");
@@ -138,6 +138,6 @@ public class EmulatorTests
         op.Mnemonic.ShouldBe("LDA #$DE");
 
         _emulator.CPU.Registers.A.ShouldBe(0xDE);
-        _emulator.CPU.Registers.PC.ShouldBe(0x8002);
+        _emulator.CPU.Registers.PC.ShouldBe(0x0202);
     }
 }

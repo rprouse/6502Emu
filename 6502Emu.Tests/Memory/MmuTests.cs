@@ -18,22 +18,6 @@ namespace Mos6502Emu.Tests.Memory
         {
             _mmu.LoadProgram("Test.prg").ShouldBeTrue();
 
-            _mmu[0x8000].ShouldBe(0xA9);
-            _mmu[0x8001].ShouldBe(0xDE);
-            _mmu[0x8002].ShouldBe(0x69);
-            _mmu[0x8003].ShouldBe(0x2A);
-            _mmu[0x8004].ShouldBe(0x85);
-            _mmu[0x8005].ShouldBe(0x00);
-            _mmu[0x8006].ShouldBe(0xC6);
-            _mmu[0x8007].ShouldBe(0x00);
-            _mmu[0x8008].ShouldBe(0x60);
-        }
-
-        [Test]
-        public void CanLoadProgramAtSpecifiedAddress()
-        {
-            _mmu.LoadProgram("Test.prg", 0x0200).ShouldBeTrue();
-
             _mmu[0x0200].ShouldBe(0xA9);
             _mmu[0x0201].ShouldBe(0xDE);
             _mmu[0x0202].ShouldBe(0x69);
@@ -43,6 +27,22 @@ namespace Mos6502Emu.Tests.Memory
             _mmu[0x0206].ShouldBe(0xC6);
             _mmu[0x0207].ShouldBe(0x00);
             _mmu[0x0208].ShouldBe(0x60);
+        }
+
+        [Test]
+        public void CanLoadProgramAtSpecifiedAddress()
+        {
+            _mmu.LoadProgram("Test.prg", 0x8000).ShouldBeTrue();
+
+            _mmu[0x8000].ShouldBe(0xA9);
+            _mmu[0x8001].ShouldBe(0xDE);
+            _mmu[0x8002].ShouldBe(0x69);
+            _mmu[0x8003].ShouldBe(0x2A);
+            _mmu[0x8004].ShouldBe(0x85);
+            _mmu[0x8005].ShouldBe(0x00);
+            _mmu[0x8006].ShouldBe(0xC6);
+            _mmu[0x8007].ShouldBe(0x00);
+            _mmu[0x8008].ShouldBe(0x60);
         }
 
         [Test]

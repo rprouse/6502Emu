@@ -24,7 +24,7 @@ public class Emulator
         Reset();
     }
 
-    public bool LoadProgram(string filename, word baseAddress = 0x8000)
+    public bool LoadProgram(string filename, word baseAddress = 0x0200)
     {
         _filename = filename;
         _baseAddress = baseAddress;

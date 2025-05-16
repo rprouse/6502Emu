@@ -16,7 +16,7 @@ The emulator supports the following instructions, [65C02 Instruction Set](65C02 
 - [x] View registers
 - [x] View memory
 - [ ] Sort opcode helper methods and make them protected
-- [ ] Switch default base address to 0x2000
+- [x] Switch default base address to 0x0200
 - [x] Support 65C02 extended instructions
 - [ ] Interrupt support
 - [ ] Support for the 65C816 processor

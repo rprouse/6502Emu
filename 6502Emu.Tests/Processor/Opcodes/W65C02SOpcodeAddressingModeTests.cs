@@ -15,8 +15,8 @@ public class W65C02SOpcodeAddressingModeTests
     {
         // Initialize the CPU and memory
         _mmu = new Mmu();
-        _mmu[0x8000] = 0x68;
-        _mmu[0x8001] = 0x42;
+        _mmu[0x0200] = 0x68;
+        _mmu[0x0201] = 0x42;
 
         _registers = new Registers
         {
@@ -25,7 +25,7 @@ public class W65C02SOpcodeAddressingModeTests
             Y = 0x00,
             P = 0b0010_0000,
             S = 0xFF,
-            PC = 0x8000
+            PC = 0x0200
         };
 
         _opcodeHandler = new W65C02SOpcodeHandler(_registers, _mmu);
@@ -39,7 +39,7 @@ public class W65C02SOpcodeAddressingModeTests
         _mmu[0x4000] = 0x93; // Set the value at the indirect address plus X
         byte result = _opcodeHandler.ZeroPageIndirect();
         result.ShouldBe(0x93, "Zero Page Indirect addressing mode should return the value at indirect address");
-        _registers.PC.ShouldBe(0x8001, "PC should be incremented by 1 after fetching the indirect address");
+        _registers.PC.ShouldBe(0x0201, "PC should be incremented by 1 after fetching the indirect address");
 
         // Ensure the address is set correctly
         _opcodeHandler.Address.ShouldBe(0x4000);
@@ -54,7 +54,7 @@ public class W65C02SOpcodeAddressingModeTests
         _registers.X = 0x10; // Set X register
         byte result = _opcodeHandler.AbsoluteIndexedIndirect();
         result.ShouldBe(0x93, "Absolute Indexed Indirect addressing mode should return the value at absolute indirect address + X");
-        _registers.PC.ShouldBe(0x8002, "PC should be incremented by 2 after fetching the absolute indirect address");
+        _registers.PC.ShouldBe(0x0202, "PC should be incremented by 2 after fetching the absolute indirect address");
         // Ensure the address is set correctly
         _opcodeHandler.Address.ShouldBe(0x4000);
     }

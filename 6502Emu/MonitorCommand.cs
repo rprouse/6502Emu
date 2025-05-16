@@ -13,7 +13,7 @@ internal sealed class MonitorCommand : Command<MonitorCommand.Settings>
 
         [CommandArgument(1, "[baseAddress]")]
         [Description("Base address for the program.")]
-        [DefaultValue("0x8000")]
+        [DefaultValue("0x0200")]
         public string BaseAddress { get; set; } = string.Empty;
 
         [CommandOption("-c|--cpu")]
@@ -24,7 +24,7 @@ internal sealed class MonitorCommand : Command<MonitorCommand.Settings>
 
     public override int Execute(CommandContext context, Settings settings)
     {
-        word baseAddress = 0x8000;
+        word baseAddress = 0x0200;
         if (!string.IsNullOrWhiteSpace(settings.BaseAddress))
         {            
             if (settings.BaseAddress.TryParseHexWord(out var address))

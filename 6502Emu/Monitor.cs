@@ -18,7 +18,7 @@ public class Monitor
         _emulator = emulator;
     }
 
-    public int Run(string filename, word baseAddress = 0x8000)
+    public int Run(string filename, word baseAddress = 0x0200)
     {
         AnsiConsole.MarkupLine($"[Blue]Loading {filename}[/]");
 
@@ -220,7 +220,7 @@ public class Monitor
     /// <param name="startAddr">Address to start viewing</param>
     /// <param name="len">The length in bytes to view</param>
     /// <returns></returns>
-    void ViewMemory(word startAddr = 0x8000, word len = 0x60)
+    void ViewMemory(word startAddr = 0x0200, word len = 0x60)
     {
         startAddr = (word)(startAddr / 0x10 * 0x10);
         for (word addr = startAddr; addr < startAddr + len; addr += 0x10)
