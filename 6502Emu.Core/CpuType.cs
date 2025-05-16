@@ -8,5 +8,5 @@ namespace Mos6502Emu.Core;
 public enum CpuType
 {
     MOS6502,
-    WD65C02
+    W65C02S
 }

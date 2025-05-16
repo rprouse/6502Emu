@@ -1,6 +1,6 @@
 namespace Mos6502Emu.Core.Processor.Opcodes;
 
-public partial class Wd65C02OpcodeHandler
+public partial class W65C02SOpcodeHandler
 {
     protected override void InitializeMethods()
     {

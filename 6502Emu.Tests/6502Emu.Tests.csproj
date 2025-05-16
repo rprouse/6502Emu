@@ -481,634 +481,634 @@
     <None Update="OpcodeData\Mos6502\fe.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Update="OpcodeData\Wd65C02\00.json">
+    <None Update="OpcodeData\W65C02S\00.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Update="OpcodeData\Wd65C02\01.json">
+    <None Update="OpcodeData\W65C02S\01.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Update="OpcodeData\Wd65C02\04.json">
+    <None Update="OpcodeData\W65C02S\04.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Update="OpcodeData\Wd65C02\05.json">
+    <None Update="OpcodeData\W65C02S\05.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Update="OpcodeData\Wd65C02\06.json">
+    <None Update="OpcodeData\W65C02S\06.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Update="OpcodeData\Wd65C02\07.json">
+    <None Update="OpcodeData\W65C02S\07.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Update="OpcodeData\Wd65C02\08.json">
+    <None Update="OpcodeData\W65C02S\08.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Update="OpcodeData\Wd65C02\09.json">
+    <None Update="OpcodeData\W65C02S\09.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Update="OpcodeData\Wd65C02\0a.json">
+    <None Update="OpcodeData\W65C02S\0a.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Update="OpcodeData\Wd65C02\0c.json">
+    <None Update="OpcodeData\W65C02S\0c.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Update="OpcodeData\Wd65C02\0d.json">
+    <None Update="OpcodeData\W65C02S\0d.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Update="OpcodeData\Wd65C02\0e.json">
+    <None Update="OpcodeData\W65C02S\0e.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Update="OpcodeData\Wd65C02\0f.json">
+    <None Update="OpcodeData\W65C02S\0f.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Update="OpcodeData\Wd65C02\10.json">
+    <None Update="OpcodeData\W65C02S\10.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Update="OpcodeData\Wd65C02\11.json">
+    <None Update="OpcodeData\W65C02S\11.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Update="OpcodeData\Wd65C02\12.json">
+    <None Update="OpcodeData\W65C02S\12.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Update="OpcodeData\Wd65C02\14.json">
+    <None Update="OpcodeData\W65C02S\14.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Update="OpcodeData\Wd65C02\15.json">
+    <None Update="OpcodeData\W65C02S\15.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Update="OpcodeData\Wd65C02\16.json">
+    <None Update="OpcodeData\W65C02S\16.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Update="OpcodeData\Wd65C02\17.json">
+    <None Update="OpcodeData\W65C02S\17.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Update="OpcodeData\Wd65C02\18.json">
+    <None Update="OpcodeData\W65C02S\18.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Update="OpcodeData\Wd65C02\19.json">
+    <None Update="OpcodeData\W65C02S\19.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Update="OpcodeData\Wd65C02\1a.json">
+    <None Update="OpcodeData\W65C02S\1a.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Update="OpcodeData\Wd65C02\1c.json">
+    <None Update="OpcodeData\W65C02S\1c.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Update="OpcodeData\Wd65C02\1d.json">
+    <None Update="OpcodeData\W65C02S\1d.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Update="OpcodeData\Wd65C02\1e.json">
+    <None Update="OpcodeData\W65C02S\1e.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Update="OpcodeData\Wd65C02\1f.json">
+    <None Update="OpcodeData\W65C02S\1f.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Update="OpcodeData\Wd65C02\20.json">
+    <None Update="OpcodeData\W65C02S\20.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Update="OpcodeData\Wd65C02\21.json">
+    <None Update="OpcodeData\W65C02S\21.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Update="OpcodeData\Wd65C02\24.json">
+    <None Update="OpcodeData\W65C02S\24.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Update="OpcodeData\Wd65C02\25.json">
+    <None Update="OpcodeData\W65C02S\25.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Update="OpcodeData\Wd65C02\26.json">
+    <None Update="OpcodeData\W65C02S\26.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Update="OpcodeData\Wd65C02\27.json">
+    <None Update="OpcodeData\W65C02S\27.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Update="OpcodeData\Wd65C02\28.json">
+    <None Update="OpcodeData\W65C02S\28.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Update="OpcodeData\Wd65C02\29.json">
+    <None Update="OpcodeData\W65C02S\29.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Update="OpcodeData\Wd65C02\2a.json">
+    <None Update="OpcodeData\W65C02S\2a.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Update="OpcodeData\Wd65C02\2c.json">
+    <None Update="OpcodeData\W65C02S\2c.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Update="OpcodeData\Wd65C02\2d.json">
+    <None Update="OpcodeData\W65C02S\2d.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Update="OpcodeData\Wd65C02\2e.json">
+    <None Update="OpcodeData\W65C02S\2e.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Update="OpcodeData\Wd65C02\2f.json">
+    <None Update="OpcodeData\W65C02S\2f.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Update="OpcodeData\Wd65C02\30.json">
+    <None Update="OpcodeData\W65C02S\30.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Update="OpcodeData\Wd65C02\31.json">
+    <None Update="OpcodeData\W65C02S\31.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Update="OpcodeData\Wd65C02\32.json">
+    <None Update="OpcodeData\W65C02S\32.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Update="OpcodeData\Wd65C02\34.json">
+    <None Update="OpcodeData\W65C02S\34.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Update="OpcodeData\Wd65C02\35.json">
+    <None Update="OpcodeData\W65C02S\35.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Update="OpcodeData\Wd65C02\36.json">
+    <None Update="OpcodeData\W65C02S\36.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Update="OpcodeData\Wd65C02\37.json">
+    <None Update="OpcodeData\W65C02S\37.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Update="OpcodeData\Wd65C02\38.json">
+    <None Update="OpcodeData\W65C02S\38.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Update="OpcodeData\Wd65C02\39.json">
+    <None Update="OpcodeData\W65C02S\39.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Update="OpcodeData\Wd65C02\3a.json">
+    <None Update="OpcodeData\W65C02S\3a.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Update="OpcodeData\Wd65C02\3c.json">
+    <None Update="OpcodeData\W65C02S\3c.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Update="OpcodeData\Wd65C02\3d.json">
+    <None Update="OpcodeData\W65C02S\3d.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Update="OpcodeData\Wd65C02\3e.json">
+    <None Update="OpcodeData\W65C02S\3e.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Update="OpcodeData\Wd65C02\3f.json">
+    <None Update="OpcodeData\W65C02S\3f.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Update="OpcodeData\Wd65C02\40.json">
+    <None Update="OpcodeData\W65C02S\40.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Update="OpcodeData\Wd65C02\41.json">
+    <None Update="OpcodeData\W65C02S\41.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Update="OpcodeData\Wd65C02\45.json">
+    <None Update="OpcodeData\W65C02S\45.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Update="OpcodeData\Wd65C02\46.json">
+    <None Update="OpcodeData\W65C02S\46.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Update="OpcodeData\Wd65C02\47.json">
+    <None Update="OpcodeData\W65C02S\47.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Update="OpcodeData\Wd65C02\48.json">
+    <None Update="OpcodeData\W65C02S\48.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Update="OpcodeData\Wd65C02\49.json">
+    <None Update="OpcodeData\W65C02S\49.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Update="OpcodeData\Wd65C02\4a.json">
+    <None Update="OpcodeData\W65C02S\4a.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Update="OpcodeData\Wd65C02\4c.json">
+    <None Update="OpcodeData\W65C02S\4c.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Update="OpcodeData\Wd65C02\4d.json">
+    <None Update="OpcodeData\W65C02S\4d.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Update="OpcodeData\Wd65C02\4e.json">
+    <None Update="OpcodeData\W65C02S\4e.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Update="OpcodeData\Wd65C02\4f.json">
+    <None Update="OpcodeData\W65C02S\4f.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Update="OpcodeData\Wd65C02\50.json">
+    <None Update="OpcodeData\W65C02S\50.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Update="OpcodeData\Wd65C02\51.json">
+    <None Update="OpcodeData\W65C02S\51.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Update="OpcodeData\Wd65C02\52.json">
+    <None Update="OpcodeData\W65C02S\52.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Update="OpcodeData\Wd65C02\55.json">
+    <None Update="OpcodeData\W65C02S\55.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Update="OpcodeData\Wd65C02\56.json">
+    <None Update="OpcodeData\W65C02S\56.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Update="OpcodeData\Wd65C02\57.json">
+    <None Update="OpcodeData\W65C02S\57.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Update="OpcodeData\Wd65C02\58.json">
+    <None Update="OpcodeData\W65C02S\58.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Update="OpcodeData\Wd65C02\59.json">
+    <None Update="OpcodeData\W65C02S\59.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Update="OpcodeData\Wd65C02\5a.json">
+    <None Update="OpcodeData\W65C02S\5a.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Update="OpcodeData\Wd65C02\5d.json">
+    <None Update="OpcodeData\W65C02S\5d.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Update="OpcodeData\Wd65C02\5e.json">
+    <None Update="OpcodeData\W65C02S\5e.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Update="OpcodeData\Wd65C02\5f.json">
+    <None Update="OpcodeData\W65C02S\5f.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Update="OpcodeData\Wd65C02\60.json">
+    <None Update="OpcodeData\W65C02S\60.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Update="OpcodeData\Wd65C02\61.json">
+    <None Update="OpcodeData\W65C02S\61.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Update="OpcodeData\Wd65C02\64.json">
+    <None Update="OpcodeData\W65C02S\64.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Update="OpcodeData\Wd65C02\65.json">
+    <None Update="OpcodeData\W65C02S\65.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Update="OpcodeData\Wd65C02\66.json">
+    <None Update="OpcodeData\W65C02S\66.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Update="OpcodeData\Wd65C02\67.json">
+    <None Update="OpcodeData\W65C02S\67.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Update="OpcodeData\Wd65C02\68.json">
+    <None Update="OpcodeData\W65C02S\68.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Update="OpcodeData\Wd65C02\69.json">
+    <None Update="OpcodeData\W65C02S\69.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Update="OpcodeData\Wd65C02\6a.json">
+    <None Update="OpcodeData\W65C02S\6a.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Update="OpcodeData\Wd65C02\6c.json">
+    <None Update="OpcodeData\W65C02S\6c.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Update="OpcodeData\Wd65C02\6d.json">
+    <None Update="OpcodeData\W65C02S\6d.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Update="OpcodeData\Wd65C02\6e.json">
+    <None Update="OpcodeData\W65C02S\6e.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Update="OpcodeData\Wd65C02\6f.json">
+    <None Update="OpcodeData\W65C02S\6f.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Update="OpcodeData\Wd65C02\70.json">
+    <None Update="OpcodeData\W65C02S\70.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Update="OpcodeData\Wd65C02\71.json">
+    <None Update="OpcodeData\W65C02S\71.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Update="OpcodeData\Wd65C02\72.json">
+    <None Update="OpcodeData\W65C02S\72.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Update="OpcodeData\Wd65C02\74.json">
+    <None Update="OpcodeData\W65C02S\74.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Update="OpcodeData\Wd65C02\75.json">
+    <None Update="OpcodeData\W65C02S\75.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Update="OpcodeData\Wd65C02\76.json">
+    <None Update="OpcodeData\W65C02S\76.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Update="OpcodeData\Wd65C02\77.json">
+    <None Update="OpcodeData\W65C02S\77.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Update="OpcodeData\Wd65C02\78.json">
+    <None Update="OpcodeData\W65C02S\78.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Update="OpcodeData\Wd65C02\79.json">
+    <None Update="OpcodeData\W65C02S\79.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Update="OpcodeData\Wd65C02\7a.json">
+    <None Update="OpcodeData\W65C02S\7a.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Update="OpcodeData\Wd65C02\7c.json">
+    <None Update="OpcodeData\W65C02S\7c.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Update="OpcodeData\Wd65C02\7d.json">
+    <None Update="OpcodeData\W65C02S\7d.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Update="OpcodeData\Wd65C02\7e.json">
+    <None Update="OpcodeData\W65C02S\7e.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Update="OpcodeData\Wd65C02\7f.json">
+    <None Update="OpcodeData\W65C02S\7f.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Update="OpcodeData\Wd65C02\80.json">
+    <None Update="OpcodeData\W65C02S\80.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Update="OpcodeData\Wd65C02\81.json">
+    <None Update="OpcodeData\W65C02S\81.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Update="OpcodeData\Wd65C02\84.json">
+    <None Update="OpcodeData\W65C02S\84.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Update="OpcodeData\Wd65C02\85.json">
+    <None Update="OpcodeData\W65C02S\85.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Update="OpcodeData\Wd65C02\86.json">
+    <None Update="OpcodeData\W65C02S\86.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Update="OpcodeData\Wd65C02\87.json">
+    <None Update="OpcodeData\W65C02S\87.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Update="OpcodeData\Wd65C02\88.json">
+    <None Update="OpcodeData\W65C02S\88.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Update="OpcodeData\Wd65C02\89.json">
+    <None Update="OpcodeData\W65C02S\89.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Update="OpcodeData\Wd65C02\8a.json">
+    <None Update="OpcodeData\W65C02S\8a.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Update="OpcodeData\Wd65C02\8c.json">
+    <None Update="OpcodeData\W65C02S\8c.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Update="OpcodeData\Wd65C02\8d.json">
+    <None Update="OpcodeData\W65C02S\8d.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Update="OpcodeData\Wd65C02\8e.json">
+    <None Update="OpcodeData\W65C02S\8e.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Update="OpcodeData\Wd65C02\8f.json">
+    <None Update="OpcodeData\W65C02S\8f.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Update="OpcodeData\Wd65C02\90.json">
+    <None Update="OpcodeData\W65C02S\90.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Update="OpcodeData\Wd65C02\91.json">
+    <None Update="OpcodeData\W65C02S\91.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Update="OpcodeData\Wd65C02\92.json">
+    <None Update="OpcodeData\W65C02S\92.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Update="OpcodeData\Wd65C02\94.json">
+    <None Update="OpcodeData\W65C02S\94.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Update="OpcodeData\Wd65C02\95.json">
+    <None Update="OpcodeData\W65C02S\95.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Update="OpcodeData\Wd65C02\96.json">
+    <None Update="OpcodeData\W65C02S\96.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Update="OpcodeData\Wd65C02\97.json">
+    <None Update="OpcodeData\W65C02S\97.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Update="OpcodeData\Wd65C02\98.json">
+    <None Update="OpcodeData\W65C02S\98.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Update="OpcodeData\Wd65C02\99.json">
+    <None Update="OpcodeData\W65C02S\99.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Update="OpcodeData\Wd65C02\9a.json">
+    <None Update="OpcodeData\W65C02S\9a.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Update="OpcodeData\Wd65C02\9c.json">
+    <None Update="OpcodeData\W65C02S\9c.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Update="OpcodeData\Wd65C02\9d.json">
+    <None Update="OpcodeData\W65C02S\9d.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Update="OpcodeData\Wd65C02\9e.json">
+    <None Update="OpcodeData\W65C02S\9e.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Update="OpcodeData\Wd65C02\9f.json">
+    <None Update="OpcodeData\W65C02S\9f.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Update="OpcodeData\Wd65C02\a0.json">
+    <None Update="OpcodeData\W65C02S\a0.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Update="OpcodeData\Wd65C02\a1.json">
+    <None Update="OpcodeData\W65C02S\a1.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Update="OpcodeData\Wd65C02\a2.json">
+    <None Update="OpcodeData\W65C02S\a2.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Update="OpcodeData\Wd65C02\a4.json">
+    <None Update="OpcodeData\W65C02S\a4.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Update="OpcodeData\Wd65C02\a5.json">
+    <None Update="OpcodeData\W65C02S\a5.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Update="OpcodeData\Wd65C02\a6.json">
+    <None Update="OpcodeData\W65C02S\a6.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Update="OpcodeData\Wd65C02\a7.json">
+    <None Update="OpcodeData\W65C02S\a7.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Update="OpcodeData\Wd65C02\a8.json">
+    <None Update="OpcodeData\W65C02S\a8.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Update="OpcodeData\Wd65C02\a9.json">
+    <None Update="OpcodeData\W65C02S\a9.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Update="OpcodeData\Wd65C02\aa.json">
+    <None Update="OpcodeData\W65C02S\aa.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Update="OpcodeData\Wd65C02\ac.json">
+    <None Update="OpcodeData\W65C02S\ac.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Update="OpcodeData\Wd65C02\ad.json">
+    <None Update="OpcodeData\W65C02S\ad.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Update="OpcodeData\Wd65C02\ae.json">
+    <None Update="OpcodeData\W65C02S\ae.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Update="OpcodeData\Wd65C02\af.json">
+    <None Update="OpcodeData\W65C02S\af.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Update="OpcodeData\Wd65C02\b0.json">
+    <None Update="OpcodeData\W65C02S\b0.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Update="OpcodeData\Wd65C02\b1.json">
+    <None Update="OpcodeData\W65C02S\b1.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Update="OpcodeData\Wd65C02\b2.json">
+    <None Update="OpcodeData\W65C02S\b2.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Update="OpcodeData\Wd65C02\b4.json">
+    <None Update="OpcodeData\W65C02S\b4.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Update="OpcodeData\Wd65C02\b5.json">
+    <None Update="OpcodeData\W65C02S\b5.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Update="OpcodeData\Wd65C02\b6.json">
+    <None Update="OpcodeData\W65C02S\b6.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Update="OpcodeData\Wd65C02\b7.json">
+    <None Update="OpcodeData\W65C02S\b7.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Update="OpcodeData\Wd65C02\b8.json">
+    <None Update="OpcodeData\W65C02S\b8.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Update="OpcodeData\Wd65C02\b9.json">
+    <None Update="OpcodeData\W65C02S\b9.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Update="OpcodeData\Wd65C02\ba.json">
+    <None Update="OpcodeData\W65C02S\ba.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Update="OpcodeData\Wd65C02\bc.json">
+    <None Update="OpcodeData\W65C02S\bc.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Update="OpcodeData\Wd65C02\bd.json">
+    <None Update="OpcodeData\W65C02S\bd.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Update="OpcodeData\Wd65C02\be.json">
+    <None Update="OpcodeData\W65C02S\be.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Update="OpcodeData\Wd65C02\bf.json">
+    <None Update="OpcodeData\W65C02S\bf.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Update="OpcodeData\Wd65C02\c0.json">
+    <None Update="OpcodeData\W65C02S\c0.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Update="OpcodeData\Wd65C02\c1.json">
+    <None Update="OpcodeData\W65C02S\c1.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Update="OpcodeData\Wd65C02\c4.json">
+    <None Update="OpcodeData\W65C02S\c4.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Update="OpcodeData\Wd65C02\c5.json">
+    <None Update="OpcodeData\W65C02S\c5.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Update="OpcodeData\Wd65C02\c6.json">
+    <None Update="OpcodeData\W65C02S\c6.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Update="OpcodeData\Wd65C02\c7.json">
+    <None Update="OpcodeData\W65C02S\c7.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Update="OpcodeData\Wd65C02\c8.json">
+    <None Update="OpcodeData\W65C02S\c8.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Update="OpcodeData\Wd65C02\c9.json">
+    <None Update="OpcodeData\W65C02S\c9.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Update="OpcodeData\Wd65C02\ca.json">
+    <None Update="OpcodeData\W65C02S\ca.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Update="OpcodeData\Wd65C02\cc.json">
+    <None Update="OpcodeData\W65C02S\cc.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Update="OpcodeData\Wd65C02\cd.json">
+    <None Update="OpcodeData\W65C02S\cd.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Update="OpcodeData\Wd65C02\ce.json">
+    <None Update="OpcodeData\W65C02S\ce.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Update="OpcodeData\Wd65C02\cf.json">
+    <None Update="OpcodeData\W65C02S\cf.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Update="OpcodeData\Wd65C02\d0.json">
+    <None Update="OpcodeData\W65C02S\d0.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Update="OpcodeData\Wd65C02\d1.json">
+    <None Update="OpcodeData\W65C02S\d1.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Update="OpcodeData\Wd65C02\d2.json">
+    <None Update="OpcodeData\W65C02S\d2.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Update="OpcodeData\Wd65C02\d5.json">
+    <None Update="OpcodeData\W65C02S\d5.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Update="OpcodeData\Wd65C02\d6.json">
+    <None Update="OpcodeData\W65C02S\d6.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Update="OpcodeData\Wd65C02\d7.json">
+    <None Update="OpcodeData\W65C02S\d7.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Update="OpcodeData\Wd65C02\d8.json">
+    <None Update="OpcodeData\W65C02S\d8.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Update="OpcodeData\Wd65C02\d9.json">
+    <None Update="OpcodeData\W65C02S\d9.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Update="OpcodeData\Wd65C02\da.json">
+    <None Update="OpcodeData\W65C02S\da.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Update="OpcodeData\Wd65C02\dd.json">
+    <None Update="OpcodeData\W65C02S\dd.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Update="OpcodeData\Wd65C02\de.json">
+    <None Update="OpcodeData\W65C02S\de.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Update="OpcodeData\Wd65C02\df.json">
+    <None Update="OpcodeData\W65C02S\df.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Update="OpcodeData\Wd65C02\e0.json">
+    <None Update="OpcodeData\W65C02S\e0.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Update="OpcodeData\Wd65C02\e1.json">
+    <None Update="OpcodeData\W65C02S\e1.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Update="OpcodeData\Wd65C02\e4.json">
+    <None Update="OpcodeData\W65C02S\e4.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Update="OpcodeData\Wd65C02\e5.json">
+    <None Update="OpcodeData\W65C02S\e5.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Update="OpcodeData\Wd65C02\e6.json">
+    <None Update="OpcodeData\W65C02S\e6.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Update="OpcodeData\Wd65C02\e7.json">
+    <None Update="OpcodeData\W65C02S\e7.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Update="OpcodeData\Wd65C02\e8.json">
+    <None Update="OpcodeData\W65C02S\e8.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Update="OpcodeData\Wd65C02\e9.json">
+    <None Update="OpcodeData\W65C02S\e9.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Update="OpcodeData\Wd65C02\ea.json">
+    <None Update="OpcodeData\W65C02S\ea.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Update="OpcodeData\Wd65C02\ec.json">
+    <None Update="OpcodeData\W65C02S\ec.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Update="OpcodeData\Wd65C02\ed.json">
+    <None Update="OpcodeData\W65C02S\ed.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Update="OpcodeData\Wd65C02\ee.json">
+    <None Update="OpcodeData\W65C02S\ee.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Update="OpcodeData\Wd65C02\ef.json">
+    <None Update="OpcodeData\W65C02S\ef.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Update="OpcodeData\Wd65C02\f0.json">
+    <None Update="OpcodeData\W65C02S\f0.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Update="OpcodeData\Wd65C02\f1.json">
+    <None Update="OpcodeData\W65C02S\f1.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Update="OpcodeData\Wd65C02\f2.json">
+    <None Update="OpcodeData\W65C02S\f2.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Update="OpcodeData\Wd65C02\f5.json">
+    <None Update="OpcodeData\W65C02S\f5.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Update="OpcodeData\Wd65C02\f6.json">
+    <None Update="OpcodeData\W65C02S\f6.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Update="OpcodeData\Wd65C02\f7.json">
+    <None Update="OpcodeData\W65C02S\f7.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Update="OpcodeData\Wd65C02\f8.json">
+    <None Update="OpcodeData\W65C02S\f8.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Update="OpcodeData\Wd65C02\f9.json">
+    <None Update="OpcodeData\W65C02S\f9.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Update="OpcodeData\Wd65C02\fa.json">
+    <None Update="OpcodeData\W65C02S\fa.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Update="OpcodeData\Wd65C02\fd.json">
+    <None Update="OpcodeData\W65C02S\fd.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Update="OpcodeData\Wd65C02\fe.json">
+    <None Update="OpcodeData\W65C02S\fe.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Update="OpcodeData\Wd65C02\ff.json">
+    <None Update="OpcodeData\W65C02S\ff.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Update="Test.prg">
@@ -1117,7 +1117,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="OpcodeData\Wd65C02\" />
+    <Folder Include="OpcodeData\W65C02S\" />
   </ItemGroup>
 
 </Project>

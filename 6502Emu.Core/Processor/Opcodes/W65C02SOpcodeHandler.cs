@@ -3,9 +3,9 @@ using Mos6502Emu.Core.Utilities;
 
 namespace Mos6502Emu.Core.Processor.Opcodes;
 
-public partial class Wd65C02OpcodeHandler : Mos6502OpcodeHandler
+public partial class W65C02SOpcodeHandler : Mos6502OpcodeHandler
 {
-    public Wd65C02OpcodeHandler(Registers registers, Mmu mmu) : base(registers, mmu)
+    public W65C02SOpcodeHandler(Registers registers, Mmu mmu) : base(registers, mmu)
     {
     }
 

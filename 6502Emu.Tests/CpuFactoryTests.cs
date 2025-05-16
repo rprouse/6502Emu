@@ -33,14 +33,14 @@ public class CpuFactoryTests
     public void CreateCpu_WithWD65C02Type_ReturnsWd65C02CpuInstance()
     {
         // Arrange
-        var cpuType = CpuType.WD65C02;
+        var cpuType = CpuType.W65C02S;
 
         // Act & Assert
         var cpu = cpuType.CreateCpu(_mmu);
 
         // Assert
         cpu.ShouldNotBeNull();
-        cpu.ShouldBeOfType<Wd65C02Cpu>();
+        cpu.ShouldBeOfType<W65C02SCpu>();
     }
 
     [Test]

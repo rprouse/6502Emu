@@ -40,7 +40,7 @@ public class Opcode(string mnemonic, string addr_mode, byte hex, byte length, st
                 "Indirect" => $"(${_nn:X4})",
                 "Implied" => string.Empty,
                 "Accumulator" => string.Empty,
-                // WD65C02 specific address modes
+                // W65C02S specific address modes
                 "(Zero Page)" => $"(${_n:X2})",
                 "(Absolute,X)" => $"${_nn:X4},X",
                 "Zero Page, Relative" => $"${_n:X2},${_d:X2}",
