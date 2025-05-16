@@ -15,6 +15,11 @@ internal sealed class MonitorCommand : Command<MonitorCommand.Settings>
         [Description("Base address for the program.")]
         [DefaultValue("0x8000")]
         public string BaseAddress { get; set; } = string.Empty;
+
+        [CommandOption("-c|--cpu")]
+        [Description("CPU type to use.")]
+        [DefaultValue(CpuType.W65C02S)]
+        public CpuType CpuType { get; set; } = CpuType.W65C02S;
     }
 
     public override int Execute(CommandContext context, Settings settings)
@@ -31,7 +36,7 @@ internal sealed class MonitorCommand : Command<MonitorCommand.Settings>
             }
         }
 
-        Emulator emulator = new(CpuType.MOS6502);
+        Emulator emulator = new(settings.CpuType);
         Monitor monitor = new(emulator);
         monitor.Banner();
 

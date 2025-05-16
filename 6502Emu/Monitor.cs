@@ -88,10 +88,18 @@ public class Monitor
         var fontDir = Path.Combine(Path.GetDirectoryName(assembly.Location) ?? ".", "font", "ANSI Shadow.flf");
         FigletFont font = FigletFont.Load(fontDir);
 
+        string cpu = _emulator.CpuType switch
+        {
+            CpuType.W65C02S => "WDC 65C02",
+            CpuType.MOS6502 => "MOS 6502",
+            _ => "6502"
+        };
+
         AnsiConsole.Write(
-            new FigletText(font, "MOS 6502")
+            new FigletText(font, cpu)
                 .LeftJustified()
                 .Color(Color.Blue));
+
         AnsiConsole.MarkupLine($"[yellow]8-Bit Retro 6502 Emulator by Rob Prouse v{version?.ToString(3)}[/]");
         //AnsiConsole.MarkupLine($"[blue]Running {_emulator.OperatingSystem.Name}[/]");
     }
