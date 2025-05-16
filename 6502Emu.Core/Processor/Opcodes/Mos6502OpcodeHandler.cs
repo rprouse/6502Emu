@@ -80,7 +80,7 @@ public partial class Mos6502OpcodeHandler : IOpcodeHandler
 
     protected void NOP() { }
 
-    void BRK()
+    protected virtual void BRK()
     {
         // Push the return address onto the stack
         _mmu[0x0100 + _reg.S] = (byte)(((_reg.PC + 1) >> 8) & 0xFF); // Push high byte of PC

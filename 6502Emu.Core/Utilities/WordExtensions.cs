@@ -20,4 +20,7 @@ public static class WordExtensions
 
         return s;
     }
+
+    public static string ToHexString(this word value) =>
+        "0x" + value.ToString("X4", CultureInfo.InvariantCulture);
 }

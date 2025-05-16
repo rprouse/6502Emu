@@ -20,4 +20,13 @@ public static class ByteExtensions
 
         return s;
     }
+
+    public static string ToBinaryString(this byte b)
+    {
+        string binary = Convert.ToString(b, 2).PadLeft(8, '0');
+        return $"0b{binary.Substring(0, 4)}_{binary.Substring(4, 4)}";
+    }
+
+    public static string ToHexString(this byte b) =>
+        "0x" + b.ToString("X2", CultureInfo.InvariantCulture).ToUpperInvariant();
 }

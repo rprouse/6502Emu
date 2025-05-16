@@ -6,7 +6,7 @@ namespace Mos6502Emu.Tests.Processor.Opcodes;
 
 public class Wd65C02OpcodeHandlerTests : OpcodeTestBase
 {
-    protected const int TESTS_PER_OPCODE = 1; // Number of test cases to run per opcode, max of 100
+    protected const int TESTS_PER_OPCODE = 10; // Number of test cases to run per opcode, max of 100
     const string TEST_DATA_DIR = @"OpcodeData/Wd65C02/";
 
     [SetUp]

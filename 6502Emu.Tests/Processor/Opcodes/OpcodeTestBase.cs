@@ -2,6 +2,7 @@ using System.Text.Json;
 using Mos6502Emu.Core.Memory;
 using Mos6502Emu.Core.Processor;
 using Mos6502Emu.Core.Processor.Opcodes;
+using Mos6502Emu.Core.Utilities;
 
 namespace Mos6502Emu.Tests.Processor.Opcodes;
 
@@ -42,15 +43,15 @@ public abstract class OpcodeTestBase
             _mmu![ram[0]] = (byte)ram[1];
 
         // Execute the opcode
-        _opcodeHandler!.FetchVerifyAndExecuteInstruction();
+        Opcode opcode = _opcodeHandler!.FetchVerifyAndExecuteInstruction();
 
         // Validate final state
-        _cpu.Registers.PC.ShouldBe(testCase.Final.PC);
-        _cpu.Registers.S.ShouldBe(testCase.Final.S);
-        _cpu.Registers.A.ShouldBe(testCase.Final.A);
-        _cpu.Registers.X.ShouldBe(testCase.Final.X);
-        _cpu.Registers.Y.ShouldBe(testCase.Final.Y);
-        _cpu.Registers.P.ShouldBe(testCase.Final.P);
+        _cpu.Registers.PC.ShouldBe(testCase.Final.PC, $"{opcode.Mnemonic} PC should be {testCase.Final.PC.ToHexString()} but was {_cpu.Registers.PC.ToHexString()}");
+        _cpu.Registers.S.ShouldBe(testCase.Final.S, $"{opcode.Mnemonic} S should be {testCase.Final.S.ToHexString()} but was {_cpu.Registers.S.ToHexString()}");
+        _cpu.Registers.A.ShouldBe(testCase.Final.A, $"{opcode.Mnemonic} A should be {testCase.Final.A.ToHexString()} but was {_cpu.Registers.A.ToHexString()}");
+        _cpu.Registers.X.ShouldBe(testCase.Final.X, $"{opcode.Mnemonic} X should be {testCase.Final.X.ToHexString()} but was {_cpu.Registers.X.ToHexString()}");
+        _cpu.Registers.Y.ShouldBe(testCase.Final.Y, $"{opcode.Mnemonic} Y should be {testCase.Final.Y.ToHexString()} but was {_cpu.Registers.Y.ToHexString()}");
+        _cpu.Registers.P.ShouldBe(testCase.Final.P, $"{opcode.Mnemonic} P (NV__-DIZC) should be {testCase.Final.P.ToBinaryString()} but was {_cpu.Registers.P.ToBinaryString()}");
 
         // Validate RAM state
         foreach (var ram in testCase.Final.RAM)

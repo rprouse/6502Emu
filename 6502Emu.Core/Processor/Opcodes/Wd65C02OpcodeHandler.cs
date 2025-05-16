@@ -9,6 +9,12 @@ public partial class Wd65C02OpcodeHandler : Mos6502OpcodeHandler
     {
     }
 
+    protected override void BRK()
+    {
+        base.BRK();
+        _reg.ResetFlag(Flag.Decimal);
+    }
+
     void INC()
     {
         _reg.A++;
@@ -87,16 +93,20 @@ public partial class Wd65C02OpcodeHandler : Mos6502OpcodeHandler
 
     void TSB(byte value)
     {
-        var result = (byte)(_reg.A | value);
+        var andResult = (byte)(_reg.A & value); // for setting Z flag
+        _reg.SetFlag(Flag.Zero, andResult == 0);
+
+        var result = (byte)(_reg.A | value);    // the new value to write
         _mmu[_address] = result;
-        _reg.SetFlag(Flag.Zero, result == 0);
     }
 
     void TRB(byte value)
     {
-        var result = (byte)(~_reg.A & value);
+        var andResult = (byte)(_reg.A & value); // for setting Z flag
+        _reg.SetFlag(Flag.Zero, andResult == 0);
+
+        var result = (byte)(~_reg.A & value);   // the new value to write
         _mmu[_address] = result;
-        _reg.SetFlag(Flag.Zero, result == 0);
     }
 
     void STZ(byte _)
