@@ -140,8 +140,9 @@ public partial class Wd65C02OpcodeHandler : Mos6502OpcodeHandler
 
         _reg.SetNegativeAndZeroFlags(result);
 
-        // Set Overflow flag is always cleared        
-        _reg.ResetFlag(Flag.Overflow);
+        // Set the overflow flag if the sign of the result is different from the sign of the operands
+        bool signedOverflow = (~(_reg.A ^ value) & (_reg.A ^ result) & 0x80) != 0;
+        _reg.SetFlag(Flag.Overflow, signedOverflow);
 
         _reg.A = result;
     }
@@ -175,8 +176,9 @@ public partial class Wd65C02OpcodeHandler : Mos6502OpcodeHandler
 
         _reg.SetNegativeAndZeroFlags(result);
 
-        // Set Overflow flag is always cleared        
-        _reg.ResetFlag(Flag.Overflow);
+        bool overflow = ((_reg.A ^ value) & (_reg.A ^ result) & 0x80) != 0;
+        _reg.SetFlag(Flag.Overflow, overflow);
+
 
         _reg.A = result;
     }
