@@ -1,6 +1,6 @@
 # 6502 Test Data
 
-This directory contains a set of test data for the 6502 processor. The tests are designed to validate the behavior of the processor's opcodes and their interactions with memory.
+This directory contains a set of test data for the 6502 and 65C02 processors. The tests are designed to validate the behavior of the processor's opcodes and their interactions with memory.
 
 The tests were originally created by Thomas Harte and are under the MIT license. The full repo is available at https://github.com/SingleStepTests/65x02.
 

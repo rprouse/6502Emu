@@ -1,8 +1,16 @@
 {
   "profiles": {
-    "6502Emu": {
+    "WSL": {
+      "commandName": "WSL2",
+      "distributionName": ""
+    },
+    "6502Emu MOS6502": {
       "commandName": "Project",
-      "commandLineArgs": "\"D:\\src\\Retro\\6502\\6502Emu\\6502Emu.Tests\\bin\\Debug\\net8.0\\Test.prg\""
+      "commandLineArgs": "--cpu MOS6502 \"D:\\src\\Retro\\6502\\6502Emu\\6502Emu.Tests\\bin\\Debug\\net8.0\\Test.prg\""
+    },
+    "6502Emu W65C02S": {
+      "commandName": "Project",
+      "commandLineArgs": "--cpu W65C02S \"D:\\src\\Retro\\6502\\6502Emu\\6502Emu.Tests\\bin\\Debug\\net8.0\\Test.prg\""
     }
   }
 }

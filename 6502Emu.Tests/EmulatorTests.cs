@@ -10,7 +10,7 @@ public class EmulatorTests
     [SetUp]
     public void Setup()
     {
-        _emulator = new Emulator();
+        _emulator = new Emulator(CpuType.MOS6502);
     }
 
     [Test]
@@ -20,7 +20,7 @@ public class EmulatorTests
 
         _emulator.Reset();
 
-        _emulator.WarmBoot.Should().BeFalse();
+        _emulator.WarmBoot.ShouldBeFalse();
     }
 
 
@@ -31,7 +31,7 @@ public class EmulatorTests
 
         _emulator.Reset();
 
-        _emulator.CPU.Registers.GetFlag(Flag.Carry).Should().BeFalse();
+        _emulator.CPU.Registers.GetFlag(Flag.Carry).ShouldBeFalse();
     }
 
     [Test]
@@ -41,7 +41,7 @@ public class EmulatorTests
 
         _emulator.Reset();
 
-        _emulator.CPU.Registers.A.Should().Be(0x00);
+        _emulator.CPU.Registers.A.ShouldBe(0x00);
     }
 
     [Test]
@@ -51,7 +51,7 @@ public class EmulatorTests
 
         _emulator.Reset();
 
-        _emulator.Memory[0x8000].Should().Be(0x00);
+        _emulator.Memory[0x8000].ShouldBe(0x00);
     }
 
     [Test]
@@ -59,15 +59,15 @@ public class EmulatorTests
     {
         _emulator.LoadProgram("Test.prg");
 
-        _emulator.Memory[0x8000].Should().Be(0xA9);
-        _emulator.Memory[0x8001].Should().Be(0xDE);
-        _emulator.Memory[0x8002].Should().Be(0x69);
-        _emulator.Memory[0x8003].Should().Be(0x2A);
-        _emulator.Memory[0x8004].Should().Be(0x85);
-        _emulator.Memory[0x8005].Should().Be(0x00);
-        _emulator.Memory[0x8006].Should().Be(0xC6);
-        _emulator.Memory[0x8007].Should().Be(0x00);
-        _emulator.Memory[0x8008].Should().Be(0x60);
+        _emulator.Memory[0x8000].ShouldBe(0xA9);
+        _emulator.Memory[0x8001].ShouldBe(0xDE);
+        _emulator.Memory[0x8002].ShouldBe(0x69);
+        _emulator.Memory[0x8003].ShouldBe(0x2A);
+        _emulator.Memory[0x8004].ShouldBe(0x85);
+        _emulator.Memory[0x8005].ShouldBe(0x00);
+        _emulator.Memory[0x8006].ShouldBe(0xC6);
+        _emulator.Memory[0x8007].ShouldBe(0x00);
+        _emulator.Memory[0x8008].ShouldBe(0x60);
     }
 
     [Test]
@@ -75,15 +75,15 @@ public class EmulatorTests
     {
         _emulator.LoadProgram("Test.prg", 0x0200);
 
-        _emulator.Memory[0x0200].Should().Be(0xA9);
-        _emulator.Memory[0x0201].Should().Be(0xDE);
-        _emulator.Memory[0x0202].Should().Be(0x69);
-        _emulator.Memory[0x0203].Should().Be(0x2A);
-        _emulator.Memory[0x0204].Should().Be(0x85);
-        _emulator.Memory[0x0205].Should().Be(0x00);
-        _emulator.Memory[0x0206].Should().Be(0xC6);
-        _emulator.Memory[0x0207].Should().Be(0x00);
-        _emulator.Memory[0x0208].Should().Be(0x60);
+        _emulator.Memory[0x0200].ShouldBe(0xA9);
+        _emulator.Memory[0x0201].ShouldBe(0xDE);
+        _emulator.Memory[0x0202].ShouldBe(0x69);
+        _emulator.Memory[0x0203].ShouldBe(0x2A);
+        _emulator.Memory[0x0204].ShouldBe(0x85);
+        _emulator.Memory[0x0205].ShouldBe(0x00);
+        _emulator.Memory[0x0206].ShouldBe(0xC6);
+        _emulator.Memory[0x0207].ShouldBe(0x00);
+        _emulator.Memory[0x0208].ShouldBe(0x60);
     }
 
     [Test]
@@ -91,7 +91,7 @@ public class EmulatorTests
     {
         _emulator.LoadProgram("Test.prg", 0x0200);
 
-        _emulator.CPU.Registers.PC.Should().Be(0x0200);
+        _emulator.CPU.Registers.PC.ShouldBe(0x0200);
     }
 
     [Test]
@@ -102,7 +102,7 @@ public class EmulatorTests
 
         _emulator.Reset();
 
-        _emulator.Memory[0x0200].Should().Be(0xA9);
+        _emulator.Memory[0x0200].ShouldBe(0xA9);
     }
 
     [Test]
@@ -112,8 +112,8 @@ public class EmulatorTests
 
         var op = _emulator.PeekInstruction();
 
-        op.Should().NotBeNull();
-        op.Mnemonic.Should().Be("LDA #$DE");
+        op.ShouldNotBeNull();
+        op.Mnemonic.ShouldBe("LDA #$DE");
     }
 
     [Test]
@@ -123,8 +123,8 @@ public class EmulatorTests
 
         var op = _emulator.Disassemble(0x8006);
 
-        op.Should().NotBeNull();
-        op.Mnemonic.Should().Be("DEC $00");
+        op.ShouldNotBeNull();
+        op.Mnemonic.ShouldBe("DEC $00");
     }
 
     [Test]
@@ -132,12 +132,12 @@ public class EmulatorTests
     {
         _emulator.LoadProgram("Test.prg");
 
-        var op = _emulator.Tick();
+        var op = _emulator.ExecuteInstruction();
 
-        op.Should().NotBeNull();
-        op.Mnemonic.Should().Be("LDA #$DE");
+        op.ShouldNotBeNull();
+        op.Mnemonic.ShouldBe("LDA #$DE");
 
-        _emulator.CPU.Registers.A.Should().Be(0xDE);
-        _emulator.CPU.Registers.PC.Should().Be(0x8002);
+        _emulator.CPU.Registers.A.ShouldBe(0xDE);
+        _emulator.CPU.Registers.PC.ShouldBe(0x8002);
     }
 }

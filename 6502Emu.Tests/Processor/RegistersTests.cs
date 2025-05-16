@@ -16,20 +16,20 @@ public class RegistersTests
     public void TestSetFlagNegative(Flag flag, byte initial)
     {
         _reg.P = initial;
-        _reg.GetFlag(flag).Should().Be(false);
+        _reg.GetFlag(flag).ShouldBe(false);
         _reg.SetFlag(flag);
-        _reg.GetFlag(flag).Should().Be(true);
-        _reg.P.Should().Be(0b1111_1111);
+        _reg.GetFlag(flag).ShouldBe(true);
+        _reg.P.ShouldBe(0b1111_1111);
     }
 
     [TestCaseSource(nameof(FlagData))]
     public void TestResetFlagNegative(Flag flag, byte expected)
     {
         _reg.P = 0b1111_1111;
-        _reg.GetFlag(flag).Should().Be(true);
+        _reg.GetFlag(flag).ShouldBe(true);
         _reg.ResetFlag(flag);
-        _reg.GetFlag(flag).Should().Be(false);
-        _reg.P.Should().Be(expected);
+        _reg.GetFlag(flag).ShouldBe(false);
+        _reg.P.ShouldBe(expected);
     }
 
     public static IEnumerable<object[]> FlagData =>

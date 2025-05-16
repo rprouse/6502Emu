@@ -13,20 +13,20 @@ public class BitUtilitiesTests
     public void TestLsb()
     {
         word b = 0xABCD;
-        b.Lsb().Should().Be(0xCD);
+        b.Lsb().ShouldBe(0xCD);
     }
 
     [Test]
     public void TestMsb()
     {
         word b = 0xABCD;
-        b.Msb().Should().Be(0xAB);
+        b.Msb().ShouldBe(0xAB);
     }
 
     [Test]
     public void TestToWord()
     {
-        BitUtilities.ToWord(0xAB, 0xCD).Should().Be(0xABCD);
+        BitUtilities.ToWord(0xAB, 0xCD).ShouldBe(0xABCD);
     }
 
     [TestCase(0, 0b_0000_0001, true)]
@@ -47,7 +47,7 @@ public class BitUtilitiesTests
     [TestCase(7, 0b_0111_1111, false)]
     public void TestIsBitSet(int bit, byte b, bool expected)
     {
-        b.IsBitSet(bit).Should().Be(expected);
+        b.IsBitSet(bit).ShouldBe(expected);
     }
 
     [TestCase(0, 0b_0000_0001)]
@@ -61,7 +61,7 @@ public class BitUtilitiesTests
     public void TestSetBit(int bit, byte expected)
     {
         byte b = 0b_0000_0000;
-        b.SetBit(bit).Should().Be(expected);
+        b.SetBit(bit).ShouldBe(expected);
     }
 
     [TestCase(0, 0b_1111_1110)]
@@ -75,7 +75,7 @@ public class BitUtilitiesTests
     public void TestResetBit(int bit, byte expected)
     {
         byte b = 0b_1111_1111;
-        b.ResetBit(bit).Should().Be(expected);
+        b.ResetBit(bit).ShouldBe(expected);
     }
 
     [TestCase(0b0000_0000, false)]
@@ -84,7 +84,7 @@ public class BitUtilitiesTests
     [TestCase(0b1111_1111, true)]
     public void TestIsNegative(byte b, bool expected)
     {
-        b.IsNegative().Should().Be(expected);
+        b.IsNegative().ShouldBe(expected);
     }
 
     [TestCase(0b0000_0000_0000, false)]
@@ -97,6 +97,6 @@ public class BitUtilitiesTests
     [TestCase(0b0001_1111_1111, true)]
     public void TestIsNegative(int b, bool expected)
     {
-        b.IsNegative().Should().Be(expected);
+        b.IsNegative().ShouldBe(expected);
     }
 }

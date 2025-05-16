@@ -7,7 +7,7 @@ namespace Mos6502Emu.Core.Processor.Opcodes;
 /// 6502 Opcode class.
 /// </summary>
 /// <param name="mnemonic">The mnemonic</param>
-/// <param name="addr_mode">The addess mode</param>
+/// <param name="addr_mode">The address mode</param>
 /// <param name="hex">Hex value of the opcode</param>
 /// <param name="length">Length of the instruction in bytes</param>
 /// <param name="description">A brief description of the opcode</param>
@@ -40,6 +40,10 @@ public class Opcode(string mnemonic, string addr_mode, byte hex, byte length, st
                 "Indirect" => $"(${_nn:X4})",
                 "Implied" => string.Empty,
                 "Accumulator" => string.Empty,
+                // W65C02S specific address modes
+                "(Zero Page)" => $"(${_n:X2})",
+                "(Absolute,X)" => $"${_nn:X4},X",
+                "Zero Page, Relative" => $"${_n:X2},${_d:X2}",
                 _ => throw new ArgumentOutOfRangeException($"Unknown addressing mode: {AddressMode} for opcode {_mnemonic}")
             };
             return $"{_mnemonic} {operand}".Trim();
@@ -73,6 +77,7 @@ public class Opcode(string mnemonic, string addr_mode, byte hex, byte length, st
             case "Zero Page,Y":
             case "(Indirect,X)":
             case "(Indirect),Y":
+            case "(Zero Page)":
                 _n = mmu[addr + 1];
                 break;
             case "Relative":
@@ -82,10 +87,15 @@ public class Opcode(string mnemonic, string addr_mode, byte hex, byte length, st
             case "Absolute,X":
             case "Absolute,Y":
             case "Indirect":
+            case "(Absolute,X)":
                 _nn = BitUtilities.ToWord(mmu[addr + 2], mmu[addr + 1]);
                 break;
             case "Implied":
             case "Accumulator":
+                break;
+            case "Zero Page, Relative":
+                _n = mmu[addr + 1];
+                _d = (sbyte)mmu[addr + 2];
                 break;
             default:
                 throw new ArgumentOutOfRangeException($"Unknown addressing mode: {AddressMode} for opcode {_mnemonic}");

@@ -2,7 +2,7 @@ using System.Text;
 
 namespace Mos6502Emu.Tests.Processor.Opcodes;
 
-// Represents the state of the CPU registers, flags and memory
+// Represents the state of the CPU _registers, flags and memory
 public class State
 {
     // Program Counter
@@ -24,7 +24,11 @@ public class State
     public byte P { get; set; }
 
     // Contains a list of values to store in memory prior to execution, each one in the form `[address, value]`
-    public word[][] RAM { get; set; }
+    public word[][] RAM { get; set; } = Array.Empty<word[]>();
+
+    // Get RAM value by address
+    public byte this[word address] =>
+        (byte)(RAM.FirstOrDefault(r => r[0] == address)?[1] ?? 0x00);
 
     public override string ToString()
     {
