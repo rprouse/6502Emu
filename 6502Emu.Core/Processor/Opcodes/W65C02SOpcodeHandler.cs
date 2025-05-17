@@ -9,10 +9,28 @@ public partial class W65C02SOpcodeHandler : Mos6502OpcodeHandler
     {
     }
 
+    void BBR(byte bit)
+    {
+        var value = ZeroPage();
+        Branch(!value.IsBitSet(bit));
+    }
+
+    void BBS(byte bit)
+    {
+        var value = ZeroPage();
+        Branch(value.IsBitSet(bit));
+    }
+
     protected override void BRK()
     {
         base.BRK();
         _reg.ResetFlag(Flag.Decimal);
+    }
+
+    void DEC()
+    {
+        _reg.A--;
+        _reg.SetNegativeAndZeroFlags(_reg.A);
     }
 
     void INC()
@@ -21,10 +39,16 @@ public partial class W65C02SOpcodeHandler : Mos6502OpcodeHandler
         _reg.SetNegativeAndZeroFlags(_reg.A);
     }
 
-    void DEC()
+    void PHX()
     {
-        _reg.A--;
-        _reg.SetNegativeAndZeroFlags(_reg.A);
+        _mmu[0x0100 + _reg.S] = _reg.X;
+        _reg.S--;
+    }
+
+    void PHY()
+    {
+        _mmu[0x0100 + _reg.S] = _reg.Y;
+        _reg.S--;
     }
 
     void PLX()
@@ -34,33 +58,11 @@ public partial class W65C02SOpcodeHandler : Mos6502OpcodeHandler
         _reg.SetNegativeAndZeroFlags(_reg.X);
     }
 
-    void PHX()
-    {
-        _mmu[0x0100 + _reg.S] = _reg.X;
-        _reg.S--;
-    }
-
     void PLY()
     {
         _reg.S++;
         _reg.Y = _mmu[0x0100 + _reg.S];
         _reg.SetNegativeAndZeroFlags(_reg.Y);
-    }
-
-    void PHY()
-    {
-        _mmu[0x0100 + _reg.S] = _reg.Y;
-        _reg.S--;
-    }
-
-    void WAI()
-    {
-        throw new NotImplementedException("WAI not implemented");
-    }
-
-    void STP()
-    {
-        throw new NotImplementedException("STP not implemented");
     }
 
     void RMB(byte bit)
@@ -79,16 +81,9 @@ public partial class W65C02SOpcodeHandler : Mos6502OpcodeHandler
         _mmu[_address] = value;
     }
 
-    void BBR(byte bit)
+    void STZ(byte _)
     {
-        var value = ZeroPage();
-        Branch(!value.IsBitSet(bit));
-    }
-
-    void BBS(byte bit)
-    {
-        var value = ZeroPage();
-        Branch(value.IsBitSet(bit));
+        _mmu[_address] = 0;
     }
 
     void TSB(byte value)
@@ -109,9 +104,14 @@ public partial class W65C02SOpcodeHandler : Mos6502OpcodeHandler
         _mmu[_address] = result;
     }
 
-    void STZ(byte _)
-    {        
-        _mmu[_address] = 0;
+    void STP()
+    {
+        throw new NotImplementedException("STP not implemented");
+    }
+
+    void WAI()
+    {
+        throw new NotImplementedException("WAI not implemented");
     }
 
     protected override void ADC_Decimal(byte value, int carryIn)

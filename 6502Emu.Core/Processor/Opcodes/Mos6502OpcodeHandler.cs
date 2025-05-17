@@ -78,115 +78,6 @@ public partial class Mos6502OpcodeHandler : IOpcodeHandler
         return BitUtilities.ToWord(_msb, _lsb);
     }
 
-    protected void NOP() { }
-
-    protected virtual void BRK()
-    {
-        // Push the return address onto the stack
-        _mmu[0x0100 + _reg.S] = (byte)(((_reg.PC + 1) >> 8) & 0xFF); // Push high byte of PC
-        _reg.S--;
-        _mmu[0x0100 + _reg.S] = (byte)((_reg.PC + 1) & 0xFF); // Push low byte of PC
-        _reg.S--;
-
-        // Push the processor status onto the stack
-        PHP();
-
-        _reg.SetFlag(Flag.Interupt);
-
-        // Set the program counter to the interrupt vector
-        _reg.PC = BitUtilities.ToWord(_mmu[0xFFFF], _mmu[0xFFFE]);
-    }
-
-    protected void LDA(byte value)
-    {
-        _reg.A = value;
-        _reg.SetNegativeAndZeroFlags(value);
-    }
-
-    void LDX(byte value)
-    {
-        _reg.X = value;
-        _reg.SetNegativeAndZeroFlags(value);
-    }
-
-    void LDY(byte value)
-    {
-        _reg.Y = value;
-        _reg.SetNegativeAndZeroFlags(value);
-    }
-
-    protected void STA(word _)
-    {
-        _mmu[_address] = _reg.A;
-    }
-
-    protected void STX(word _)
-    {
-        _mmu[_address] = _reg.X;
-    }
-
-    protected void STY(word _)
-    {
-        _mmu[_address] = _reg.Y;
-    }
-
-    protected void INC(word _)
-    {
-        byte value = _mmu[_address];
-        value++;
-        _mmu[_address] = value;
-        _reg.SetNegativeAndZeroFlags(value);
-    }
-
-    void INX()
-    {
-        _reg.X++;
-        _reg.SetNegativeAndZeroFlags(_reg.X);
-    }
-
-    void INY()
-    {
-        _reg.Y++;
-        _reg.SetNegativeAndZeroFlags(_reg.Y);
-    }
-
-    void DEC(word _)
-    {
-        byte value = _mmu[_address];
-        value--;
-        _mmu[_address] = value;
-        _reg.SetNegativeAndZeroFlags(value);
-    }
-
-    void DEX()
-    {
-        _reg.X--;
-        _reg.SetNegativeAndZeroFlags(_reg.X);
-    }
-    void DEY()
-    {
-        _reg.Y--;
-        _reg.SetNegativeAndZeroFlags(_reg.Y);
-    }
-
-    protected void AND(byte value)
-    {
-        _reg.A &= value;
-        _reg.SetNegativeAndZeroFlags(_reg.A);
-    }
-
-    protected void ORA(byte value)
-    {
-        _reg.A |= value;
-        _reg.SetNegativeAndZeroFlags(_reg.A);
-    }
-
-    protected void EOR(byte value)
-    {
-        _reg.A ^= value;
-        _reg.SetNegativeAndZeroFlags(_reg.A);
-    }
-
     protected void ADC(byte value)
     {
         int carryIn = _reg.GetFlag(Flag.Carry) ? 1 : 0;
@@ -253,6 +144,301 @@ public partial class Mos6502OpcodeHandler : IOpcodeHandler
         _reg.SetFlag(Flag.Overflow, ((_reg.A ^ resultByte) & (value ^ resultByte) & 0x80) != 0);
 
         _reg.A = resultByte;
+    }
+
+    protected void AND(byte value)
+    {
+        _reg.A &= value;
+        _reg.SetNegativeAndZeroFlags(_reg.A);
+    }
+
+    void ASL()
+    {
+        // Shift left the accumulator
+        _reg.SetFlag(Flag.Carry, _reg.A.IsBitSet(7));
+        _reg.A <<= 1;
+        _reg.SetNegativeAndZeroFlags(_reg.A);
+    }
+
+    void ASL(word _)
+    {
+        // Shift left the memory location
+        byte value = _mmu[_address];
+        _reg.SetFlag(Flag.Carry, value.IsBitSet(7));
+        value <<= 1;
+        _mmu[_address] = value;
+        _reg.SetNegativeAndZeroFlags(value);
+    }
+
+    protected void BIT(byte value)
+    {
+        byte result = (byte)(_reg.A & value);
+        _reg.SetFlag(Flag.Zero, result == 0);
+        _reg.SetFlag(Flag.Negative, value.IsBitSet(7));
+        _reg.SetFlag(Flag.Overflow, value.IsBitSet(6));
+    }
+
+    protected virtual void BRK()
+    {
+        // Push the return address onto the stack
+        _mmu[0x0100 + _reg.S] = (byte)(((_reg.PC + 1) >> 8) & 0xFF); // Push high byte of PC
+        _reg.S--;
+        _mmu[0x0100 + _reg.S] = (byte)((_reg.PC + 1) & 0xFF); // Push low byte of PC
+        _reg.S--;
+
+        // Push the processor status onto the stack
+        PHP();
+
+        _reg.SetFlag(Flag.Interupt);
+
+        // Set the program counter to the interrupt vector
+        _reg.PC = BitUtilities.ToWord(_mmu[0xFFFF], _mmu[0xFFFE]);
+    }
+
+    protected void Branch(bool condition)
+    {
+        // Get the signed offset
+        byte offset = NextByte();
+        if (condition)
+        {
+            if (offset.IsNegative())
+            {
+                _reg.PC -= (byte)(~offset + 1); // Two's complement to get the positive offset
+            }
+            else
+            {
+                // Add the offset to the current PC
+                _reg.PC += (byte)offset;
+            }
+        }
+    }
+
+    protected void CMP(byte value)
+    {
+        byte result = (byte)(_reg.A - value);
+        _reg.SetNegativeAndZeroFlags(result);
+        if (_reg.A >= value)
+            _reg.SetFlag(Flag.Carry);
+        else
+            _reg.ResetFlag(Flag.Carry);
+    }
+
+    void CPX(byte value)
+    {
+        byte result = (byte)(_reg.X - value);
+        _reg.SetNegativeAndZeroFlags(result);
+        if (_reg.X >= value)
+            _reg.SetFlag(Flag.Carry);
+        else
+            _reg.ResetFlag(Flag.Carry);
+    }
+
+    void CPY(byte value)
+    {
+        byte result = (byte)(_reg.Y - value);
+        _reg.SetNegativeAndZeroFlags(result);
+        if (_reg.Y >= value)
+            _reg.SetFlag(Flag.Carry);
+        else
+            _reg.ResetFlag(Flag.Carry);
+    }
+
+    void DEC(word _)
+    {
+        byte value = _mmu[_address];
+        value--;
+        _mmu[_address] = value;
+        _reg.SetNegativeAndZeroFlags(value);
+    }
+
+    void DEX()
+    {
+        _reg.X--;
+        _reg.SetNegativeAndZeroFlags(_reg.X);
+    }
+    void DEY()
+    {
+        _reg.Y--;
+        _reg.SetNegativeAndZeroFlags(_reg.Y);
+    }
+
+    protected void EOR(byte value)
+    {
+        _reg.A ^= value;
+        _reg.SetNegativeAndZeroFlags(_reg.A);
+    }
+
+    protected void INC(word _)
+    {
+        byte value = _mmu[_address];
+        value++;
+        _mmu[_address] = value;
+        _reg.SetNegativeAndZeroFlags(value);
+    }
+
+    void INX()
+    {
+        _reg.X++;
+        _reg.SetNegativeAndZeroFlags(_reg.X);
+    }
+
+    void INY()
+    {
+        _reg.Y++;
+        _reg.SetNegativeAndZeroFlags(_reg.Y);
+    }
+
+    protected void JMP(word _)
+    {
+        _reg.PC = _address;
+    }
+
+    void JSR(word _)
+    {
+        // Push the return address onto the stack
+        _mmu[0x0100 + _reg.S] = (byte)(((_reg.PC - 1) >> 8) & 0xFF); // Push high byte of PC
+        _reg.S--;
+        _mmu[0x0100 + _reg.S] = (byte)((_reg.PC - 1) & 0xFF); // Push low byte of PC
+        _reg.S--;
+        // Jump to the subroutine
+        _reg.PC = _address;
+    }
+
+    protected void LDA(byte value)
+    {
+        _reg.A = value;
+        _reg.SetNegativeAndZeroFlags(value);
+    }
+
+    void LDX(byte value)
+    {
+        _reg.X = value;
+        _reg.SetNegativeAndZeroFlags(value);
+    }
+
+    void LDY(byte value)
+    {
+        _reg.Y = value;
+        _reg.SetNegativeAndZeroFlags(value);
+    }
+
+    void LSR()
+    {
+        // Shift right the accumulator
+        _reg.SetFlag(Flag.Carry, _reg.A.IsBitSet(0));
+        _reg.A >>= 1;
+        _reg.SetNegativeAndZeroFlags(_reg.A);
+    }
+
+    void LSR(word _)
+    {
+        // Shift right the memory location
+        byte value = _mmu[_address];
+        _reg.SetFlag(Flag.Carry, value.IsBitSet(0));
+        value >>= 1;
+        _mmu[_address] = value;
+        _reg.SetNegativeAndZeroFlags(value);
+    }
+
+    protected void NOP() { }
+
+    protected void ORA(byte value)
+    {
+        _reg.A |= value;
+        _reg.SetNegativeAndZeroFlags(_reg.A);
+    }
+
+    void PHA()
+    {
+        _mmu[0x0100 + _reg.S] = _reg.A;
+        _reg.S--;
+    }
+
+    void PHP()
+    {
+        _mmu[0x0100 + _reg.S] = _reg.P;
+        // Set the unused bits to 1
+        _mmu[0x0100 + _reg.S] |= 0x30;
+        _reg.S--;
+    }
+
+    void PLA()
+    {
+        _reg.S++;
+        _reg.A = _mmu[0x0100 + _reg.S];
+        _reg.SetNegativeAndZeroFlags(_reg.A);
+    }
+
+    void PLP()
+    {
+        _reg.S++;
+        _reg.P = (byte)(_mmu[0x0100 + _reg.S] & 0b1110_1111 | 0b0010_0000);
+    }
+
+    void ROL()
+    {
+        // Rotate left the accumulator
+        bool carry = _reg.GetFlag(Flag.Carry);
+        _reg.SetFlag(Flag.Carry, _reg.A.IsBitSet(7));
+        _reg.A = (byte)((_reg.A << 1) | (carry ? 1 : 0));
+        _reg.SetNegativeAndZeroFlags(_reg.A);
+    }
+
+    void ROL(word _)
+    {
+        // Rotate left the memory location
+        byte value = _mmu[_address];
+        bool carry = _reg.GetFlag(Flag.Carry);
+        _reg.SetFlag(Flag.Carry, value.IsBitSet(7));
+        value = (byte)((value << 1) | (carry ? 1 : 0));
+        _mmu[_address] = value;
+        _reg.SetNegativeAndZeroFlags(value);
+    }
+
+    void ROR()
+    {
+        // Rotate right the accumulator
+        bool carry = _reg.GetFlag(Flag.Carry);
+        _reg.SetFlag(Flag.Carry, _reg.A.IsBitSet(0));
+        _reg.A = (byte)((_reg.A >> 1) | (carry ? 0x80 : 0));
+        _reg.SetNegativeAndZeroFlags(_reg.A);
+    }
+
+    void ROR(word _)
+    {
+        // Rotate right the memory location
+        byte value = _mmu[_address];
+        bool carry = _reg.GetFlag(Flag.Carry);
+        _reg.SetFlag(Flag.Carry, value.IsBitSet(0));
+        value = (byte)((value >> 1) | (carry ? 0x80 : 0));
+        _mmu[_address] = value;
+        _reg.SetNegativeAndZeroFlags(value);
+    }
+
+    void RTI()
+    {
+        // Pull the processor status from the stack
+        PLP();
+        // Pull the return address from the stack
+        _reg.S++;
+        _lsb = _mmu[0x0100 + _reg.S]; // Pull high byte of PC
+        _reg.S++;
+        _msb = _mmu[0x0100 + _reg.S]; // Pull low byte of PC
+        // Set the program counter to the return address
+        _reg.PC = BitUtilities.ToWord(_msb, _lsb);
+    }
+
+    void RTS()
+    {
+        // Pull the return address from the stack
+        _reg.S++;
+        _lsb = _mmu[0x0100 + _reg.S]; // Pull high byte of PC
+        _reg.S++;
+        _msb = _mmu[0x0100 + _reg.S]; // Pull low byte of PC
+        // Set the program counter to the return address
+        _reg.PC = BitUtilities.ToWord(_msb, _lsb);
+        // Increment PC to point to the next instruction
+        _reg.PC++;
     }
 
     protected void SBC(byte value)
@@ -339,178 +525,31 @@ public partial class Mos6502OpcodeHandler : IOpcodeHandler
         _reg.A = (byte)result;
     }
 
-    protected void CMP(byte value)
+    protected void STA(word _)
     {
-        byte result = (byte)(_reg.A - value);
-        _reg.SetNegativeAndZeroFlags(result);
-        if (_reg.A >= value)
-            _reg.SetFlag(Flag.Carry);
-        else
-            _reg.ResetFlag(Flag.Carry);
+        _mmu[_address] = _reg.A;
     }
 
-    void CPX(byte value)
+    protected void STX(word _)
     {
-        byte result = (byte)(_reg.X - value);
-        _reg.SetNegativeAndZeroFlags(result);
-        if (_reg.X >= value)
-            _reg.SetFlag(Flag.Carry);
-        else
-            _reg.ResetFlag(Flag.Carry);
+        _mmu[_address] = _reg.X;
     }
 
-    void CPY(byte value)
+    protected void STY(word _)
     {
-        byte result = (byte)(_reg.Y - value);
-        _reg.SetNegativeAndZeroFlags(result);
-        if (_reg.Y >= value)
-            _reg.SetFlag(Flag.Carry);
-        else
-            _reg.ResetFlag(Flag.Carry);
+        _mmu[_address] = _reg.Y;
     }
 
-    protected void BIT(byte value)
+    void TAX()
     {
-        byte result = (byte)(_reg.A & value);
-        _reg.SetFlag(Flag.Zero, result == 0);
-        _reg.SetFlag(Flag.Negative, value.IsBitSet(7));
-        _reg.SetFlag(Flag.Overflow, value.IsBitSet(6));
+        _reg.X = _reg.A;
+        _reg.SetNegativeAndZeroFlags(_reg.X);
     }
 
-    protected void Branch(bool condition)
+    void TAY()
     {
-        // Get the signed offset
-        byte offset = NextByte();
-        if (condition)
-        {
-            if (offset.IsNegative())
-            {
-                _reg.PC -= (byte)(~offset + 1); // Two's complement to get the positive offset
-            }
-            else
-            {
-                // Add the offset to the current PC
-                _reg.PC += (byte)offset;
-            }
-        }
-    }
-
-    void ASL()
-    {
-        // Shift left the accumulator
-        _reg.SetFlag(Flag.Carry, _reg.A.IsBitSet(7));
-        _reg.A <<= 1;
-        _reg.SetNegativeAndZeroFlags(_reg.A);
-    }
-
-    void ASL(word _)
-    {
-        // Shift left the memory location
-        byte value = _mmu[_address];
-        _reg.SetFlag(Flag.Carry, value.IsBitSet(7));
-        value <<= 1;
-        _mmu[_address] = value;
-        _reg.SetNegativeAndZeroFlags(value);
-    }
-
-    void LSR()
-    {
-        // Shift right the accumulator
-        _reg.SetFlag(Flag.Carry, _reg.A.IsBitSet(0));
-        _reg.A >>= 1;
-        _reg.SetNegativeAndZeroFlags(_reg.A);
-    }
-
-    void LSR(word _)
-    {
-        // Shift right the memory location
-        byte value = _mmu[_address];
-        _reg.SetFlag(Flag.Carry, value.IsBitSet(0));
-        value >>= 1;
-        _mmu[_address] = value;
-        _reg.SetNegativeAndZeroFlags(value);
-    }
-
-    void ROL()
-    {
-        // Rotate left the accumulator
-        bool carry = _reg.GetFlag(Flag.Carry);
-        _reg.SetFlag(Flag.Carry, _reg.A.IsBitSet(7));
-        _reg.A = (byte)((_reg.A << 1) | (carry ? 1 : 0));
-        _reg.SetNegativeAndZeroFlags(_reg.A);
-    }
-
-    void ROL(word _)
-    {
-        // Rotate left the memory location
-        byte value = _mmu[_address];
-        bool carry = _reg.GetFlag(Flag.Carry);
-        _reg.SetFlag(Flag.Carry, value.IsBitSet(7));
-        value = (byte)((value << 1) | (carry ? 1 : 0));
-        _mmu[_address] = value;
-        _reg.SetNegativeAndZeroFlags(value);
-    }
-
-    void ROR()
-    {
-        // Rotate right the accumulator
-        bool carry = _reg.GetFlag(Flag.Carry);
-        _reg.SetFlag(Flag.Carry, _reg.A.IsBitSet(0));
-        _reg.A = (byte)((_reg.A >> 1) | (carry ? 0x80 : 0));
-        _reg.SetNegativeAndZeroFlags(_reg.A);
-    }
-
-    void ROR(word _)
-    {
-        // Rotate right the memory location
-        byte value = _mmu[_address];
-        bool carry = _reg.GetFlag(Flag.Carry);
-        _reg.SetFlag(Flag.Carry, value.IsBitSet(0));
-        value = (byte)((value >> 1) | (carry ? 0x80 : 0));
-        _mmu[_address] = value;
-        _reg.SetNegativeAndZeroFlags(value);
-    }
-
-    void JSR(word _)
-    {
-        // Push the return address onto the stack
-        _mmu[0x0100 + _reg.S] = (byte)(((_reg.PC - 1) >> 8) & 0xFF); // Push high byte of PC
-        _reg.S--;
-        _mmu[0x0100 + _reg.S] = (byte)((_reg.PC - 1) & 0xFF); // Push low byte of PC
-        _reg.S--;
-        // Jump to the subroutine
-        _reg.PC = _address;
-    }
-
-    void RTS()
-    {
-        // Pull the return address from the stack
-        _reg.S++;
-        _lsb = _mmu[0x0100 + _reg.S]; // Pull high byte of PC
-        _reg.S++;
-        _msb = _mmu[0x0100 + _reg.S]; // Pull low byte of PC
-        // Set the program counter to the return address
-        _reg.PC = BitUtilities.ToWord(_msb, _lsb);
-        // Increment PC to point to the next instruction
-        _reg.PC++;
-    }
-
-    void RTI()
-    {
-        // Pull the processor status from the stack
-        PLP();
-        // Pull the return address from the stack
-        _reg.S++;
-        _lsb = _mmu[0x0100 + _reg.S]; // Pull high byte of PC
-        _reg.S++;
-        _msb = _mmu[0x0100 + _reg.S]; // Pull low byte of PC
-        // Set the program counter to the return address
-        _reg.PC = BitUtilities.ToWord(_msb, _lsb);
-    }
-
-    protected void JMP(word _)
-    {
-        _reg.PC = _address;
+        _reg.Y = _reg.A;
+        _reg.SetNegativeAndZeroFlags(_reg.Y);
     }
 
     void TXS()
@@ -534,44 +573,5 @@ public partial class Mos6502OpcodeHandler : IOpcodeHandler
     {
         _reg.A = _reg.Y;
         _reg.SetNegativeAndZeroFlags(_reg.A);
-    }
-
-    void TAX()
-    {
-        _reg.X = _reg.A;
-        _reg.SetNegativeAndZeroFlags(_reg.X);
-    }
-
-    void TAY()
-    {
-        _reg.Y = _reg.A;
-        _reg.SetNegativeAndZeroFlags(_reg.Y);
-    }
-
-    void PLA()
-    {
-        _reg.S++;
-        _reg.A = _mmu[0x0100 + _reg.S];
-        _reg.SetNegativeAndZeroFlags(_reg.A);
-    }
-
-    void PHA()
-    {
-        _mmu[0x0100 + _reg.S] = _reg.A;
-        _reg.S--;
-    }
-
-    void PLP()
-    {
-        _reg.S++;
-        _reg.P = (byte)(_mmu[0x0100 + _reg.S] & 0b1110_1111 | 0b0010_0000);
-    }
-
-    void PHP()
-    {
-        _mmu[0x0100 + _reg.S] = _reg.P;
-        // Set the unused bits to 1
-        _mmu[0x0100 + _reg.S] |= 0x30;
-        _reg.S--;
     }
 }
