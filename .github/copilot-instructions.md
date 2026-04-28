@@ -53,7 +53,7 @@ The solution is organized into multiple projects:
 
 ## Dependencies
 
-1. **Framework**: .NET 8.0
+1. **Framework**: .NET 10.0
 
 2. **NuGet Packages**:
    - **Spectre.Console**: Used for rich console UI/rendering

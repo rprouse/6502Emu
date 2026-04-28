@@ -4,7 +4,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Build, Run, and Test
 
-The solution is .NET 8.0; commands work from the repo root.
+The solution is .NET 10.0; commands work from the repo root.
 
 ```bash
 dotnet build 6502Emu.sln
