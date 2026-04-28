@@ -80,6 +80,10 @@ When adding a new opcode, make sure the corresponding `<hex>.json` is in the tes
 - **Code analysis suppressions** are centralized in `GlobalSuppressions.cs`. Two existing rules are suppressed project-wide (`S112` and `S6602`); follow the same pattern rather than scattering `#pragma`s.
 - The README To-Do calls out two known refactors not yet done: "sort opcode helper methods and make them protected" and "switch default base address to 0x2000". Don't rely on either.
 
+## Git on Windows
+
+When running on Windows, always use the PowerShell tool (not Bash) for `git push`. Other git commands work fine via either shell, but pushes specifically must go through PowerShell.
+
 ## Reference
 
 The full 65C02 instruction list with bytes/mnemonics/descriptions lives in `65C02 Instructions.md` at the repo root — useful when adding or verifying opcode metadata.
