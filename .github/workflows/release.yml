@@ -1,0 +1,91 @@
+name: Release
+
+on:
+  push:
+    tags:
+      - "v*"
+
+jobs:
+  release:
+    name: Release
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: 📥 Checkout Code
+      uses: actions/checkout@v6
+      with:
+        fetch-depth: 0
+
+    - name: 🏷️ Extract version from tag
+      id: get_version
+      run: echo "VERSION=${GITHUB_REF#refs/tags/v}" >> $GITHUB_OUTPUT
+
+    - name: 🔧 Setup .NET
+      uses: actions/setup-dotnet@v5
+      with:
+        dotnet-version: 10.0.x
+        cache: true
+        cache-dependency-path: '**/*.csproj'
+
+    - name: 🪟 Build and Package for Windows
+      run: dotnet publish -c Release -r win-x64 --self-contained true -p:PublishSingleFile=true -p:PublishTrimmed=true -p:CopyOutputSymbolsToPublishDirectory=false
+
+    - name: 📦 Package Windows Artifacts
+      run: zip -r 6502Emu-Windows.zip 6502Emu/bin/Release/net10.0/win-x64/publish
+
+    - name: 📤 Upload Windows Artifacts
+      uses: actions/upload-artifact@v7
+      with:
+        name: 6502emu-win
+        path: 6502Emu-Windows.zip
+
+    - name: 🐧 Build and Package for Linux
+      run: dotnet publish -c Release -r linux-x64 --self-contained true -p:PublishSingleFile=true -p:PublishTrimmed=true -p:CopyOutputSymbolsToPublishDirectory=false
+
+    - name: 📦 Package Linux Artifacts
+      run: zip -r 6502Emu-Linux.zip 6502Emu/bin/Release/net10.0/linux-x64/publish
+
+    - name: 📤 Upload Linux Artifacts
+      uses: actions/upload-artifact@v7
+      with:
+        name: 6502emu-linux
+        path: 6502Emu-Linux.zip
+
+    - name: 🍎 Build and Package for macOS
+      run: dotnet publish -c Release -r osx-x64 --self-contained true -p:PublishSingleFile=true -p:PublishTrimmed=true -p:CopyOutputSymbolsToPublishDirectory=false
+
+    - name: 📦 Package macOS Artifacts
+      run: zip -r 6502Emu-macOS.zip 6502Emu/bin/Release/net10.0/osx-x64/publish
+
+    - name: 📤 Upload macOS Artifacts
+      uses: actions/upload-artifact@v7
+      with:
+        name: 6502emu-macos
+        path: 6502Emu-macOS.zip
+
+    - name: ✅ Validate Artifacts
+      run: |
+        echo "Checking artifact sizes..."
+        ls -lh *.zip
+
+    - name: 📝 Generate Release Notes
+      id: release_notes
+      run: |
+        echo "NOTES<<EOF" >> $GITHUB_OUTPUT
+        echo "## Changes in version ${{ steps.get_version.outputs.VERSION }}" >> $GITHUB_OUTPUT
+        git log --pretty=format:"- %s" $(git describe --tags --abbrev=0 HEAD^)..HEAD >> $GITHUB_OUTPUT
+        echo "EOF" >> $GITHUB_OUTPUT
+
+    - name: ⚡ Create GitHub Release
+      uses: softprops/action-gh-release@v2
+      with:
+        files: |
+          6502Emu-Windows.zip
+          6502Emu-Linux.zip
+          6502Emu-macOS.zip
+        body: ${{ steps.release_notes.outputs.NOTES }}
+        tag_name: ${{ github.ref }}
+        draft: false
+        prerelease: false
+        token: ${{ github.token }}
