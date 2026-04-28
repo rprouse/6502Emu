@@ -79,6 +79,7 @@ When adding a new opcode, make sure the corresponding `<hex>.json` is in the tes
 - **Style** (from `.github/copilot-instructions.md`): PascalCase public members, camelCase with `_` prefix for private fields, nullable reference types enabled, XML doc on public APIs.
 - **Code analysis suppressions** are centralized in `GlobalSuppressions.cs`. Two existing rules are suppressed project-wide (`S112` and `S6602`); follow the same pattern rather than scattering `#pragma`s.
 - The README To-Do calls out two known refactors not yet done: "sort opcode helper methods and make them protected" and "switch default base address to 0x2000". Don't rely on either.
+- Whenever making changes to the application, increase the version number in `6502Emu.csproj` (e.g. `0.1.0` → `0.2.0`) to keep track of iterations and ensure the latest test assembly is built. Use semantic versioning principles: increment the patch version for bug fixes, the minor version for new features, and the major version for breaking changes.
 
 ## Git on Windows
 
