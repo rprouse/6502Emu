@@ -364,3 +364,6 @@ FodyWeavers.xsd
 
 # Assembly files
 *.o
+
+# Claude code
+settings.local.json
